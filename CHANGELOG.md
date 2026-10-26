@@ -14,6 +14,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - Versão do app exposta em `__APP_VERSION__`.
 - Até 10 modelos de mensagem na tela Mensagens, com o modelo em uso aplicado no botão de WhatsApp e no detalhe
   do lead. A configuração antiga, com um único modelo, é migrada automaticamente.
+- Coluna Instagram na lista de leads, com botão que abre o perfil do negócio ou "Não consta" quando não há.
 
 ### Alterado
 
