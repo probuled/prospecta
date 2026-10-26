@@ -2,6 +2,7 @@ import { MessageCircle } from 'lucide-react'
 import { ExternalButtonLink, type ButtonSize } from '@/components/prospecta/button'
 import { renderMessage } from '@/domain/message-template'
 import { buildWhatsAppUrl } from '@/domain/phone'
+import { activeTemplate } from '@/domain/settings'
 import { cn } from '@/lib/utils'
 import { useSettings } from '@/presentation/hooks/use-store'
 import type { LeadView } from './lead-view'
@@ -16,7 +17,7 @@ interface WhatsAppButtonProps {
 
 /** Ícone na cor do WhatsApp dentro de um botão neutro. Telefone fixo fica com o ícone apagado. */
 export function WhatsAppButton({ view, onOpen, label, size = 'sm' }: WhatsAppButtonProps) {
-  const { messageTemplate } = useSettings()
+  const messageTemplate = activeTemplate(useSettings()).body
   if (!view.phone) return null
 
   const { isMobile } = view.phone

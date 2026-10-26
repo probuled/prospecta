@@ -10,6 +10,7 @@ import { StatusMenu } from '@/components/prospecta/status'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import type { LeadPatch } from '@/domain/lead'
 import { renderMessage } from '@/domain/message-template'
+import { activeTemplate } from '@/domain/settings'
 import { cn } from '@/lib/utils'
 import { fromDateTimeLocal, toDateTimeLocal } from '@/presentation/format'
 import { useSettings } from '@/presentation/hooks/use-store'
@@ -67,7 +68,7 @@ function CopyButton({ text }: { readonly text: string }) {
 }
 
 export function LeadDetailSheet({ view, onClose, onUpdate }: LeadDetailSheetProps) {
-  const { messageTemplate } = useSettings()
+  const messageTemplate = activeTemplate(useSettings()).body
   // Foco inicial no cabeçalho: evita o anel de foco num botão ao abrir pelo mouse.
   const headerRef = useRef<HTMLDivElement>(null)
 
