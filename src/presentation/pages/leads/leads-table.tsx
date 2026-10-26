@@ -6,6 +6,7 @@ import { Score } from '@/components/prospecta/score'
 import { StatusMenu } from '@/components/prospecta/status'
 import type { LeadStatus } from '@/domain/lead'
 import { cn } from '@/lib/utils'
+import { InstagramButton } from './instagram-button'
 import type { LeadView } from './lead-view'
 import { WhatsAppButton } from './whatsapp-button'
 
@@ -23,6 +24,16 @@ const cellClass = 'h-[var(--row-height)] px-4 align-middle'
 
 function NoRating() {
   return <span className="text-xs text-ink-muted">sem nota</span>
+}
+
+function InstagramCell({ view }: { view: LeadView }) {
+  if (!view.instagram) return <span className="text-xs text-ink-muted">Não consta</span>
+  return (
+    <span className="inline-flex max-w-44 items-center gap-2 whitespace-nowrap">
+      <InstagramButton view={view} />
+      {view.instagram.handle && <span className="text-data hidden truncate xl:inline">@{view.instagram.handle}</span>}
+    </span>
+  )
 }
 
 /** No celular a tabela não cabe: cada lead vira uma linha com o essencial. */
@@ -47,6 +58,7 @@ function MobileLeadList({
               <Presence kind={view.presence} />
             </div>
           </div>
+          <InstagramButton view={view} />
           <WhatsAppButton view={view} onOpen={() => onContact(view)} />
         </li>
       ))}
@@ -71,6 +83,7 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
               <th className={cn(headClass, 'hidden md:table-cell')}>Presença</th>
               <th className={cn(headClass, 'hidden lg:table-cell')}>Avaliação</th>
               <th className={headClass}>Contato</th>
+              <th className={cn(headClass, 'hidden md:table-cell')}>Instagram</th>
               <th className={cn(headClass, 'text-right')}>Status</th>
             </tr>
           </thead>
@@ -102,6 +115,9 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
                     <WhatsAppButton view={view} onOpen={() => markContacted(view)} />
                     <span className="text-data hidden xl:inline">{view.lead.phone}</span>
                   </span>
+                </td>
+                <td className={cn(cellClass, 'hidden md:table-cell')}>
+                  <InstagramCell view={view} />
                 </td>
                 <td className={cn(cellClass, 'text-right')} onClick={(e) => e.stopPropagation()}>
                   <StatusMenu status={view.lead.status} onChange={(status) => onStatusChange(view.lead.id, status)} />

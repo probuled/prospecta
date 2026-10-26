@@ -15,6 +15,7 @@ import { cn } from '@/lib/utils'
 import { fromDateTimeLocal, toDateTimeLocal } from '@/presentation/format'
 import { useSettings } from '@/presentation/hooks/use-store'
 import type { LeadView } from './lead-view'
+import { InstagramButton } from './instagram-button'
 import { WhatsAppButton } from './whatsapp-button'
 
 interface LeadDetailSheetProps {
@@ -111,6 +112,7 @@ function LeadDetailBody({ view, message, onUpdate }: { view: LeadView; message: 
             label="Enviar no WhatsApp"
             onOpen={() => lead.status === 'novo' && update({ status: 'contatado' })}
           />
+          <InstagramButton view={view} size="md" label="Abrir Instagram" />
           <CopyButton text={message} />
         </div>
       </Section>

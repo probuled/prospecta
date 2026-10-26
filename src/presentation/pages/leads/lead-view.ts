@@ -1,3 +1,4 @@
+import { findInstagram, type InstagramProfile } from '@/domain/instagram'
 import type { Lead } from '@/domain/lead'
 import { evaluateOpportunity, type Opportunity } from '@/domain/opportunity'
 import { parsePhone, type PhoneInfo } from '@/domain/phone'
@@ -8,6 +9,7 @@ export interface LeadView {
   readonly lead: Lead
   readonly presence: WebsitePresence
   readonly phone: PhoneInfo | null
+  readonly instagram: InstagramProfile | null
   readonly opportunity: Opportunity
 }
 
@@ -16,6 +18,7 @@ export function toLeadView(lead: Lead): LeadView {
     lead,
     presence: classifyWebsite(lead.website),
     phone: parsePhone(lead.phone),
+    instagram: findInstagram(lead.website),
     opportunity: evaluateOpportunity(lead),
   }
 }
