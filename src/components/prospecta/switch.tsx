@@ -23,7 +23,7 @@ export function Switch({ checked, onChange, title, description }: SwitchProps) {
     <div className="flex items-start justify-between gap-4">
       <div>
         <p className="font-medium">{title}</p>
-        {description && <p className="mt-0.5 text-caption text-ink-muted">{description}</p>}
+        {description && <p className="text-caption mt-0.5 text-ink-muted">{description}</p>}
       </div>
       {toggle}
     </div>

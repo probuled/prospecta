@@ -30,7 +30,11 @@ export function Score({ value, variant = 'inline', showWord = true, reasons = []
   return (
     <span
       title={title}
-      className={cn('inline-flex items-center gap-2 whitespace-nowrap', TONES[level].text, variant === 'badge' && cn('rounded-sm py-0.5 pr-2 pl-1.5', TONES[level].soft))}
+      className={cn(
+        'inline-flex items-center gap-2 whitespace-nowrap',
+        TONES[level].text,
+        variant === 'badge' && cn('rounded-sm py-0.5 pr-2 pl-1.5', TONES[level].soft),
+      )}
     >
       <span aria-hidden className="inline-flex items-end gap-0.5">
         {Array.from({ length: BAR_COUNT }, (_, index) => (

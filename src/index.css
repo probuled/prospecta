@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 /*
  * Prospecta design system (design-system/…/tokens.css).
@@ -10,26 +10,26 @@
 @custom-variant dark (&:is([data-theme="dark"] *));
 
 @font-face {
-  font-family: "Schibsted Grotesk";
-  src: url("./assets/fonts/SchibstedGrotesk-Variable.woff2") format("woff2");
+  font-family: 'Schibsted Grotesk';
+  src: url('./assets/fonts/SchibstedGrotesk-Variable.woff2') format('woff2');
   font-weight: 400 900;
   font-display: swap;
 }
 @font-face {
-  font-family: "IBM Plex Mono";
-  src: url("./assets/fonts/IBMPlexMono-Regular.woff2") format("woff2");
+  font-family: 'IBM Plex Mono';
+  src: url('./assets/fonts/IBMPlexMono-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
-  font-family: "IBM Plex Mono";
-  src: url("./assets/fonts/IBMPlexMono-Medium.woff2") format("woff2");
+  font-family: 'IBM Plex Mono';
+  src: url('./assets/fonts/IBMPlexMono-Medium.woff2') format('woff2');
   font-weight: 500;
   font-display: swap;
 }
 
 :root,
-[data-theme="light"] {
+[data-theme='light'] {
   --bg: #f6f5f1;
   --surface: #ffffff;
   --surface-sunken: #eeece6;
@@ -61,7 +61,7 @@
   color-scheme: light;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --bg: #1f1e1b;
   --surface: #282723;
   --surface-sunken: #1a1917;
@@ -94,8 +94,8 @@
 }
 
 :root {
-  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-sans: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
   --control-sm: 28px;
   --control-md: 36px;
   --control-lg: 56px;
@@ -178,9 +178,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-sans: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
 
   /* Cantos firmes: 4 / 6 / 10. Os tamanhos maiores do shadcn caem em 10px. */
   --radius-xs: 4px;
@@ -225,7 +225,7 @@
   }
   /* Foco de teclado: o mesmo anel em tudo que é interativo.
      data-focus-inner: campo cujo contêiner já desenha o anel (busca, textarea da mensagem). */
-  :focus-visible:not([tabindex="-1"], [data-focus-inner]) {
+  :focus-visible:not([tabindex='-1'], [data-focus-inner]) {
     outline: none !important;
     box-shadow: var(--focus-ring) !important;
   }
@@ -292,7 +292,9 @@
   .pr-range::-webkit-slider-runnable-track {
     height: 4px;
     border-radius: 2px;
-    background: linear-gradient(var(--ink), var(--ink)) 0 / var(--pct) 100% no-repeat, var(--line);
+    background:
+      linear-gradient(var(--ink), var(--ink)) 0 / var(--pct) 100% no-repeat,
+      var(--line);
   }
   .pr-range::-moz-range-track {
     height: 4px;

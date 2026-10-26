@@ -23,7 +23,7 @@ export function MetricStrip({ items }: { readonly items: readonly Metric[] }) {
           )}
         >
           <dt className="text-label text-ink-muted">{label}</dt>
-          <dd className="mt-1 text-metric">{value}</dd>
+          <dd className="text-metric mt-1">{value}</dd>
           {note && <dd className="text-caption text-ink-muted">{note}</dd>}
         </div>
       ))}

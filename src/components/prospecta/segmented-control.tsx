@@ -20,9 +20,21 @@ interface SegmentedControlProps<T extends string> {
 }
 
 /** Alterna entre 2–4 visualizações (Lista/Pipeline, tema). Filtro não é segmented: é Select. */
-export function SegmentedControl<T extends string>({ options, value, onChange, iconOnly, block, label, className }: SegmentedControlProps<T>) {
+export function SegmentedControl<T extends string>({
+  options,
+  value,
+  onChange,
+  iconOnly,
+  block,
+  label,
+  className,
+}: SegmentedControlProps<T>) {
   return (
-    <div role="group" aria-label={label} className={cn('gap-0.5 rounded-md bg-surface-sunken p-0.5', block ? 'flex' : 'inline-flex', className)}>
+    <div
+      role="group"
+      aria-label={label}
+      className={cn('gap-0.5 rounded-md bg-surface-sunken p-0.5', block ? 'flex' : 'inline-flex', className)}
+    >
       {options.map(({ value: option, label: optionLabel, icon: Icon }) => (
         <button
           key={option}

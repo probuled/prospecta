@@ -28,11 +28,11 @@ export function LeadCardContent({ view, onMove, dragging = false }: LeadCardCont
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
           <p className="truncate font-medium">{lead.name}</p>
-          <p className="truncate text-caption text-ink-muted">
+          <p className="text-caption truncate text-ink-muted">
             {lead.category} · {lead.city}
           </p>
         </div>
-        {lead.dealValue ? <span className="shrink-0 text-data font-medium">{formatCurrency(lead.dealValue)}</span> : null}
+        {lead.dealValue ? <span className="text-data shrink-0 font-medium">{formatCurrency(lead.dealValue)}</span> : null}
       </div>
       <FollowUpTag followUpAt={lead.followUpAt} />
       <div className="flex items-center justify-between gap-2 border-t border-line pt-2">

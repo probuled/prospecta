@@ -12,7 +12,7 @@ services:
     depends_on:
       - google-maps-scraper
     ports:
-      - "127.0.0.1:${WEB_PORT:-3000}:80"
+      - '127.0.0.1:${WEB_PORT:-3000}:80'
 
   # Motor de scraping: gosom/google-maps-scraper (MIT), mesma configuração do
   # Mahanaicoach/google-maps-scraper-kit. API REST em http://localhost:8080.
@@ -20,10 +20,10 @@ services:
     image: gosom/google-maps-scraper:v1.18.1
     container_name: gmaps-scraper
     restart: unless-stopped
-    command: ["-web", "-data-folder", "/gmapsdata"]
+    command: ['-web', '-data-folder', '/gmapsdata']
     ports:
       # Exposto no host para o `npm run dev` (proxy do Vite) continuar funcionando.
-      - "127.0.0.1:${SCRAPER_PORT:-8080}:8080"
+      - '127.0.0.1:${SCRAPER_PORT:-8080}:8080'
     volumes:
       - gmaps_data:/gmapsdata # resultados dos jobs
       - gmaps_cache:/opt # cache do navegador do Playwright

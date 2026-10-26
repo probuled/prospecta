@@ -5,7 +5,8 @@ export function EngineOfflineAlert() {
       <div className="space-y-0.5">
         <p className="font-medium">O motor de busca está parado</p>
         <p className="text-ink-muted">
-          Abra o Docker Desktop e rode <code className="rounded-sm bg-surface-sunken px-1.5 py-0.5 text-data text-ink">docker compose up -d</code> na pasta do projeto.
+          Abra o Docker Desktop e rode{' '}
+          <code className="text-data rounded-sm bg-surface-sunken px-1.5 py-0.5 text-ink">docker compose up -d</code> na pasta do projeto.
         </p>
       </div>
     </div>

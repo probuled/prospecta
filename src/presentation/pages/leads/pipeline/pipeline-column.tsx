@@ -35,14 +35,18 @@ export function PipelineColumn({ column, onSelect, onMove }: PipelineColumnProps
         <StatusMark status={column.status} />
         {LEAD_STATUS_LABELS[column.status]}
         <span className="font-mono text-xs font-normal text-ink-muted">{formatCount(column.items.length)}</span>
-        {column.totalValue > 0 && <span className="ml-auto font-mono text-xs font-normal text-ink-muted">{formatCurrency(column.totalValue)}</span>}
+        {column.totalValue > 0 && (
+          <span className="ml-auto font-mono text-xs font-normal text-ink-muted">{formatCurrency(column.totalValue)}</span>
+        )}
       </header>
 
       {column.items.slice(0, visible).map((view) => (
         <LeadCard key={view.lead.id} view={view} onSelect={onSelect} onMove={onMove} />
       ))}
       {column.items.length === 0 && (
-        <p className="rounded-md border border-dashed border-line-strong px-3 py-6 text-center text-[13px] text-ink-muted">Arraste um lead para cá</p>
+        <p className="rounded-md border border-dashed border-line-strong px-3 py-6 text-center text-[13px] text-ink-muted">
+          Arraste um lead para cá
+        </p>
       )}
       {column.items.length > visible && (
         <Button variant="ghost" size="sm" onClick={() => setVisible((count) => count + PAGE_SIZE)}>
