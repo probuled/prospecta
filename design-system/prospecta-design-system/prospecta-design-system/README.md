@@ -5,7 +5,7 @@ Prospecta encontra negócios locais no Google Maps e mostra primeiro quem não t
 1. **Neutro primeiro, ouro como sinal.** A interface é papel e tinta. Ouro (`ouro`) aparece em poucos lugares: o botão primário, o ícone do item ativo, a estrela da nota. Se uma tela tem mais de três manchas de ouro, algo está errado.
 2. **Bordas, não sombras.** Hierarquia vem de `line`, `surface` e espaço. Sombra (`shadow-overlay`) só no que flutua: menus e card sendo arrastado.
 3. **Cantos firmes.** `radius-md` (6px) em controles, `radius-lg` (10px) em painéis. Nada de cantos de 16–24px.
-4. **O dado é o herói.** Números em mono (`data`), alinhados, formatados em pt-BR. Cor só onde ela muda uma decisão (temperatura, status).
+4. **O dado é o herói.** Números em mono (`data`), alinhados, formatados em pt-BR. Cor só onde ela muda uma decisão (oportunidade, status).
 5. **Uma ação primária por tela.**
 
 ## O que evitar (o "cara de vibe-code")
@@ -13,7 +13,7 @@ Prospecta encontra negócios locais no Google Maps e mostra primeiro quem não t
 Isto é o que a versão atual tem e não deve voltar:
 
 - Ícone genérico de alvo num quadrado amarelo no lugar da marca → use o componente `Logo` com a logo oficial.
-- Pílulas coloridas com bolinha para tudo (temperatura, presença, status, contagem) → só `Score` tem cor; `Presence` é neutro; `Status` é um quadradinho de 8px + palavra.
+- Pílulas coloridas com bolinha para tudo (oportunidade, presença, status, contagem) → só `Score` tem cor; `Presence` é neutro; `Status` é um quadradinho de 8px + palavra.
 - Botão primário em amarelo pastel que parece desabilitado → `ouro` cheio com texto `on-ouro`.
 - Ícone dentro de círculo tingido (o WhatsApp verde-claro) → ícone na cor `whatsapp` dentro de um `Button` neutro.
 - Preto puro no tema escuro → grafite quente (`bg` #1F1E1B, `surface` #282723).
@@ -27,7 +27,7 @@ Isto é o que a versão atual tem e não deve voltar:
 - Português do Brasil, tratando por **você**. Frases curtas. Sem ponto de exclamação, sem emoji.
 - Sentence case em tudo: "Opções avançadas", "Buscar leads" (nunca "Buscar Leads").
 - Botões com verbo no infinitivo: "Buscar leads", "Exportar", "Salvar mensagem", "Restaurar padrão".
-- O verbo do produto é **buscar** / **prospectar**. Termos fixos: *lead*, *nicho*, *oportunidade*, *quente / morno / frio*, *sem site*, *só rede social*.
+- O verbo do produto é **buscar** / **prospectar**. Termos fixos: *lead*, *nicho*, *oportunidade* (*alta / média / baixa*), *sem site*, *só rede social*.
 - Números pt-BR: nota `4,9`, milhar `1.203`, dinheiro `R$ 4.800`, telefone `(81) 99302-6226`, duração `2m 47s`. Use `Intl.NumberFormat('pt-BR')`.
 - Estados vazios dizem o próximo passo: "Arraste um lead para cá", "Nenhum lead ainda. Faça uma busca."
 
@@ -39,7 +39,7 @@ Dois temas: **Claro** (papel quente) e **Escuro** (grafite quente). Use sempre o
 - Texto: `ink` para conteúdo, `ink-muted` para metadado e placeholder. `ink-faint` só para ícone inativo e desabilitado.
 - Bordas: `line` para painéis e divisórias; `line-strong` para borda de controle de formulário (3:1).
 - Marca: `ouro` preenche, `on-ouro` escreve por cima, `ouro-text` quando ouro precisa ser texto, `ouro-soft` como tinta de fundo rara.
-- Temperatura: `quente` ≥ 80, `morno` 50–79, `frio` < 50, cada um com `-soft` para o badge de card. Sempre com a palavra junto.
+- Oportunidade: alta (`quente`) ≥ 80, média (`morno`) 50–79, baixa (`frio`) < 50, cada um com `-soft` para o badge de card. Sempre com a palavra junto. Os tokens mantêm o nome antigo; na interface a palavra é Alta / Média / Baixa, porque a nota mede o potencial do negócio, não o interesse dele.
 - Status do funil: Novo (vazado, `ink-muted`), Contatado `info`, Respondeu `ouro`, Negociando `ameixa`, Fechado `sucesso`, Perdido `ink-faint`.
 - `whatsapp` é só o ícone do WhatsApp. `perigo` (alias de `quente`) para erro e destrutivo.
 - Todo par de texto declarado nas notas dos tokens passa 4,5:1 nos dois temas; bordas de controle e o foco passam 3:1.

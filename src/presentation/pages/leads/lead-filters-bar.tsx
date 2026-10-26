@@ -15,10 +15,10 @@ const PRESENCE_OPTIONS: SelectOption<LeadFilters['presence']>[] = [
 ]
 
 const LEVEL_OPTIONS: SelectOption<LeadFilters['level']>[] = [
-  { value: ALL, label: 'Qualquer temperatura' },
-  { value: 'quente', label: 'Quentes' },
-  { value: 'morno', label: 'Mornos' },
-  { value: 'frio', label: 'Frios' },
+  { value: ALL, label: 'Qualquer oportunidade' },
+  { value: 'quente', label: 'Alta' },
+  { value: 'morno', label: 'Média' },
+  { value: 'frio', label: 'Baixa' },
 ]
 
 const STATUS_OPTIONS: SelectOption<LeadFilters['status']>[] = [
@@ -68,20 +68,8 @@ export function LeadFiltersBar({
         onChange={(e) => onChange('query', e.target.value)}
         className="w-full sm:w-64"
       />
-      <Select
-        value={filters.presence}
-        options={PRESENCE_OPTIONS}
-        active={isActive('presence')}
-        onChange={(v) => onChange('presence', v)}
-        aria-label="Presença"
-      />
-      <Select
-        value={filters.level}
-        options={LEVEL_OPTIONS}
-        active={isActive('level')}
-        onChange={(v) => onChange('level', v)}
-        aria-label="Temperatura"
-      />
+      <Select value={filters.presence} options={PRESENCE_OPTIONS} active={isActive('presence')} onChange={(v) => onChange('presence', v)} aria-label="Presença" />
+      <Select value={filters.level} options={LEVEL_OPTIONS} active={isActive('level')} onChange={(v) => onChange('level', v)} aria-label="Oportunidade" />
       {!hideStatus && (
         <Select
           value={filters.status}
