@@ -41,7 +41,15 @@ export function SearchForm({ disabled, onSubmit }: SearchFormProps) {
 
   return (
     <div className="space-y-4">
-      <SearchBar niche={niche} city={city} onNicheChange={setNiche} onCityChange={setCity} onSubmit={submit} busy={busy} disabled={!canSubmit} />
+      <SearchBar
+        niche={niche}
+        city={city}
+        onNicheChange={setNiche}
+        onCityChange={setCity}
+        onSubmit={submit}
+        busy={busy}
+        disabled={!canSubmit}
+      />
       <TagList label="Sugestões" items={NICHE_SUGGESTIONS} selected={niche} onSelect={setNiche} className="justify-center" />
       <Disclosure
         title="Opções avançadas"
@@ -53,10 +61,21 @@ export function SearchForm({ disabled, onSubmit }: SearchFormProps) {
           <span aria-hidden className="font-medium">
             Quantidade de negócios
           </span>
-          <SegmentedControl label="Quantidade de negócios" options={COUNT_OPTIONS} value={resultCount} onChange={setResultCount} className="font-mono" />
+          <SegmentedControl
+            label="Quantidade de negócios"
+            options={COUNT_OPTIONS}
+            value={resultCount}
+            onChange={setResultCount}
+            className="font-mono"
+          />
           <p className="text-caption text-ink-muted">Mais negócios, busca mais demorada.</p>
         </div>
-        <Switch title="Coletar e-mails" description="Inclui o e-mail do negócio quando encontrado." checked={withEmails} onChange={setWithEmails} />
+        <Switch
+          title="Coletar e-mails"
+          description="Inclui o e-mail do negócio quando encontrado."
+          checked={withEmails}
+          onChange={setWithEmails}
+        />
       </Disclosure>
     </div>
   )
