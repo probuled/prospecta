@@ -21,6 +21,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - O seletor Lista/Pipeline vai para a linha dos filtros, com o título "Modo de visualização" e a opção ativa em
   destaque.
 - A oportunidade do lead passa de Quente / Morno / Frio para Alta / Média / Baixa.
+- Nova tela de busca: centralizada, com quantidade de negócios (10 a 100) no lugar da profundidade, buscas
+  recentes e resumo dos leads.
 
 ### Removido
 
