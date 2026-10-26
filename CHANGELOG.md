@@ -20,6 +20,12 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - Prévia da mensagem no balão verde do WhatsApp, logo do WhatsApp no botão de contato e logo da sidebar maior.
 - O seletor Lista/Pipeline vai para a linha dos filtros, com o título "Modo de visualização" e a opção ativa em
   destaque.
+- A oportunidade do lead passa de Quente / Morno / Frio para Alta / Média / Baixa.
+
+### Removido
+
+- Filtros de busca e de telefone na tela de Leads. Quem abre uma busca pelo Histórico vê uma etiqueta para
+  remover o filtro.
 
 ### Corrigido
 
