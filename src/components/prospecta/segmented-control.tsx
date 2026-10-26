@@ -61,12 +61,7 @@ export function SegmentedControl<T extends string>({
     <div
       role="group"
       aria-label={label}
-      className={cn(
-        'gap-0.5 rounded-md p-0.5',
-        VARIANT_CLASSES[variant].group,
-        block ? 'flex' : 'inline-flex',
-        !showLabel && className,
-      )}
+      className={cn('gap-0.5 rounded-md p-0.5', VARIANT_CLASSES[variant].group, block ? 'flex' : 'inline-flex', !showLabel && className)}
     >
       {options.map(({ value: option, label: optionLabel, icon: Icon }) => (
         <button
