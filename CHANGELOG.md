@@ -18,6 +18,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 ### Alterado
 
 - Prévia da mensagem no balão verde do WhatsApp, logo do WhatsApp no botão de contato e logo da sidebar maior.
+- O seletor Lista/Pipeline vai para a linha dos filtros, com o título "Modo de visualização" e a opção ativa em
+  destaque.
 
 ### Corrigido
 
