@@ -22,7 +22,13 @@ describe('parsePhone', () => {
 describe('buildWhatsAppUrl', () => {
   it('codifica a mensagem na URL', () => {
     expect(buildWhatsAppUrl({ digits: '5519998765432', isMobile: true }, 'Olá, tudo bem?')).toBe(
-      'https://wa.me/5519998765432?text=Ol%C3%A1%2C%20tudo%20bem%3F',
+      'https://api.whatsapp.com/send?phone=5519998765432&text=Ol%C3%A1%2C%20tudo%20bem%3F',
+    )
+  })
+
+  it('mantém emojis inteiros na mensagem', () => {
+    expect(buildWhatsAppUrl({ digits: '5519998765432', isMobile: true }, 'Olha 👉 •')).toBe(
+      'https://api.whatsapp.com/send?phone=5519998765432&text=Olha%20%F0%9F%91%89%20%E2%80%A2',
     )
   })
 })
