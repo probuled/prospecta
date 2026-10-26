@@ -14,8 +14,8 @@ interface SidebarProps {
 export function Sidebar({ engineStatus, counts }: SidebarProps) {
   return (
     <aside className="sticky top-0 hidden h-svh w-[var(--sidebar-width)] shrink-0 flex-col border-r border-line bg-bg px-3 pt-5 pb-3 lg:flex">
-      <div className="px-2 pb-6">
-        <Logo height={34} />
+      <div className="flex justify-center px-2 pb-6">
+        <Logo height={48} />
       </div>
 
       <nav aria-label="Principal" className="flex flex-col gap-0.5">
