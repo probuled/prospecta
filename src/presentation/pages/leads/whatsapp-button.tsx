@@ -10,20 +10,22 @@ import type { LeadView } from './lead-view'
 interface WhatsAppButtonProps {
   readonly view: LeadView
   readonly onOpen?: () => void
+  /** Mensagem já pronta; sem ela, usa o modelo em uso. */
+  readonly message?: string
   /** Sem rótulo vira botão só de ícone. */
   readonly label?: string
   readonly size?: ButtonSize
 }
 
 /** Logo do WhatsApp dentro de um botão neutro. Telefone fixo fica com a logo apagada (cinza). */
-export function WhatsAppButton({ view, onOpen, label, size = 'sm' }: WhatsAppButtonProps) {
+export function WhatsAppButton({ view, onOpen, message, label, size = 'sm' }: WhatsAppButtonProps) {
   const messageTemplate = activeTemplate(useSettings()).body
   if (!view.phone) return null
 
   const { isMobile } = view.phone
   return (
     <ExternalButtonLink
-      href={buildWhatsAppUrl(view.phone, renderMessage(messageTemplate, view.lead))}
+      href={buildWhatsAppUrl(view.phone, message ?? renderMessage(messageTemplate, view.lead))}
       onClick={(event) => {
         event.stopPropagation()
         onOpen?.()

@@ -9,7 +9,7 @@ import { SegmentedControl, type SegmentOption } from '@/components/prospecta/seg
 import type { LeadPatch, LeadStatus } from '@/domain/lead'
 import { formatCount } from '@/presentation/format'
 import { useLeads, useSearches } from '@/presentation/hooks/use-store'
-import { LeadDetailSheet } from './lead-detail-sheet'
+import { LeadDetailDialog } from './lead-detail-dialog'
 import { LeadFiltersBar } from './lead-filters-bar'
 import { LeadStats } from './lead-stats'
 import type { LeadView } from './lead-view'
@@ -116,7 +116,7 @@ export function LeadsPage() {
           />
         )}
       </div>
-      <LeadDetailSheet view={selected} onClose={() => setSelectedId(null)} onUpdate={updateLead} />
+      <LeadDetailDialog view={selected} onClose={() => setSelectedId(null)} onUpdate={updateLead} />
     </>
   )
 }
