@@ -55,7 +55,10 @@ export function SettingsPage() {
 
   return (
     <>
-      <PageHeader title="Mensagem" description="O texto que já vai escrito quando você abre o WhatsApp de um lead. Mensagens curtas e pessoais têm mais respostas." />
+      <PageHeader
+        title="Mensagem"
+        description="O texto que já vai escrito quando você abre o WhatsApp de um lead. Mensagens curtas e pessoais têm mais respostas."
+      />
       <div className="grid items-start gap-6 lg:grid-cols-2">
         <div className="space-y-4">
           <div className="overflow-hidden rounded-lg border border-line-strong bg-surface focus-within:shadow-[var(--focus-ring)]">
@@ -83,7 +86,7 @@ export function SettingsPage() {
                   {placeholder}
                 </button>
               ))}
-              <span className="ml-auto text-data text-ink-muted">{formatCount(template.length)} caracteres</span>
+              <span className="text-data ml-auto text-ink-muted">{formatCount(template.length)} caracteres</span>
             </div>
           </div>
           <div className="flex gap-2">
@@ -96,7 +99,7 @@ export function SettingsPage() {
           </div>
         </div>
         <Panel title="Prévia" bodyClassName="bg-surface-sunken rounded-b-lg">
-          <p className="mb-3 text-caption text-ink-muted">Como chega para {SAMPLE_LEAD.name}</p>
+          <p className="text-caption mb-3 text-ink-muted">Como chega para {SAMPLE_LEAD.name}</p>
           <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-sm border border-line bg-surface px-3.5 py-2.5 leading-relaxed whitespace-pre-wrap">
             {renderMessage(template, SAMPLE_LEAD)}
           </div>

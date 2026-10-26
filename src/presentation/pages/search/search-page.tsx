@@ -24,7 +24,10 @@ export function SearchPage() {
 
   return (
     <>
-      <PageHeader title="Buscar leads" description="Negócios locais do Google Maps, ordenados por oportunidade: quem não tem site e é bem avaliado aparece primeiro." />
+      <PageHeader
+        title="Buscar leads"
+        description="Negócios locais do Google Maps, ordenados por oportunidade: quem não tem site e é bem avaliado aparece primeiro."
+      />
       {engineStatus === 'offline' && <EngineOfflineAlert />}
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
         <SearchForm disabled={engineStatus === 'offline'} onSubmit={handleSubmit} />

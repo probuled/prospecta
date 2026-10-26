@@ -95,7 +95,13 @@ export function LeadsPage() {
         ) : isPipeline ? (
           <PipelineBoard key={JSON.stringify(filters)} views={filtered} onSelect={selectLead} onMove={moveLead} />
         ) : (
-          <LeadsTable key={JSON.stringify(filters)} views={filtered} selectedId={selectedId} onSelect={selectLead} onStatusChange={moveLead} />
+          <LeadsTable
+            key={JSON.stringify(filters)}
+            views={filtered}
+            selectedId={selectedId}
+            onSelect={selectLead}
+            onStatusChange={moveLead}
+          />
         )}
       </div>
       <LeadDetailSheet view={selected} onClose={() => setSelectedId(null)} onUpdate={updateLead} />

@@ -26,14 +26,22 @@ function NoRating() {
 }
 
 /** No celular a tabela não cabe: cada lead vira uma linha com o essencial. */
-function MobileLeadList({ views, onSelect, onContact }: { views: readonly LeadView[]; onSelect: (view: LeadView) => void; onContact: (view: LeadView) => void }) {
+function MobileLeadList({
+  views,
+  onSelect,
+  onContact,
+}: {
+  views: readonly LeadView[]
+  onSelect: (view: LeadView) => void
+  onContact: (view: LeadView) => void
+}) {
   return (
     <ul className="divide-y divide-line overflow-hidden rounded-lg border border-line bg-surface sm:hidden">
       {views.map((view) => (
         <li key={view.lead.id} onClick={() => onSelect(view)} className="flex items-center gap-3 px-4 py-3 active:bg-surface-hover">
           <div className="min-w-0 flex-1 space-y-1">
             <p className="truncate font-medium">{view.lead.name}</p>
-            <p className="truncate text-caption text-ink-muted">{view.lead.category}</p>
+            <p className="text-caption truncate text-ink-muted">{view.lead.category}</p>
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <Score value={view.opportunity.score} reasons={view.opportunity.reasons} />
               <Presence kind={view.presence} />
@@ -76,7 +84,7 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
               >
                 <td className={cn(cellClass, 'max-w-72')}>
                   <b className="block truncate font-medium">{view.lead.name}</b>
-                  <small className="block truncate text-caption text-ink-muted">
+                  <small className="text-caption block truncate text-ink-muted">
                     {view.lead.category} · {view.lead.city}
                   </small>
                 </td>
@@ -92,7 +100,7 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
                 <td className={cellClass}>
                   <span className="inline-flex items-center gap-2 whitespace-nowrap">
                     <WhatsAppButton view={view} onOpen={() => markContacted(view)} />
-                    <span className="hidden text-data xl:inline">{view.lead.phone}</span>
+                    <span className="text-data hidden xl:inline">{view.lead.phone}</span>
                   </span>
                 </td>
                 <td className={cn(cellClass, 'text-right')} onClick={(e) => e.stopPropagation()}>

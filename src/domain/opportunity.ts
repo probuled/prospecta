@@ -41,10 +41,7 @@ export function temperatureOf(score: number): OpportunityLevel {
   return 'frio'
 }
 
-export function evaluateOpportunity(
-  lead: Lead,
-  rules: readonly OpportunityRule[] = DEFAULT_OPPORTUNITY_RULES,
-): Opportunity {
+export function evaluateOpportunity(lead: Lead, rules: readonly OpportunityRule[] = DEFAULT_OPPORTUNITY_RULES): Opportunity {
   const matched = rules.filter((rule) => rule.applies(lead))
   const score = Math.min(
     MAX_SCORE,

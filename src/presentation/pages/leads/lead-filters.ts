@@ -26,11 +26,14 @@ export const DEFAULT_FILTERS: LeadFilters = {
 
 type Predicate = (view: LeadView, filters: LeadFilters) => boolean
 
-const normalize = (text: string) => text.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()
+const normalize = (text: string) =>
+  text
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
 
 const PREDICATES: readonly Predicate[] = [
-  ({ lead }, { query }) =>
-    !query.trim() || normalize(`${lead.name} ${lead.category} ${lead.address}`).includes(normalize(query.trim())),
+  ({ lead }, { query }) => !query.trim() || normalize(`${lead.name} ${lead.category} ${lead.address}`).includes(normalize(query.trim())),
   ({ presence }, filters) =>
     filters.presence === ALL || (filters.presence === 'no-own' ? presence !== 'own' : presence === filters.presence),
   ({ opportunity }, { level }) => level === ALL || opportunity.level === level,

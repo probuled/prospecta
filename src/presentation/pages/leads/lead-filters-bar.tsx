@@ -43,7 +43,15 @@ interface LeadFiltersBarProps {
   readonly onReset: () => void
 }
 
-export function LeadFiltersBar({ filters, searches, hideStatus = false, activeCount, resultLabel, onChange, onReset }: LeadFiltersBarProps) {
+export function LeadFiltersBar({
+  filters,
+  searches,
+  hideStatus = false,
+  activeCount,
+  resultLabel,
+  onChange,
+  onReset,
+}: LeadFiltersBarProps) {
   const searchOptions: SelectOption<string>[] = [
     { value: ALL, label: 'Todas as buscas' },
     ...searches.map((search) => ({ value: search.id, label: search.keyword })),
@@ -60,10 +68,28 @@ export function LeadFiltersBar({ filters, searches, hideStatus = false, activeCo
         onChange={(e) => onChange('query', e.target.value)}
         className="w-full sm:w-64"
       />
-      <Select value={filters.presence} options={PRESENCE_OPTIONS} active={isActive('presence')} onChange={(v) => onChange('presence', v)} aria-label="Presença" />
-      <Select value={filters.level} options={LEVEL_OPTIONS} active={isActive('level')} onChange={(v) => onChange('level', v)} aria-label="Temperatura" />
+      <Select
+        value={filters.presence}
+        options={PRESENCE_OPTIONS}
+        active={isActive('presence')}
+        onChange={(v) => onChange('presence', v)}
+        aria-label="Presença"
+      />
+      <Select
+        value={filters.level}
+        options={LEVEL_OPTIONS}
+        active={isActive('level')}
+        onChange={(v) => onChange('level', v)}
+        aria-label="Temperatura"
+      />
       {!hideStatus && (
-        <Select value={filters.status} options={STATUS_OPTIONS} active={isActive('status')} onChange={(v) => onChange('status', v)} aria-label="Status" />
+        <Select
+          value={filters.status}
+          options={STATUS_OPTIONS}
+          active={isActive('status')}
+          onChange={(v) => onChange('status', v)}
+          aria-label="Status"
+        />
       )}
       <Select
         value={filters.searchId}
@@ -85,7 +111,7 @@ export function LeadFiltersBar({ filters, searches, hideStatus = false, activeCo
           Limpar filtros
         </Button>
       )}
-      <span className="ml-auto text-data text-ink-muted">{resultLabel}</span>
+      <span className="text-data ml-auto text-ink-muted">{resultLabel}</span>
     </div>
   )
 }

@@ -104,7 +104,12 @@ function LeadDetailBody({ view, message, onUpdate }: { view: LeadView; message: 
       <Section title="Abordagem">
         <p className="rounded-md border border-line bg-surface-sunken p-3 leading-relaxed whitespace-pre-wrap">{message}</p>
         <div className="flex flex-wrap gap-2">
-          <WhatsAppButton view={view} size="md" label="Enviar no WhatsApp" onOpen={() => lead.status === 'novo' && update({ status: 'contatado' })} />
+          <WhatsAppButton
+            view={view}
+            size="md"
+            label="Enviar no WhatsApp"
+            onOpen={() => lead.status === 'novo' && update({ status: 'contatado' })}
+          />
           <CopyButton text={message} />
         </div>
       </Section>

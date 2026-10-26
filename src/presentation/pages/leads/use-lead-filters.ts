@@ -16,10 +16,7 @@ export function useLeadFilters(leads: readonly Lead[], { ignoreStatus = false }:
   const [params, setParams] = useSearchParams()
   const [localFilters, setLocalFilters] = useState<Omit<LeadFilters, 'searchId'>>(DEFAULT_FILTERS)
 
-  const filters: LeadFilters = useMemo(
-    () => ({ ...localFilters, searchId: params.get(SEARCH_PARAM) ?? ALL }),
-    [localFilters, params],
-  )
+  const filters: LeadFilters = useMemo(() => ({ ...localFilters, searchId: params.get(SEARCH_PARAM) ?? ALL }), [localFilters, params])
 
   const setFilter = useCallback(
     <K extends keyof LeadFilters>(key: K, value: LeadFilters[K]) => {

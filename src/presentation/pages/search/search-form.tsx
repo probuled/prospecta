@@ -38,7 +38,15 @@ export function SearchForm({ disabled, onSubmit }: SearchFormProps) {
 
   return (
     <div className="space-y-4">
-      <SearchBar niche={niche} city={city} onNicheChange={setNiche} onCityChange={setCity} onSubmit={submit} busy={busy} disabled={!canSubmit} />
+      <SearchBar
+        niche={niche}
+        city={city}
+        onNicheChange={setNiche}
+        onCityChange={setCity}
+        onSubmit={submit}
+        busy={busy}
+        disabled={!canSubmit}
+      />
       <TagList label="Sugestões" items={NICHE_SUGGESTIONS} selected={niche} onSelect={setNiche} />
       <Disclosure title="Opções avançadas" icon={SlidersHorizontal} summary={`${estimate} · ${withEmails ? 'com e-mails' : 'sem e-mails'}`}>
         <Slider
