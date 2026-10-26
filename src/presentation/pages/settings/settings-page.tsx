@@ -139,7 +139,7 @@ export function SettingsPage() {
                     className="min-w-0 flex-1 cursor-pointer py-2.5 text-left"
                   >
                     <span className="block truncate font-medium">{template.name}</span>
-                    <span className="block truncate text-caption text-ink-muted">{template.body || 'Sem texto'}</span>
+                    <span className="text-caption block truncate text-ink-muted">{template.body || 'Sem texto'}</span>
                   </button>
                   {template.id === active.id ? (
                     <span className="inline-flex items-center gap-1 text-[13px] font-medium whitespace-nowrap text-sucesso">
@@ -188,7 +188,7 @@ export function SettingsPage() {
                   {placeholder}
                 </button>
               ))}
-              <span className="ml-auto text-data text-ink-muted">{formatCount(draft.body.length)} caracteres</span>
+              <span className="text-data ml-auto text-ink-muted">{formatCount(draft.body.length)} caracteres</span>
             </div>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -215,7 +215,7 @@ export function SettingsPage() {
           </div>
         </div>
         <Panel title="Prévia" bodyClassName="bg-surface-sunken rounded-b-lg">
-          <p className="mb-3 text-caption text-ink-muted">Como chega para {SAMPLE_LEAD.name}</p>
+          <p className="text-caption mb-3 text-ink-muted">Como chega para {SAMPLE_LEAD.name}</p>
           {/* Balão de mensagem enviada nas cores do WhatsApp, para a prévia parecer o que o lead vai ver. */}
           <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-sm bg-whatsapp-bubble px-3.5 py-2.5 leading-relaxed whitespace-pre-wrap text-on-whatsapp-bubble">
             {renderMessage(draft.body, SAMPLE_LEAD) || <span className="opacity-60">Sem texto</span>}

@@ -23,7 +23,11 @@ export const DEFAULT_SETTINGS: Settings = {
 
 /** O modelo ativo; se o id ficou órfão, cai no primeiro da lista. */
 export function activeTemplate(settings: Settings): MessageTemplate {
-  return settings.messageTemplates.find((template) => template.id === settings.activeTemplateId) ?? settings.messageTemplates[0] ?? DEFAULT_TEMPLATE
+  return (
+    settings.messageTemplates.find((template) => template.id === settings.activeTemplateId) ??
+    settings.messageTemplates[0] ??
+    DEFAULT_TEMPLATE
+  )
 }
 
 export function canAddTemplate(settings: Settings): boolean {
