@@ -37,9 +37,16 @@ interface LeadFiltersBarProps {
   readonly onReset: () => void
 }
 
-export function LeadFiltersBar({ filters, searches, hideStatus = false, activeCount, resultLabel, onChange, onReset }: LeadFiltersBarProps) {
-  const searchKeyword =
-    filters.searchId === ALL ? null : (searches.find((search) => search.id === filters.searchId)?.keyword ?? 'removida')
+export function LeadFiltersBar({
+  filters,
+  searches,
+  hideStatus = false,
+  activeCount,
+  resultLabel,
+  onChange,
+  onReset,
+}: LeadFiltersBarProps) {
+  const searchKeyword = filters.searchId === ALL ? null : (searches.find((search) => search.id === filters.searchId)?.keyword ?? 'removida')
   const isActive = (key: keyof LeadFilters) => filters[key] !== DEFAULT_FILTERS[key]
 
   return (
@@ -52,8 +59,20 @@ export function LeadFiltersBar({ filters, searches, hideStatus = false, activeCo
         onChange={(e) => onChange('query', e.target.value)}
         className="w-full sm:w-64"
       />
-      <Select value={filters.presence} options={PRESENCE_OPTIONS} active={isActive('presence')} onChange={(v) => onChange('presence', v)} aria-label="Presença" />
-      <Select value={filters.level} options={LEVEL_OPTIONS} active={isActive('level')} onChange={(v) => onChange('level', v)} aria-label="Oportunidade" />
+      <Select
+        value={filters.presence}
+        options={PRESENCE_OPTIONS}
+        active={isActive('presence')}
+        onChange={(v) => onChange('presence', v)}
+        aria-label="Presença"
+      />
+      <Select
+        value={filters.level}
+        options={LEVEL_OPTIONS}
+        active={isActive('level')}
+        onChange={(v) => onChange('level', v)}
+        aria-label="Oportunidade"
+      />
       {!hideStatus && (
         <Select
           value={filters.status}
