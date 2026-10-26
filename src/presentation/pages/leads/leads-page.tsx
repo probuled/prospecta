@@ -66,25 +66,37 @@ export function LeadsPage() {
         title="Leads"
         description={isPipeline ? 'Arraste os cards entre as etapas do funil.' : 'Quem não tem site e é bem avaliado aparece primeiro.'}
         actions={
-          <>
-            <SegmentedControl label="Visualização" options={VIEW_OPTIONS} value={viewMode} onChange={setViewMode} />
-            <Button icon={Download} onClick={exportFiltered} disabled={filtered.length === 0}>
-              Exportar
-            </Button>
-          </>
+          <Button icon={Download} onClick={exportFiltered} disabled={filtered.length === 0}>
+            Exportar
+          </Button>
         }
       />
       <LeadStats views={views} />
       <div className="space-y-4">
-        <LeadFiltersBar
-          filters={filters}
-          searches={searches}
-          hideStatus={isPipeline}
-          activeCount={activeCount}
-          resultLabel={`${formatCount(filtered.length)} de ${formatCount(views.length)}`}
-          onChange={setFilter}
-          onReset={resetFilters}
-        />
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end">
+          <SegmentedControl
+            label="Modo de visualização"
+            showLabel
+            variant="outline"
+            size="md"
+            options={VIEW_OPTIONS}
+            value={viewMode}
+            onChange={setViewMode}
+            className="self-start"
+          />
+          <div aria-hidden className="hidden h-6 w-px shrink-0 self-end bg-line lg:mb-1.5 lg:block" />
+          <div className="min-w-0 flex-1">
+            <LeadFiltersBar
+              filters={filters}
+              searches={searches}
+              hideStatus={isPipeline}
+              activeCount={activeCount}
+              resultLabel={`${formatCount(filtered.length)} de ${formatCount(views.length)}`}
+              onChange={setFilter}
+              onReset={resetFilters}
+            />
+          </div>
+        </div>
         {filtered.length === 0 ? (
           <EmptyState
             icon={SearchIcon}
