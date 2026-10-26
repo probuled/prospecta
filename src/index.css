@@ -54,6 +54,8 @@
   --sucesso: #2d6a3e;
   --sucesso-soft: #e3f0e5;
   --whatsapp: #1e7a4c;
+  --whatsapp-bubble: #d9fdd3;
+  --on-whatsapp-bubble: #111b21;
   --perigo: var(--quente);
   --focus: #8a5507;
   --shadow-overlay: 0 1px 2px #1c1b180f, 0 8px 24px -4px #1c1b1824;
@@ -86,6 +88,8 @@
   --sucesso: #84c795;
   --sucesso-soft: #1f3325;
   --whatsapp: #5cc48c;
+  --whatsapp-bubble: #005c4b;
+  --on-whatsapp-bubble: #e9edef;
   --perigo: var(--quente);
   --focus: #e8b45c;
   --shadow-overlay: 0 1px 2px #00000066, 0 12px 28px -4px #000000a6;
@@ -156,6 +160,8 @@
   --color-sucesso: var(--sucesso);
   --color-sucesso-soft: var(--sucesso-soft);
   --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-bubble: var(--whatsapp-bubble);
+  --color-on-whatsapp-bubble: var(--on-whatsapp-bubble);
   --color-perigo: var(--perigo);
   --color-focus: var(--focus);
 

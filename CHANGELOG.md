@@ -12,3 +12,9 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - Padrão de projeto em `CLAUDE.md`: Git Flow, Conventional Commits, travas com husky, commitlint,
   lint-staged e validate-branch-name, Prettier, CI no GitHub Actions e template de PR.
 - Versão do app exposta em `__APP_VERSION__`.
+- Até 10 modelos de mensagem na tela Mensagens, com o modelo em uso aplicado no botão de WhatsApp e no detalhe
+  do lead. A configuração antiga, com um único modelo, é migrada automaticamente.
+
+### Alterado
+
+- Prévia da mensagem no balão verde do WhatsApp, logo do WhatsApp no botão de contato e logo da sidebar maior.
