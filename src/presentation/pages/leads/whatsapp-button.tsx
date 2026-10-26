@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react'
+import whatsappLogo from '@/assets/brand/whatsapp.webp'
 import { ExternalButtonLink, type ButtonSize } from '@/components/prospecta/button'
 import { renderMessage } from '@/domain/message-template'
 import { buildWhatsAppUrl } from '@/domain/phone'
@@ -15,7 +15,7 @@ interface WhatsAppButtonProps {
   readonly size?: ButtonSize
 }
 
-/** Ícone na cor do WhatsApp dentro de um botão neutro. Telefone fixo fica com o ícone apagado. */
+/** Logo do WhatsApp dentro de um botão neutro. Telefone fixo fica com a logo apagada (cinza). */
 export function WhatsAppButton({ view, onOpen, label, size = 'sm' }: WhatsAppButtonProps) {
   const messageTemplate = activeTemplate(useSettings()).body
   if (!view.phone) return null
@@ -32,9 +32,8 @@ export function WhatsAppButton({ view, onOpen, label, size = 'sm' }: WhatsAppBut
       iconOnly={!label}
       aria-label={`Abrir WhatsApp de ${view.lead.name}`}
       title={isMobile ? 'Abrir WhatsApp' : 'Telefone fixo: pode não ter WhatsApp'}
-      className={cn(isMobile ? '[&_svg]:text-whatsapp' : '[&_svg]:text-ink-faint')}
     >
-      <MessageCircle />
+      <img src={whatsappLogo} alt="" className={cn('size-4 shrink-0', !isMobile && 'opacity-50 grayscale')} />
       {label}
     </ExternalButtonLink>
   )
