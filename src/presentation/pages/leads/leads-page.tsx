@@ -67,7 +67,15 @@ export function LeadsPage() {
         description={isPipeline ? 'Arraste os cards entre as etapas do funil.' : 'Quem não tem site e é bem avaliado aparece primeiro.'}
         actions={
           <>
-            <SegmentedControl label="Visualização" options={VIEW_OPTIONS} value={viewMode} onChange={setViewMode} />
+            <SegmentedControl
+              label="Visualizar como"
+              showLabel
+              size="md"
+              options={VIEW_OPTIONS}
+              value={viewMode}
+              onChange={setViewMode}
+              className="me-2"
+            />
             <Button icon={Download} onClick={exportFiltered} disabled={filtered.length === 0}>
               Exportar
             </Button>
