@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-dark-32.png" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prospecta</title>
+    <script>
+      // Aplica o tema antes do React carregar, para não piscar a tela clara.
+      try {
+        const legacy = localStorage.getItem('garimpo:theme')
+        if (legacy !== null) {
+          if (localStorage.getItem('prospecta:theme') === null) localStorage.setItem('prospecta:theme', legacy)
+          localStorage.removeItem('garimpo:theme')
+        }
+        const t = localStorage.getItem('prospecta:theme')
+        const dark = t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

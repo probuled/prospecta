@@ -1,0 +1,86 @@
+/* Prospecta — gerado a partir de tokens.json. Fontes relativas a este arquivo (pasta fonts/). */
+:root,[data-theme=light]{
+--bg:#F6F5F1;
+--surface:#FFFFFF;
+--surface-sunken:#EEECE6;
+--surface-hover:#F3F1EC;
+--line:#E4E1D9;
+--line-strong:#8F8A80;
+--ink:#1C1B18;
+--ink-muted:#5F5B53;
+--ink-faint:#8A857B;
+--ouro:#D99A2B;
+--on-ouro:#1C1B18;
+--ouro-text:#8A5507;
+--ouro-soft:#F6EAD2;
+--quente:#B3361B;
+--quente-soft:#FBEAE4;
+--morno:#835700;
+--morno-soft:#F7EDD5;
+--frio:#4A5F75;
+--frio-soft:#E7ECF1;
+--info:#2C5C93;
+--ameixa:#7B3F6E;
+--sucesso:#2D6A3E;
+--sucesso-soft:#E3F0E5;
+--whatsapp:#1E7A4C;
+--perigo:var(--quente);
+--focus:#8A5507;
+--shadow-overlay:0 1px 2px #1c1b180f, 0 8px 24px -4px #1c1b1824;
+--focus-ring:0 0 0 2px #F6F5F1, 0 0 0 4px #8A5507;
+}
+[data-theme=dark]{
+--bg:#1F1E1B;
+--surface:#282723;
+--surface-sunken:#1A1917;
+--surface-hover:#302F2A;
+--line:#3A3833;
+--line-strong:#7A766D;
+--ink:#EDEBE5;
+--ink-muted:#A8A398;
+--ink-faint:#7A766D;
+--ouro:#E0A43F;
+--on-ouro:#1F1E1B;
+--ouro-text:#E8B45C;
+--ouro-soft:#3A2F1C;
+--quente:#F2876A;
+--quente-soft:#43261E;
+--morno:#E2B255;
+--morno-soft:#3B311C;
+--frio:#A3B6CA;
+--frio-soft:#26303A;
+--info:#8FB5E6;
+--ameixa:#D7A0C9;
+--sucesso:#84C795;
+--sucesso-soft:#1F3325;
+--whatsapp:#5CC48C;
+--perigo:var(--quente);
+--focus:#E8B45C;
+--shadow-overlay:0 1px 2px #00000066, 0 12px 28px -4px #000000a6;
+--focus-ring:0 0 0 2px #1F1E1B, 0 0 0 4px #E8B45C;
+}
+:root{
+--space-1:4px;
+--space-2:8px;
+--space-3:12px;
+--space-4:16px;
+--space-5:20px;
+--space-6:24px;
+--space-8:32px;
+--space-12:48px;
+--radius-sm:4px;
+--radius-md:6px;
+--radius-lg:10px;
+--radius-full:9999px;
+--control-sm:28px;
+--control-md:36px;
+--control-lg:56px;
+--row-height:60px;
+--sidebar-width:232px;
+--content-max:1240px;
+--font-sans:"Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+--font-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@font-face{font-family:'Schibsted Grotesk';src:url(fonts/SchibstedGrotesk-Variable.woff2);font-weight:400 900}
+@font-face{font-family:'IBM Plex Mono';src:url(fonts/IBMPlexMono-Regular.woff2);font-weight:400}
+@font-face{font-family:'IBM Plex Mono';src:url(fonts/IBMPlexMono-Medium.woff2);font-weight:500}

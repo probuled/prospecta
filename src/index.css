@@ -1,0 +1,324 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/*
+ * Prospecta design system (design-system/…/tokens.css).
+ * Tema via data-theme="light|dark" no <html>; "Sistema" é resolvido pelo ThemeProvider.
+ * Use sempre o token, nunca o hex.
+ */
+@custom-variant dark (&:is([data-theme="dark"] *));
+
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("./assets/fonts/SchibstedGrotesk-Variable.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("./assets/fonts/IBMPlexMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("./assets/fonts/IBMPlexMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root,
+[data-theme="light"] {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-sunken: #eeece6;
+  --surface-hover: #f3f1ec;
+  --line: #e4e1d9;
+  --line-strong: #8f8a80;
+  --ink: #1c1b18;
+  --ink-muted: #5f5b53;
+  --ink-faint: #8a857b;
+  --ouro: #d99a2b;
+  --on-ouro: #1c1b18;
+  --ouro-text: #8a5507;
+  --ouro-soft: #f6ead2;
+  --quente: #b3361b;
+  --quente-soft: #fbeae4;
+  --morno: #835700;
+  --morno-soft: #f7edd5;
+  --frio: #4a5f75;
+  --frio-soft: #e7ecf1;
+  --info: #2c5c93;
+  --ameixa: #7b3f6e;
+  --sucesso: #2d6a3e;
+  --sucesso-soft: #e3f0e5;
+  --whatsapp: #1e7a4c;
+  --perigo: var(--quente);
+  --focus: #8a5507;
+  --shadow-overlay: 0 1px 2px #1c1b180f, 0 8px 24px -4px #1c1b1824;
+  --focus-ring: 0 0 0 2px #f6f5f1, 0 0 0 4px #8a5507;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #1f1e1b;
+  --surface: #282723;
+  --surface-sunken: #1a1917;
+  --surface-hover: #302f2a;
+  --line: #3a3833;
+  --line-strong: #7a766d;
+  --ink: #edebe5;
+  --ink-muted: #a8a398;
+  --ink-faint: #7a766d;
+  --ouro: #e0a43f;
+  --on-ouro: #1f1e1b;
+  --ouro-text: #e8b45c;
+  --ouro-soft: #3a2f1c;
+  --quente: #f2876a;
+  --quente-soft: #43261e;
+  --morno: #e2b255;
+  --morno-soft: #3b311c;
+  --frio: #a3b6ca;
+  --frio-soft: #26303a;
+  --info: #8fb5e6;
+  --ameixa: #d7a0c9;
+  --sucesso: #84c795;
+  --sucesso-soft: #1f3325;
+  --whatsapp: #5cc48c;
+  --perigo: var(--quente);
+  --focus: #e8b45c;
+  --shadow-overlay: 0 1px 2px #00000066, 0 12px 28px -4px #000000a6;
+  --focus-ring: 0 0 0 2px #1f1e1b, 0 0 0 4px #e8b45c;
+  color-scheme: dark;
+}
+
+:root {
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --control-sm: 28px;
+  --control-md: 36px;
+  --control-lg: 56px;
+  --row-height: 60px;
+  --sidebar-width: 232px;
+  --content-max: 1240px;
+
+  /* Aliases para os primitivos do shadcn (menus, sheet, diálogos) seguirem os tokens. */
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--ouro);
+  --primary-foreground: var(--on-ouro);
+  --secondary: var(--surface-sunken);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-sunken);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--surface-hover);
+  --accent-foreground: var(--ink);
+  --destructive: var(--perigo);
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--focus);
+}
+
+@theme inline {
+  /* Paleta padrão do Tailwind desligada: só existem as cores do design system. */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-hover: var(--surface-hover);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-ouro: var(--ouro);
+  --color-on-ouro: var(--on-ouro);
+  --color-ouro-text: var(--ouro-text);
+  --color-ouro-soft: var(--ouro-soft);
+  --color-quente: var(--quente);
+  --color-quente-soft: var(--quente-soft);
+  --color-morno: var(--morno);
+  --color-morno-soft: var(--morno-soft);
+  --color-frio: var(--frio);
+  --color-frio-soft: var(--frio-soft);
+  --color-info: var(--info);
+  --color-ameixa: var(--ameixa);
+  --color-sucesso: var(--sucesso);
+  --color-sucesso-soft: var(--sucesso-soft);
+  --color-whatsapp: var(--whatsapp);
+  --color-perigo: var(--perigo);
+  --color-focus: var(--focus);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  /* Cantos firmes: 4 / 6 / 10. Os tamanhos maiores do shadcn caem em 10px. */
+  --radius-xs: 4px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 10px;
+  --radius-2xl: 10px;
+  --radius-3xl: 10px;
+  --radius-4xl: 10px;
+
+  /* Bordas, não sombras: só o que flutua (menus, card arrastado) tem sombra. */
+  --shadow-*: initial;
+  --shadow-md: var(--shadow-overlay);
+  --shadow-lg: var(--shadow-overlay);
+  --shadow-float: var(--shadow-overlay);
+
+  --ease-out: ease-out;
+  --default-transition-duration: 120ms;
+  --default-transition-timing-function: ease-out;
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-bg text-ink;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  ::selection {
+    background: var(--ouro-soft);
+  }
+  /* Ícones Lucide com traço 1.5, como no design system. */
+  .lucide {
+    stroke-width: 1.5;
+  }
+  /* Foco de teclado: o mesmo anel em tudo que é interativo.
+     data-focus-inner: campo cujo contêiner já desenha o anel (busca, textarea da mensagem). */
+  :focus-visible:not([tabindex="-1"], [data-focus-inner]) {
+    outline: none !important;
+    box-shadow: var(--focus-ring) !important;
+  }
+}
+
+@layer components {
+  .text-display {
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .text-metric {
+    font-size: 26px;
+    line-height: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .text-title {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  .text-body {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .text-label {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+  .text-caption {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .text-overline {
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .text-data {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 20px;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Slider do design system: trilho 4px, preenchido em ink até --pct. */
+@layer components {
+  .pr-range {
+    appearance: none;
+    width: 100%;
+    height: 20px;
+    margin: 0;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .pr-range::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(var(--ink), var(--ink)) 0 / var(--pct) 100% no-repeat, var(--line);
+  }
+  .pr-range::-moz-range-track {
+    height: 4px;
+    border-radius: 2px;
+    background: var(--line);
+  }
+  .pr-range::-moz-range-progress {
+    height: 4px;
+    border-radius: 2px;
+    background: var(--ink);
+  }
+  .pr-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 1px 2px #0000001f;
+  }
+  .pr-range::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+  }
+}

@@ -1,0 +1,18 @@
+<!-- @dsCard group="Ações" height=80 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>preview</title></head>
+<body>
+<div id="root" class="pr-row"></div>
+<script>
+  var X = window.Prospecta, h = React.createElement, F = React.Fragment;
+  var LEADS = [
+ {name:'Seu Burguer',category:'Hamburgueria',city:'Recife',score:92,presence:'sem-site',rating:4.7,reviews:98,phone:'(81) 98411-7662',status:'novo'},
+ {name:'Maverick Garage – Burger & Beer',category:'Hamburgueria',city:'Recife',score:84,presence:'rede-social',rating:4.8,reviews:916,phone:'(81) 99986-8917',status:'contatado'},
+ {name:'Mafalda Hamburgueria Artesanal',category:'Hamburgueria',city:'Recife',score:71,presence:'rede-social',rating:4.6,reviews:670,phone:'(81) 99792-7757',status:'respondeu'},
+ {name:'Vila Torre Original Burger',category:'Hamburgueria',city:'Recife',score:38,presence:'site',rating:4.5,reviews:743,phone:'(81) 99348-0989',status:'novo'}
+];
+  ReactDOM.createRoot(document.getElementById('root')).render(h(F,null,h(X.SegmentedControl,{label:'Visualização',options:[{value:'lista',label:'Lista',icon:'list'},{value:'pipeline',label:'Pipeline',icon:'columns'}]}),h(X.SegmentedControl,{iconOnly:true,label:'Tema',options:[{value:'light',label:'Claro',icon:'sun'},{value:'dark',label:'Escuro',icon:'moon'},{value:'system',label:'Sistema',icon:'monitor'}]})));
+</script>
+</body>
+</html>
