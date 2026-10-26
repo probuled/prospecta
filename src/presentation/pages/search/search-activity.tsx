@@ -4,7 +4,7 @@ import { Panel } from '@/components/prospecta/panel'
 import type { Search } from '@/domain/search'
 import { SearchProgressItem } from './search-progress-item'
 
-const RECENT_LIMIT = 6
+const RECENT_LIMIT = 3
 
 const HOW_IT_WORKS = [
   { title: 'Escolha nicho e cidade', text: 'Negócios locais pouco digitalizados rendem mais leads sem site.' },
@@ -33,16 +33,15 @@ export function SearchActivity({ searches }: { readonly searches: readonly Searc
 
   return (
     <Panel
-      title={recent.length ? 'Atividade recente' : 'Como funciona'}
+      title={recent.length ? 'Buscas recentes' : 'Como funciona'}
       action={
-        searches.length > RECENT_LIMIT && (
+        recent.length > 0 && (
           <ButtonLink to={ROUTES.history} variant="ghost" size="sm">
-            Ver tudo
+            Ver histórico
           </ButtonLink>
         )
       }
       bodyClassName={recent.length ? 'p-2' : undefined}
-      className="lg:sticky lg:top-12"
     >
       {recent.length ? (
         <ul>

@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, History } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { leadsOfSearch } from '@/app/routes'
@@ -23,18 +23,19 @@ function elapsedSeconds(search: Search, now: number): number {
 function Row({ search, now, trailing }: { search: Search; now: number; trailing: ReactNode }) {
   return (
     <>
-      <div className="flex items-center justify-between gap-3">
-        <div className="min-w-0">
+      <div className="flex items-center gap-3">
+        <History className="mt-0.5 size-4 shrink-0 self-start text-ink-muted" />
+        <div className="min-w-0 flex-1">
           <p className="truncate font-medium">{search.keyword}</p>
           <p className="text-data text-ink-muted">
+            {search.status === 'ok' && `${formatCount(search.leadCount)} leads · `}
             {formatDuration(elapsedSeconds(search, now))}
-            {search.status === 'ok' && ` · ${formatCount(search.leadCount)} leads`}
           </p>
         </div>
         {trailing}
       </div>
       {search.status === 'working' && (
-        <div className="mt-2 h-1 overflow-hidden rounded-full bg-surface-sunken">
+        <div className="mt-2 ml-7 h-1 overflow-hidden rounded-full bg-surface-sunken">
           <div className="h-full bg-ink transition-[width] duration-1000" style={{ width: `${estimateProgress(search, now)}%` }} />
         </div>
       )}

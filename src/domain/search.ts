@@ -19,6 +19,18 @@ export interface Search extends SearchRequest {
 
 export const DEPTH_LIMITS = { min: 1, max: 20, default: 5 } as const
 
+/** Cada nível de profundidade rola a lista do Maps e traz, em média, uns 6 negócios a mais. */
+export const RESULTS_PER_DEPTH = 6
+
+/** Quantidades oferecidas na tela de busca. 30 equivale à profundidade padrão. */
+export const RESULT_COUNT_OPTIONS = [10, 20, 30, 60, 100] as const
+export const DEFAULT_RESULT_COUNT = 30
+
+/** Profundidade necessária para chegar perto da quantidade pedida, dentro dos limites do motor. */
+export function depthForResultCount(count: number): number {
+  return Math.min(DEPTH_LIMITS.max, Math.max(DEPTH_LIMITS.min, Math.ceil(count / RESULTS_PER_DEPTH)))
+}
+
 export function buildKeyword(niche: string, city: string): string {
   return `${niche.trim()} em ${city.trim()}`
 }
