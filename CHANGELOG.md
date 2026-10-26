@@ -27,6 +27,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ### Removido
 
+- Coluna Presença da lista de leads: a coluna Instagram e o filtro de presença já cobrem essa informação, que
+  continua no detalhe do lead.
 - Filtros de busca e de telefone na tela de Leads. Quem abre uma busca pelo Histórico vê uma etiqueta para
   remover o filtro.
 

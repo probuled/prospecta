@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Button } from '@/components/prospecta/button'
-import { Presence } from '@/components/prospecta/presence'
 import { Rating } from '@/components/prospecta/rating'
 import { Score } from '@/components/prospecta/score'
 import { StatusMenu } from '@/components/prospecta/status'
@@ -29,9 +28,9 @@ function NoRating() {
 function InstagramCell({ view }: { view: LeadView }) {
   if (!view.instagram) return <span className="text-xs text-ink-muted">Não consta</span>
   return (
-    <span className="inline-flex max-w-44 items-center gap-2 whitespace-nowrap">
+    <span className="inline-flex max-w-56 items-center gap-2 whitespace-nowrap">
       <InstagramButton view={view} />
-      {view.instagram.handle && <span className="text-data hidden truncate xl:inline">@{view.instagram.handle}</span>}
+      {view.instagram.handle && <span className="text-data hidden truncate lg:inline">@{view.instagram.handle}</span>}
     </span>
   )
 }
@@ -53,9 +52,8 @@ function MobileLeadList({
           <div className="min-w-0 flex-1 space-y-1">
             <p className="truncate font-medium">{view.lead.name}</p>
             <p className="text-caption truncate text-ink-muted">{view.lead.category}</p>
-            <div className="flex flex-wrap items-center gap-3 pt-1">
+            <div className="pt-1">
               <Score value={view.opportunity.score} reasons={view.opportunity.reasons} />
-              <Presence kind={view.presence} />
             </div>
           </div>
           <InstagramButton view={view} />
@@ -80,7 +78,6 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
             <tr className="border-b border-line">
               <th className={headClass}>Negócio</th>
               <th className={headClass}>Oportunidade</th>
-              <th className={cn(headClass, 'hidden md:table-cell')}>Presença</th>
               <th className={cn(headClass, 'hidden lg:table-cell')}>Avaliação</th>
               <th className={headClass}>Contato</th>
               <th className={cn(headClass, 'hidden md:table-cell')}>Instagram</th>
@@ -103,9 +100,6 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
                 </td>
                 <td className={cellClass}>
                   <Score value={view.opportunity.score} reasons={view.opportunity.reasons} />
-                </td>
-                <td className={cn(cellClass, 'hidden md:table-cell')}>
-                  <Presence kind={view.presence} />
                 </td>
                 <td className={cn(cellClass, 'hidden lg:table-cell')}>
                   {view.lead.rating ? <Rating value={view.lead.rating} count={view.lead.reviewCount} /> : <NoRating />}
