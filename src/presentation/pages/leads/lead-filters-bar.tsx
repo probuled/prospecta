@@ -1,4 +1,4 @@
-import { Search as SearchIcon } from 'lucide-react'
+import { Search as SearchIcon, X } from 'lucide-react'
 import { Button } from '@/components/prospecta/button'
 import { Input } from '@/components/prospecta/input'
 import { Select, type SelectOption } from '@/components/prospecta/select'
@@ -15,21 +15,15 @@ const PRESENCE_OPTIONS: SelectOption<LeadFilters['presence']>[] = [
 ]
 
 const LEVEL_OPTIONS: SelectOption<LeadFilters['level']>[] = [
-  { value: ALL, label: 'Qualquer temperatura' },
-  { value: 'quente', label: 'Quentes' },
-  { value: 'morno', label: 'Mornos' },
-  { value: 'frio', label: 'Frios' },
+  { value: ALL, label: 'Oportunidade' },
+  { value: 'quente', label: 'Alta' },
+  { value: 'morno', label: 'Média' },
+  { value: 'frio', label: 'Baixa' },
 ]
 
 const STATUS_OPTIONS: SelectOption<LeadFilters['status']>[] = [
-  { value: ALL, label: 'Qualquer status' },
+  { value: ALL, label: 'Status' },
   ...LEAD_STATUSES.map((status) => ({ value: status, label: LEAD_STATUS_LABELS[status] })),
-]
-
-type PhoneFilter = 'any' | 'mobile'
-const PHONE_OPTIONS: SelectOption<PhoneFilter>[] = [
-  { value: 'any', label: 'Qualquer telefone' },
-  { value: 'mobile', label: 'Só celular' },
 ]
 
 interface LeadFiltersBarProps {
@@ -52,10 +46,7 @@ export function LeadFiltersBar({
   onChange,
   onReset,
 }: LeadFiltersBarProps) {
-  const searchOptions: SelectOption<string>[] = [
-    { value: ALL, label: 'Todas as buscas' },
-    ...searches.map((search) => ({ value: search.id, label: search.keyword })),
-  ]
+  const searchKeyword = filters.searchId === ALL ? null : (searches.find((search) => search.id === filters.searchId)?.keyword ?? 'removida')
   const isActive = (key: keyof LeadFilters) => filters[key] !== DEFAULT_FILTERS[key]
 
   return (
@@ -80,7 +71,7 @@ export function LeadFiltersBar({
         options={LEVEL_OPTIONS}
         active={isActive('level')}
         onChange={(v) => onChange('level', v)}
-        aria-label="Temperatura"
+        aria-label="Oportunidade"
       />
       {!hideStatus && (
         <Select
@@ -91,21 +82,12 @@ export function LeadFiltersBar({
           aria-label="Status"
         />
       )}
-      <Select
-        value={filters.searchId}
-        options={searchOptions}
-        active={isActive('searchId')}
-        onChange={(v) => onChange('searchId', v)}
-        className="max-w-64"
-        aria-label="Busca"
-      />
-      <Select
-        value={filters.mobileOnly ? 'mobile' : 'any'}
-        options={PHONE_OPTIONS}
-        active={filters.mobileOnly}
-        onChange={(v) => onChange('mobileOnly', v === 'mobile')}
-        aria-label="Telefone"
-      />
+      {searchKeyword && (
+        <Button onClick={() => onChange('searchId', ALL)} className="max-w-64" aria-label={`Remover filtro da busca ${searchKeyword}`}>
+          <span className="truncate">Busca: {searchKeyword}</span>
+          <X />
+        </Button>
+      )}
       {activeCount > 0 && (
         <Button variant="ghost" onClick={onReset}>
           Limpar filtros

@@ -12,7 +12,6 @@ export interface LeadFilters {
   readonly level: OrAll<OpportunityLevel>
   readonly status: OrAll<LeadStatus>
   readonly searchId: OrAll<string>
-  readonly mobileOnly: boolean
 }
 
 export const DEFAULT_FILTERS: LeadFilters = {
@@ -21,7 +20,6 @@ export const DEFAULT_FILTERS: LeadFilters = {
   level: ALL,
   status: ALL,
   searchId: ALL,
-  mobileOnly: false,
 }
 
 type Predicate = (view: LeadView, filters: LeadFilters) => boolean
@@ -39,7 +37,6 @@ const PREDICATES: readonly Predicate[] = [
   ({ opportunity }, { level }) => level === ALL || opportunity.level === level,
   ({ lead }, { status }) => status === ALL || lead.status === status,
   ({ lead }, { searchId }) => searchId === ALL || lead.searchIds.includes(searchId),
-  ({ phone }, { mobileOnly }) => !mobileOnly || (phone?.isMobile ?? false),
 ]
 
 /** Quantos filtros estão diferentes do padrão (a busca selecionada conta como filtro). */

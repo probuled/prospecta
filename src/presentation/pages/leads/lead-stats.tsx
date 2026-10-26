@@ -17,7 +17,7 @@ function computeMetrics(views: readonly LeadView[]): Metric[] {
       value: formatCount(withoutSite),
       note: `${percentFormatter.format(views.length ? withoutSite / views.length : 0)} do total`,
     },
-    { label: 'Quentes', value: formatCount(count((v) => v.opportunity.level === 'quente')), note: 'score ≥ 80' },
+    { label: 'Alta oportunidade', value: formatCount(count((v) => v.opportunity.level === 'quente')), note: 'score ≥ 80' },
     {
       label: 'Fechados',
       value: formatCurrency(closedValue),

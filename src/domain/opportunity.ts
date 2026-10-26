@@ -34,7 +34,7 @@ const MAX_SCORE = 100
 const HOT_THRESHOLD = 80
 const WARM_THRESHOLD = 50
 
-/** Faixas do design system: quente ≥ 80, morno 50–79, frio < 50. */
+/** Faixas do design system: alta (quente) ≥ 80, média (morno) 50–79, baixa (frio) < 50. */
 export function temperatureOf(score: number): OpportunityLevel {
   if (score >= HOT_THRESHOLD) return 'quente'
   if (score >= WARM_THRESHOLD) return 'morno'
