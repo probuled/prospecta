@@ -215,9 +215,10 @@ export function SettingsPage() {
           </div>
         </div>
         <Panel title="Prévia" bodyClassName="bg-surface-sunken rounded-b-lg">
-          <p className="text-caption mb-3 text-ink-muted">Como chega para {SAMPLE_LEAD.name}</p>
-          <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-sm border border-line bg-surface px-3.5 py-2.5 leading-relaxed whitespace-pre-wrap">
-            {renderMessage(draft.body, SAMPLE_LEAD) || <span className="text-ink-muted">Sem texto</span>}
+          <p className="mb-3 text-caption text-ink-muted">Como chega para {SAMPLE_LEAD.name}</p>
+          {/* Balão de mensagem enviada nas cores do WhatsApp, para a prévia parecer o que o lead vai ver. */}
+          <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-sm bg-whatsapp-bubble px-3.5 py-2.5 leading-relaxed whitespace-pre-wrap text-on-whatsapp-bubble">
+            {renderMessage(draft.body, SAMPLE_LEAD) || <span className="opacity-60">Sem texto</span>}
           </div>
         </Panel>
       </div>
