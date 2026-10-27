@@ -1,4 +1,4 @@
-import { Search } from 'lucide-react'
+import { Search, Users } from 'lucide-react'
 import { ROUTES } from '@/app/routes'
 import { ButtonLink } from '@/components/prospecta/button'
 import { StatusScreen } from '@/presentation/components/status-screen'
@@ -18,7 +18,7 @@ export function NotFoundPage() {
             <Search /> Buscar leads de verdade
           </ButtonLink>
           <ButtonLink to={ROUTES.leads} size="lg" className="border-line-strong">
-            Ver meus leads
+            <Users /> Ver meus leads
           </ButtonLink>
         </>
       }

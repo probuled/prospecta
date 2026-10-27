@@ -16,12 +16,11 @@ export const router = createBrowserRouter([
       { path: ROUTES.leads, element: <LeadsPage /> },
       { path: ROUTES.history, element: <HistoryPage /> },
       { path: ROUTES.settings, element: <SettingsPage /> },
+      // Endereço desconhecido: 404 dentro do layout, com o menu.
+      {
+        path: '*',
+        lazy: async () => ({ Component: (await import('@/presentation/pages/not-found/not-found-page')).NotFoundPage }),
+      },
     ],
-  },
-  // Fora do layout: a 404 é uma tela cheia, sem menu.
-  {
-    path: '*',
-    errorElement: <RouteError />,
-    lazy: async () => ({ Component: (await import('@/presentation/pages/not-found/not-found-page')).NotFoundPage }),
   },
 ])
