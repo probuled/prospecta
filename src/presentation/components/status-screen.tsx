@@ -1,21 +1,23 @@
 import type { ReactNode } from 'react'
+import { Logo } from '@/components/prospecta/logo'
 
 interface StatusScreenProps {
-  /** Código em destaque, ex.: "404". */
-  readonly code: string
+  /** Destaque grande acima do título (ex.: o 404 desenhado). */
+  readonly hero: ReactNode
   readonly title: string
   readonly description: ReactNode
   readonly actions: ReactNode
 }
 
-/** Tela cheia de estado (página não encontrada, erro inesperado), centralizada. */
-export function StatusScreen({ code, title, description, actions }: StatusScreenProps) {
+/** Tela cheia, fora do layout (página não encontrada, erro inesperado): logo, destaque, texto e ações. */
+export function StatusScreen({ hero, title, description, actions }: StatusScreenProps) {
   return (
-    <div className="mx-auto flex max-w-md flex-col items-center gap-4 py-16 text-center sm:py-24">
-      <p className="text-6xl leading-none font-bold tracking-tight text-ouro-text">{code}</p>
-      <h1 className="text-display text-balance">{title}</h1>
-      <div className="text-pretty text-ink-muted">{description}</div>
-      <div className="flex flex-wrap justify-center gap-2 pt-2">{actions}</div>
-    </div>
+    <main className="flex min-h-dvh flex-col items-center bg-bg px-4 py-12 text-center sm:py-16">
+      <Logo height={64} className="mb-10" />
+      {hero}
+      <h1 className="text-display mt-8 text-balance">{title}</h1>
+      <div className="mt-3 max-w-lg text-pretty text-ink-muted">{description}</div>
+      <div className="mt-8 flex flex-wrap justify-center gap-3">{actions}</div>
+    </main>
   )
 }
