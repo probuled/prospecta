@@ -271,7 +271,10 @@ ou `develop`.
 - O título segue Conventional Commits, porque vira a mensagem do commit no squash.
 - Template preenchido (`.github/pull_request_template.md`), CI verde, PR de até ~400 linhas alteradas.
 - `feature/*` e `fix/*` entram em `develop` por **Squash and merge**. `release/*` e `hotfix/*` entram em `main` por
-  **Merge commit**.
+  **Merge commit**. Depois disso, a `main` volta para a `develop` por um PR `main → develop`, também por **Merge commit**
+  (seção 14).
+- No squash, o GitHub soma ` (#N)` ao título: mantenha o título do PR com até **66 caracteres** para o commit final não
+  passar dos 72 do commitlint.
 - Apagar a branch depois do merge.
 
 **Proteção de branch** (configurar uma vez no GitHub), para `main` e `develop`:
@@ -280,7 +283,8 @@ ou `develop`.
   - PR obrigatório (0 aprovações em projeto solo).
   - Checks obrigatórios: `ci`, `pr-title` e `commitlint`.
   - Branch atualizada antes do merge.
-  - Histórico linear em `develop`.
+  - Formas de merge: só merge commit na `main`; squash e merge commit na `develop` (o merge commit é para a volta da
+    `main`). Sem histórico linear obrigatório, porque ele bloquearia essa volta.
   - Force push e exclusão bloqueados, sem lista de bypass.
 - Em **Settings → General → Pull Requests**:
   - Permitir squash merge, com a mensagem padrão sendo o título do PR.
@@ -298,7 +302,7 @@ ou `develop`.
 6. **Commitar localmente e mostrar o resultado**: subir com `docker compose up -d --build`, passar o link local e prints nos
    temas claro e escuro (ou dizer que não foi conferido no navegador).
 7. Fazer push e abrir o PR **só depois de "pode subir"**.
-8. Fazer o merge **só depois de "pode mergear"** (squash em `develop`, título com até 72 caracteres).
+8. Fazer o merge **só depois de "pode mergear"** (squash em `develop`, título do PR com até 66 caracteres).
 
 ## 14. Versão (SemVer `vMAJOR.MINOR.PATCH`)
 
@@ -315,10 +319,12 @@ npm version 1.2.0 --no-git-tag-version
 git commit -am "chore(release): 1.2.0"
 # PR → main (merge commit); depois:
 git checkout main && git pull && git tag -a v1.2.0 -m "release: v1.2.0" && git push origin v1.2.0
-git checkout develop && git merge --no-ff main && git push
+# volta da main para a develop (push direto na develop é bloqueado):
+gh pr create --base develop --head main --title "chore(release): incorpora a 1.2.0 na develop"
+# CI verde → merge com **Merge commit** (não squash, para a develop continuar descendo da main)
 ```
 
-Hotfix é sempre PATCH: `hotfix/APP-60-...` a partir de `main`, com PR para `main`, tag e depois merge de `main` em `develop`.
+Hotfix é sempre PATCH: `hotfix/APP-60-...` a partir de `main`, com PR para `main`, tag e depois o mesmo PR `main → develop`.
 
 ## 15. Checklist de code review
 

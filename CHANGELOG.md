@@ -7,6 +7,17 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+## [0.1.1] - 2026-10-27
+
+### Adicionado
+
+- Licença MIT: o Prospecta passa a ser open source.
+
+### Alterado
+
+- README reescrito: o que é o projeto, instalação passo a passo, como usar cada tela, a pontuação de
+  oportunidade, onde ficam os dados e o aviso de responsabilidade.
+
 ## [0.1.0] - 2026-10-26
 
 ### Adicionado
@@ -46,5 +57,6 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 - Emojis como 👉 chegavam no WhatsApp como "�": o link de contato passa a usar `api.whatsapp.com`.
 
-[Não lançado]: https://github.com/probuled/prospecta/compare/v0.1.0...develop
+[Não lançado]: https://github.com/probuled/prospecta/compare/v0.1.1...develop
+[0.1.1]: https://github.com/probuled/prospecta/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/probuled/prospecta/releases/tag/v0.1.0
