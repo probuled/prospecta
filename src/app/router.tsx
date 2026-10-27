@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router'
 import { ROUTES } from './routes'
+import { RouteError } from '@/presentation/components/route-error'
 import { AppLayout } from '@/presentation/layout/app-layout'
 import { HistoryPage } from '@/presentation/pages/history/history-page'
 import { LeadsPage } from '@/presentation/pages/leads/leads-page'
@@ -9,11 +10,16 @@ import { SettingsPage } from '@/presentation/pages/settings/settings-page'
 export const router = createBrowserRouter([
   {
     element: <AppLayout />,
+    errorElement: <RouteError />,
     children: [
       { path: ROUTES.search, element: <SearchPage /> },
       { path: ROUTES.leads, element: <LeadsPage /> },
       { path: ROUTES.history, element: <HistoryPage /> },
       { path: ROUTES.settings, element: <SettingsPage /> },
+      {
+        path: '*',
+        lazy: async () => ({ Component: (await import('@/presentation/pages/not-found/not-found-page')).NotFoundPage }),
+      },
     ],
   },
 ])
