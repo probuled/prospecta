@@ -11,5 +11,5 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { to: ROUTES.search, label: 'Buscar', icon: Search },
   { to: ROUTES.leads, label: 'Leads', icon: Users },
   { to: ROUTES.history, label: 'Histórico', icon: History },
-  { to: ROUTES.settings, label: 'Mensagem', icon: MessageSquare },
+  { to: ROUTES.settings, label: 'Mensagens', icon: MessageSquare },
 ]

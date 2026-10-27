@@ -13,7 +13,11 @@ export function SearchStatus({ status }: { readonly status: Status }) {
   const { label, mark } = STATUS_VIEW[status]
   return (
     <span className="inline-flex items-center gap-2 text-[13px] font-medium whitespace-nowrap">
-      {status === 'working' ? <Loader2 className="size-3.5 animate-spin text-ink-muted" /> : <span className={cn('size-2 rounded-[2px]', mark)} />}
+      {status === 'working' ? (
+        <Loader2 className="size-3.5 animate-spin text-ink-muted" />
+      ) : (
+        <span className={cn('size-2 rounded-[2px]', mark)} />
+      )}
       {label}
     </span>
   )

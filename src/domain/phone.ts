@@ -18,6 +18,9 @@ export function parsePhone(raw: string): PhoneInfo | null {
   return { digits: withCountryCode, isMobile }
 }
 
+/**
+ * Usa api.whatsapp.com direto: o redirecionamento do wa.me troca emojis fora do BMP (👉, 🚀…) por "�".
+ */
 export function buildWhatsAppUrl(phone: PhoneInfo, message: string): string {
-  return `https://wa.me/${phone.digits}?text=${encodeURIComponent(message)}`
+  return `https://api.whatsapp.com/send?phone=${phone.digits}&text=${encodeURIComponent(message)}`
 }

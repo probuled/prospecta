@@ -20,14 +20,20 @@ export function MobileTopBar({ engineStatus }: { readonly engineStatus: Status }
 
 export function MobileBottomNav() {
   return (
-    <nav aria-label="Principal" className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 border-t border-line bg-bg pb-[env(safe-area-inset-bottom)] lg:hidden">
+    <nav
+      aria-label="Principal"
+      className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-4 border-t border-line bg-bg pb-[env(safe-area-inset-bottom)] lg:hidden"
+    >
       {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
         <NavLink
           key={to}
           to={to}
           end
           className={({ isActive }) =>
-            cn('flex h-14 flex-col items-center justify-center gap-1 text-xs font-medium text-ink-muted', isActive && 'text-ink [&_svg]:text-ouro-text')
+            cn(
+              'flex h-14 flex-col items-center justify-center gap-1 text-xs font-medium text-ink-muted',
+              isActive && 'text-ink [&_svg]:text-ouro-text',
+            )
           }
         >
           <Icon className="size-5" />

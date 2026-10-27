@@ -9,7 +9,7 @@ import { SegmentedControl, type SegmentOption } from '@/components/prospecta/seg
 import type { LeadPatch, LeadStatus } from '@/domain/lead'
 import { formatCount } from '@/presentation/format'
 import { useLeads, useSearches } from '@/presentation/hooks/use-store'
-import { LeadDetailSheet } from './lead-detail-sheet'
+import { LeadDetailDialog } from './lead-detail-dialog'
 import { LeadFiltersBar } from './lead-filters-bar'
 import { LeadStats } from './lead-stats'
 import type { LeadView } from './lead-view'
@@ -66,25 +66,37 @@ export function LeadsPage() {
         title="Leads"
         description={isPipeline ? 'Arraste os cards entre as etapas do funil.' : 'Quem não tem site e é bem avaliado aparece primeiro.'}
         actions={
-          <>
-            <SegmentedControl label="Visualização" options={VIEW_OPTIONS} value={viewMode} onChange={setViewMode} />
-            <Button icon={Download} onClick={exportFiltered} disabled={filtered.length === 0}>
-              Exportar
-            </Button>
-          </>
+          <Button icon={Download} onClick={exportFiltered} disabled={filtered.length === 0}>
+            Exportar
+          </Button>
         }
       />
       <LeadStats views={views} />
       <div className="space-y-4">
-        <LeadFiltersBar
-          filters={filters}
-          searches={searches}
-          hideStatus={isPipeline}
-          activeCount={activeCount}
-          resultLabel={`${formatCount(filtered.length)} de ${formatCount(views.length)}`}
-          onChange={setFilter}
-          onReset={resetFilters}
-        />
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end">
+          <SegmentedControl
+            label="Modo de visualização"
+            showLabel
+            variant="outline"
+            size="md"
+            options={VIEW_OPTIONS}
+            value={viewMode}
+            onChange={setViewMode}
+            className="self-start"
+          />
+          <div aria-hidden className="hidden h-6 w-px shrink-0 self-end bg-line lg:mb-1.5 lg:block" />
+          <div className="min-w-0 flex-1">
+            <LeadFiltersBar
+              filters={filters}
+              searches={searches}
+              hideStatus={isPipeline}
+              activeCount={activeCount}
+              resultLabel={`${formatCount(filtered.length)} de ${formatCount(views.length)}`}
+              onChange={setFilter}
+              onReset={resetFilters}
+            />
+          </div>
+        </div>
         {filtered.length === 0 ? (
           <EmptyState
             icon={SearchIcon}
@@ -95,10 +107,16 @@ export function LeadsPage() {
         ) : isPipeline ? (
           <PipelineBoard key={JSON.stringify(filters)} views={filtered} onSelect={selectLead} onMove={moveLead} />
         ) : (
-          <LeadsTable key={JSON.stringify(filters)} views={filtered} selectedId={selectedId} onSelect={selectLead} onStatusChange={moveLead} />
+          <LeadsTable
+            key={JSON.stringify(filters)}
+            views={filtered}
+            selectedId={selectedId}
+            onSelect={selectLead}
+            onStatusChange={moveLead}
+          />
         )}
       </div>
-      <LeadDetailSheet view={selected} onClose={() => setSelectedId(null)} onUpdate={updateLead} />
+      <LeadDetailDialog view={selected} onClose={() => setSelectedId(null)} onUpdate={updateLead} />
     </>
   )
 }

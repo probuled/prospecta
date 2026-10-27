@@ -10,7 +10,12 @@ export function Presence({ kind }: { readonly kind: WebsitePresence }) {
   const isOpportunity = kind === 'none'
 
   return (
-    <span className={cn('inline-flex items-center gap-1.5 text-[13px] whitespace-nowrap', isOpportunity ? 'font-medium text-ink' : 'text-ink-muted')}>
+    <span
+      className={cn(
+        'inline-flex items-center gap-1.5 text-[13px] whitespace-nowrap',
+        isOpportunity ? 'font-medium text-ink' : 'text-ink-muted',
+      )}
+    >
       <Icon className={cn('size-4', isOpportunity && 'text-ouro-text')} />
       {WEBSITE_PRESENCE_LABELS[kind]}
     </span>

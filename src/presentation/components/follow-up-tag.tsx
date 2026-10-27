@@ -15,7 +15,7 @@ export function FollowUpTag({ followUpAt }: { readonly followUpAt: string | null
   if (!followUp) return null
 
   return (
-    <span className={cn('inline-flex items-center gap-1.5 text-caption font-medium whitespace-nowrap', STATE_CLASSES[followUp.state])}>
+    <span className={cn('text-caption inline-flex items-center gap-1.5 font-medium whitespace-nowrap', STATE_CLASSES[followUp.state])}>
       <CalendarClock className="size-3.5" />
       {formatFollowUp(followUp, now)}
     </span>

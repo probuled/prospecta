@@ -29,7 +29,16 @@ function Field({ icon: Icon, label, children }: { icon: typeof Search; label: st
 const inputClass = 'min-w-0 bg-transparent p-0 text-[15px] leading-5 text-ink outline-none placeholder:text-ink-muted'
 
 /** A barra principal: Nicho + Cidade + botão primário, numa peça de 56px. Uma por tela. */
-export function SearchBar({ niche, city, onNicheChange, onCityChange, onSubmit, busy, disabled, submitLabel = 'Buscar leads' }: SearchBarProps) {
+export function SearchBar({
+  niche,
+  city,
+  onNicheChange,
+  onCityChange,
+  onSubmit,
+  busy,
+  disabled,
+  submitLabel = 'Buscar leads',
+}: SearchBarProps) {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
     onSubmit()
@@ -41,10 +50,22 @@ export function SearchBar({ niche, city, onNicheChange, onCityChange, onSubmit, 
       className="flex flex-col gap-1 rounded-lg border border-line-strong bg-surface p-1.5 has-[input:focus-visible]:shadow-[var(--focus-ring)] md:h-14 md:flex-row md:items-stretch md:gap-0"
     >
       <Field icon={Search} label="Nicho">
-        <input data-focus-inner className={inputClass} placeholder="Ex.: barbearias" value={niche} onChange={(e) => onNicheChange(e.target.value)} />
+        <input
+          data-focus-inner
+          className={inputClass}
+          placeholder="Ex.: barbearias"
+          value={niche}
+          onChange={(e) => onNicheChange(e.target.value)}
+        />
       </Field>
       <Field icon={MapPin} label="Cidade">
-        <input data-focus-inner className={inputClass} placeholder="Ex.: Recife, PE" value={city} onChange={(e) => onCityChange(e.target.value)} />
+        <input
+          data-focus-inner
+          className={inputClass}
+          placeholder="Ex.: Recife, PE"
+          value={city}
+          onChange={(e) => onCityChange(e.target.value)}
+        />
       </Field>
       <Button type="submit" variant="primary" icon={Search} disabled={busy || disabled} className="h-11 px-5 md:h-full">
         {busy ? 'Buscando…' : submitLabel}

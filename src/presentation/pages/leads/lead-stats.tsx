@@ -12,8 +12,12 @@ function computeMetrics(views: readonly LeadView[]): Metric[] {
 
   return [
     { label: 'Leads', value: formatCount(views.length), note: `${formatCount(count((v) => v.lead.status === 'novo'))} sem abordagem` },
-    { label: 'Sem site próprio', value: formatCount(withoutSite), note: `${percentFormatter.format(views.length ? withoutSite / views.length : 0)} do total` },
-    { label: 'Quentes', value: formatCount(count((v) => v.opportunity.level === 'quente')), note: 'score ≥ 80' },
+    {
+      label: 'Sem site próprio',
+      value: formatCount(withoutSite),
+      note: `${percentFormatter.format(views.length ? withoutSite / views.length : 0)} do total`,
+    },
+    { label: 'Alta oportunidade', value: formatCount(count((v) => v.opportunity.level === 'quente')), note: 'score ≥ 80' },
     {
       label: 'Fechados',
       value: formatCurrency(closedValue),

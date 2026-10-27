@@ -1,9 +1,4 @@
-import type {
-  ScrapedPlace,
-  ScrapeJobRequest,
-  ScrapeJobStatus,
-  ScraperGateway,
-} from '@/application/ports/scraper-gateway'
+import type { ScrapedPlace, ScrapeJobRequest, ScrapeJobStatus, ScraperGateway } from '@/application/ports/scraper-gateway'
 import { parsePlacesCsv } from './place-csv-parser'
 
 export class EngineRequestError extends Error {

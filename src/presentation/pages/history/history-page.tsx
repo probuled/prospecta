@@ -13,7 +13,13 @@ import { formatCount } from '@/presentation/format'
 import { useSearches } from '@/presentation/hooks/use-store'
 import { DeleteSearchDialog } from './delete-search-dialog'
 
-const dateFormatter = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' })
+const dateFormatter = new Intl.DateTimeFormat('pt-BR', {
+  day: '2-digit',
+  month: '2-digit',
+  year: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+})
 
 function SearchRow({ search, onDelete }: { readonly search: Search; readonly onDelete: (search: Search) => void }) {
   const title = (
@@ -36,13 +42,20 @@ function SearchRow({ search, onDelete }: { readonly search: Search; readonly onD
       ) : (
         <div className="min-w-0 flex-1">{title}</div>
       )}
-      <span className="hidden text-data sm:block">
-        {formatCount(search.leadCount)} <span className="font-sans text-caption text-ink-muted">leads</span>
+      <span className="text-data hidden sm:block">
+        {formatCount(search.leadCount)} <span className="text-caption font-sans text-ink-muted">leads</span>
       </span>
       <span className="w-24">
         <SearchStatus status={search.status} />
       </span>
-      <Button variant="ghost" size="sm" iconOnly icon={Trash2} onClick={() => onDelete(search)} aria-label={`Excluir busca ${search.keyword}`} />
+      <Button
+        variant="ghost"
+        size="sm"
+        iconOnly
+        icon={Trash2}
+        onClick={() => onDelete(search)}
+        aria-label={`Excluir busca ${search.keyword}`}
+      />
     </li>
   )
 }
