@@ -38,9 +38,9 @@ function LeadDetailBody({ view, onUpdate }: { view: LeadView; onUpdate: LeadDeta
   return (
     <>
       <DialogHeader className="gap-3 border-b border-line p-5 pr-12">
-        <div className="space-y-0.5">
-          <DialogTitle className="text-title">{lead.name}</DialogTitle>
-          <DialogDescription className="text-caption text-ink-muted">
+        <div className="space-y-1">
+          <DialogTitle className="text-2xl leading-8 font-bold tracking-tight">{lead.name}</DialogTitle>
+          <DialogDescription className="text-ink-muted">
             {lead.category} · {lead.city}
           </DialogDescription>
         </div>

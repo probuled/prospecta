@@ -23,7 +23,7 @@ export function LeadApproach({ view, onContact }: LeadApproachProps) {
   const options: SelectOption<string>[] = settings.messageTemplates.map(({ id, name }) => ({ value: id, label: name }))
 
   return (
-    <Section title="Abordagem">
+    <Section title="Mensagem de abordagem">
       {options.length > 1 && (
         <Select
           label="Modelo:"
@@ -36,8 +36,8 @@ export function LeadApproach({ view, onContact }: LeadApproachProps) {
       )}
       <p className="rounded-md border border-line bg-surface-sunken p-3 leading-relaxed whitespace-pre-wrap">{message}</p>
       <div className="flex flex-wrap gap-2">
-        <WhatsAppButton view={view} message={message} size="md" label="Enviar no WhatsApp" onOpen={onContact} />
-        <InstagramButton view={view} size="md" label="Abrir Instagram" />
+        <WhatsAppButton view={view} message={message} size="lg" label="Enviar no WhatsApp" onOpen={onContact} isProminent />
+        <InstagramButton view={view} size="lg" label="Abrir Instagram" />
       </div>
     </Section>
   )

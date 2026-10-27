@@ -15,10 +15,12 @@ interface WhatsAppButtonProps {
   /** Sem rótulo vira botão só de ícone. */
   readonly label?: string
   readonly size?: ButtonSize
+  /** Botão cheio, verde do WhatsApp, para a ação principal. */
+  readonly isProminent?: boolean
 }
 
-/** Logo do WhatsApp dentro de um botão neutro. Telefone fixo fica com a logo apagada (cinza). */
-export function WhatsAppButton({ view, onOpen, message, label, size = 'sm' }: WhatsAppButtonProps) {
+/** Logo do WhatsApp num botão neutro (ou verde, se `isProminent`). Telefone fixo fica com a logo apagada (cinza). */
+export function WhatsAppButton({ view, onOpen, message, label, size = 'sm', isProminent = false }: WhatsAppButtonProps) {
   const messageTemplate = activeTemplate(useSettings()).body
   if (!view.phone) return null
 
@@ -30,12 +32,17 @@ export function WhatsAppButton({ view, onOpen, message, label, size = 'sm' }: Wh
         event.stopPropagation()
         onOpen?.()
       }}
+      variant={isProminent ? 'whatsapp' : 'secondary'}
       size={size}
       iconOnly={!label}
       aria-label={`Abrir WhatsApp de ${view.lead.name}`}
       title={isMobile ? 'Abrir WhatsApp' : 'Telefone fixo: pode não ter WhatsApp'}
     >
-      <img src={whatsappLogo} alt="" className={cn('size-4 shrink-0', !isMobile && 'opacity-50 grayscale')} />
+      <img
+        src={whatsappLogo}
+        alt=""
+        className={cn('size-4 shrink-0', isProminent && 'size-5 brightness-0 invert dark:invert-0', !isMobile && 'opacity-50 grayscale')}
+      />
       {label}
     </ExternalButtonLink>
   )
