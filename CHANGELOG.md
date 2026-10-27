@@ -24,8 +24,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
   destaque.
 - A oportunidade do lead passa de Quente / Morno / Frio para Alta / Média / Baixa.
 - O detalhe do lead abre num modal, com a mensagem de um lado e o acompanhamento do outro.
-- No modal do lead, o botão "Enviar no WhatsApp" ganhou o verde e a logo do WhatsApp, maior, e o nome do negócio e os
-  títulos ficaram maiores.
+- No modal do lead, os botões de WhatsApp e Instagram ficaram centralizados, maiores e com as cores das marcas, e o
+  nome do negócio e os títulos ficaram maiores.
 - Nova tela de busca: centralizada, com quantidade de negócios (10 a 100) no lugar da profundidade, buscas
   recentes e resumo dos leads.
 

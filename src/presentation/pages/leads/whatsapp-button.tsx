@@ -34,7 +34,7 @@ export function WhatsAppButton({ view, onOpen, message, label, size = 'sm', isPr
       }}
       variant={isProminent ? 'whatsapp' : 'secondary'}
       size={size}
-      className={cn(isProminent && 'h-12 px-6 text-base')}
+      className={cn(isProminent && 'h-14 px-6 text-lg')}
       iconOnly={!label}
       aria-label={`Abrir WhatsApp de ${view.lead.name}`}
       title={isMobile ? 'Abrir WhatsApp' : 'Telefone fixo: pode não ter WhatsApp'}

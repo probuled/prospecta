@@ -32,7 +32,7 @@ function InfoRow({ icon: Icon, children }: { readonly icon: LucideIcon; readonly
   return (
     <div className="flex items-start gap-3">
       <Icon className="mt-0.5 size-4 shrink-0 text-ink-muted" />
-      <div className="min-w-0 break-words">{children}</div>
+      <div className="min-w-0 wrap-anywhere">{children}</div>
     </div>
   )
 }

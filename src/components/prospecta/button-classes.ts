@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'whatsapp'
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'whatsapp' | 'instagram'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
 export interface ButtonStyle {
@@ -15,6 +15,8 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   ghost: 'border-transparent bg-transparent text-ink-muted hover:text-ink',
   whatsapp:
     'border-whatsapp-brand bg-whatsapp-brand font-bold text-on-whatsapp-brand shadow-md transition-all hover:-translate-y-px hover:shadow-lg hover:brightness-105',
+  instagram:
+    'border-transparent bg-linear-to-r bg-origin-border from-instagram-from via-instagram-via to-instagram-to font-bold text-on-instagram shadow-md transition-all hover:-translate-y-px hover:shadow-lg hover:brightness-105',
 }
 
 const SIZE_CLASSES: Record<ButtonSize, { readonly base: string; readonly icon: string }> = {
