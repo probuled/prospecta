@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import { Presence } from '@/components/prospecta/presence'
 import { Score } from '@/components/prospecta/score'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import type { LeadPatch } from '@/domain/lead'
@@ -44,10 +43,7 @@ function LeadDetailBody({ view, onUpdate }: { view: LeadView; onUpdate: LeadDeta
             {lead.category} · {lead.city}
           </DialogDescription>
         </div>
-        <div className="flex flex-wrap items-center gap-4">
-          <Score value={view.opportunity.score} reasons={view.opportunity.reasons} />
-          <Presence kind={view.presence} />
-        </div>
+        <Score value={view.opportunity.score} reasons={view.opportunity.reasons} />
       </DialogHeader>
 
       <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(0,22rem)]">

@@ -31,9 +31,9 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ### Removido
 
+- A etiqueta de presença ("Sem site", "Só rede social") no topo do modal do lead.
 - Botão Copiar do detalhe do lead.
-- Coluna Presença da lista de leads: a coluna Instagram e o filtro de presença já cobrem essa informação, que
-  continua no detalhe do lead.
+- Coluna Presença da lista de leads: a coluna Instagram e o filtro de presença já cobrem essa informação.
 - Filtros de busca e de telefone na tela de Leads. Quem abre uma busca pelo Histórico vê uma etiqueta para
   remover o filtro.
 
