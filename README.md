@@ -134,7 +134,7 @@ termina, os negócios viram leads.
 Na tela **Leads**, os negócios aparecem ordenados pela pontuação, e por padrão só os que **não têm site próprio**. Dá para:
 
 - buscar por nome, categoria ou endereço;
-- filtrar por presença online (sem site, só rede social, tem site), temperatura (quente, morno, frio), etapa do funil ou busca;
+- filtrar por presença online (sem site, só rede social, tem site), oportunidade (alta, média, baixa), status no funil ou busca;
 - alternar entre **tabela** e **funil**;
 - **exportar CSV** do que está na tela.
 
@@ -153,7 +153,7 @@ Se o mesmo negócio aparecer em duas buscas, ele não duplica: os dados público
 | Telefone celular (provável WhatsApp)  |     15 |
 | Tem e-mail                            |      5 |
 
-O total vai até 100. **Quente** é 80 ou mais, **morno** de 50 a 79 e **frio** abaixo de 50.
+O total vai até 100 e define a faixa de oportunidade: **alta** com 80 ou mais, **média** de 50 a 79 e **baixa** abaixo de 50.
 
 ¹ Instagram, Facebook, Linktree, WhatsApp, TikTok, iFood, Google Sites, entre outros: não contam como site próprio.
 
