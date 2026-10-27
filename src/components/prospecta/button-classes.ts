@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost'
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'whatsapp' | 'instagram'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
 export interface ButtonStyle {
@@ -9,10 +9,16 @@ export interface ButtonStyle {
   readonly iconOnly?: boolean
 }
 
+/** Botão de marca (WhatsApp, Instagram): pílula em caixa alta, com degradê e sombra na cor da marca. */
+const BRAND_PILL =
+  'rounded-full border-0 font-extrabold tracking-wider uppercase shadow-cta transition-[translate,box-shadow,filter] duration-200 hover:-translate-y-0.5 hover:brightness-105'
+
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   secondary: 'border-line bg-surface text-ink hover:bg-surface-hover',
   primary: 'border-ouro bg-ouro text-on-ouro hover:brightness-95',
   ghost: 'border-transparent bg-transparent text-ink-muted hover:text-ink',
+  whatsapp: `${BRAND_PILL} bg-linear-to-br from-whatsapp-brand to-whatsapp-brand-deep text-on-whatsapp-brand shadow-whatsapp-brand/40`,
+  instagram: `${BRAND_PILL} bg-linear-to-r from-instagram-from via-instagram-via to-instagram-to text-on-instagram shadow-instagram-via/35`,
 }
 
 const SIZE_CLASSES: Record<ButtonSize, { readonly base: string; readonly icon: string }> = {

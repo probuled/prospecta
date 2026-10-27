@@ -54,6 +54,13 @@
   --sucesso: #2d6a3e;
   --sucesso-soft: #e3f0e5;
   --whatsapp: #1e7a4c;
+  --whatsapp-brand: #25d366;
+  --on-whatsapp-brand: #ffffff;
+  --whatsapp-brand-deep: #128c4a;
+  --instagram-from: #f58529;
+  --instagram-via: #dd2a7b;
+  --instagram-to: #515bd4;
+  --on-instagram: #ffffff;
   --whatsapp-bubble: #d9fdd3;
   --on-whatsapp-bubble: #111b21;
   --perigo: var(--quente);
@@ -88,6 +95,13 @@
   --sucesso: #84c795;
   --sucesso-soft: #1f3325;
   --whatsapp: #5cc48c;
+  --whatsapp-brand: #25d366;
+  --on-whatsapp-brand: #ffffff;
+  --whatsapp-brand-deep: #128c4a;
+  --instagram-from: #f58529;
+  --instagram-via: #dd2a7b;
+  --instagram-to: #515bd4;
+  --on-instagram: #ffffff;
   --whatsapp-bubble: #005c4b;
   --on-whatsapp-bubble: #e9edef;
   --perigo: var(--quente);
@@ -160,6 +174,13 @@
   --color-sucesso: var(--sucesso);
   --color-sucesso-soft: var(--sucesso-soft);
   --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-brand: var(--whatsapp-brand);
+  --color-on-whatsapp-brand: var(--on-whatsapp-brand);
+  --color-whatsapp-brand-deep: var(--whatsapp-brand-deep);
+  --color-instagram-from: var(--instagram-from);
+  --color-instagram-via: var(--instagram-via);
+  --color-instagram-to: var(--instagram-to);
+  --color-on-instagram: var(--on-instagram);
   --color-whatsapp-bubble: var(--whatsapp-bubble);
   --color-on-whatsapp-bubble: var(--on-whatsapp-bubble);
   --color-perigo: var(--perigo);
@@ -203,6 +224,7 @@
   --shadow-md: var(--shadow-overlay);
   --shadow-lg: var(--shadow-overlay);
   --shadow-float: var(--shadow-overlay);
+  --shadow-cta: 0 14px 28px -8px #0000004d;
 
   --ease-out: ease-out;
   --default-transition-duration: 120ms;
