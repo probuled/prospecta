@@ -151,7 +151,7 @@ src/
 ## 6. Rotas, dados e estado
 
 - Rotas com `createBrowserRouter` em `src/app/router.tsx`, caminhos em `src/app/routes.ts`. Página nova entra `lazy`, com
-  `errorElement`; ainda falta a página 404.
+  `errorElement`. Endereço desconhecido cai na rota `*` (página 404).
 - Filtros, paginação e busca ficam na URL (`useSearchParams`).
 - Estado persistido mora nos repositórios (`Observable` + `useSyncExternalStore`). Componente lê com os hooks de
   `presentation/hooks/use-store.ts` e escreve pelos repositórios ou casos de uso, nunca no `localStorage` direto.
