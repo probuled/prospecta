@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Button } from '@/components/prospecta/button'
-import { Presence } from '@/components/prospecta/presence'
 import { Rating } from '@/components/prospecta/rating'
 import { Score } from '@/components/prospecta/score'
 import { StatusMenu } from '@/components/prospecta/status'
 import type { LeadStatus } from '@/domain/lead'
 import { cn } from '@/lib/utils'
+import { InstagramButton } from './instagram-button'
 import type { LeadView } from './lead-view'
 import { WhatsAppButton } from './whatsapp-button'
 
@@ -25,6 +25,16 @@ function NoRating() {
   return <span className="text-xs text-ink-muted">sem nota</span>
 }
 
+function InstagramCell({ view }: { view: LeadView }) {
+  if (!view.instagram) return <span className="text-xs text-ink-muted">Não consta</span>
+  return (
+    <span className="inline-flex max-w-56 items-center gap-2 whitespace-nowrap">
+      <InstagramButton view={view} />
+      {view.instagram.handle && <span className="text-data hidden truncate lg:inline">@{view.instagram.handle}</span>}
+    </span>
+  )
+}
+
 /** No celular a tabela não cabe: cada lead vira uma linha com o essencial. */
 function MobileLeadList({
   views,
@@ -42,11 +52,11 @@ function MobileLeadList({
           <div className="min-w-0 flex-1 space-y-1">
             <p className="truncate font-medium">{view.lead.name}</p>
             <p className="text-caption truncate text-ink-muted">{view.lead.category}</p>
-            <div className="flex flex-wrap items-center gap-3 pt-1">
+            <div className="pt-1">
               <Score value={view.opportunity.score} reasons={view.opportunity.reasons} />
-              <Presence kind={view.presence} />
             </div>
           </div>
+          <InstagramButton view={view} />
           <WhatsAppButton view={view} onOpen={() => onContact(view)} />
         </li>
       ))}
@@ -68,9 +78,9 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
             <tr className="border-b border-line">
               <th className={headClass}>Negócio</th>
               <th className={headClass}>Oportunidade</th>
-              <th className={cn(headClass, 'hidden md:table-cell')}>Presença</th>
               <th className={cn(headClass, 'hidden lg:table-cell')}>Avaliação</th>
               <th className={headClass}>Contato</th>
+              <th className={cn(headClass, 'hidden md:table-cell')}>Instagram</th>
               <th className={cn(headClass, 'text-right')}>Status</th>
             </tr>
           </thead>
@@ -91,9 +101,6 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
                 <td className={cellClass}>
                   <Score value={view.opportunity.score} reasons={view.opportunity.reasons} />
                 </td>
-                <td className={cn(cellClass, 'hidden md:table-cell')}>
-                  <Presence kind={view.presence} />
-                </td>
                 <td className={cn(cellClass, 'hidden lg:table-cell')}>
                   {view.lead.rating ? <Rating value={view.lead.rating} count={view.lead.reviewCount} /> : <NoRating />}
                 </td>
@@ -102,6 +109,9 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
                     <WhatsAppButton view={view} onOpen={() => markContacted(view)} />
                     <span className="text-data hidden xl:inline">{view.lead.phone}</span>
                   </span>
+                </td>
+                <td className={cn(cellClass, 'hidden md:table-cell')}>
+                  <InstagramCell view={view} />
                 </td>
                 <td className={cn(cellClass, 'text-right')} onClick={(e) => e.stopPropagation()}>
                   <StatusMenu status={view.lead.status} onChange={(status) => onStatusChange(view.lead.id, status)} />
