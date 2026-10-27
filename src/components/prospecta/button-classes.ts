@@ -9,14 +9,16 @@ export interface ButtonStyle {
   readonly iconOnly?: boolean
 }
 
+/** Botão de marca (WhatsApp, Instagram): pílula em caixa alta, com degradê e sombra na cor da marca. */
+const BRAND_PILL =
+  'rounded-full border-0 font-extrabold tracking-wider uppercase shadow-cta transition-[translate,box-shadow,filter] duration-200 hover:-translate-y-0.5 hover:brightness-105'
+
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   secondary: 'border-line bg-surface text-ink hover:bg-surface-hover',
   primary: 'border-ouro bg-ouro text-on-ouro hover:brightness-95',
   ghost: 'border-transparent bg-transparent text-ink-muted hover:text-ink',
-  whatsapp:
-    'border-whatsapp-brand bg-whatsapp-brand font-bold text-on-whatsapp-brand shadow-md transition-all hover:-translate-y-px hover:shadow-lg hover:brightness-105',
-  instagram:
-    'border-transparent bg-linear-to-r bg-origin-border from-instagram-from via-instagram-via to-instagram-to font-bold text-on-instagram shadow-md transition-all hover:-translate-y-px hover:shadow-lg hover:brightness-105',
+  whatsapp: `${BRAND_PILL} bg-linear-to-br from-whatsapp-brand to-whatsapp-brand-deep text-on-whatsapp-brand shadow-whatsapp-brand/40`,
+  instagram: `${BRAND_PILL} bg-linear-to-r from-instagram-from via-instagram-via to-instagram-to text-on-instagram shadow-instagram-via/35`,
 }
 
 const SIZE_CLASSES: Record<ButtonSize, { readonly base: string; readonly icon: string }> = {

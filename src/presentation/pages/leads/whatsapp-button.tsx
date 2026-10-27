@@ -1,4 +1,5 @@
 import whatsappLogo from '@/assets/brand/whatsapp.webp'
+import { WhatsAppIcon } from '@/components/prospecta/brand-icons'
 import { ExternalButtonLink, type ButtonSize } from '@/components/prospecta/button'
 import { renderMessage } from '@/domain/message-template'
 import { buildWhatsAppUrl } from '@/domain/phone'
@@ -34,12 +35,16 @@ export function WhatsAppButton({ view, onOpen, message, label, size = 'sm', isPr
       }}
       variant={isProminent ? 'whatsapp' : 'secondary'}
       size={size}
-      className={cn(isProminent && 'h-14 px-6 text-lg')}
+      className={cn(isProminent && 'h-auto min-h-11 gap-3 px-[22px] py-4 text-sm sm:px-7 sm:py-[18px] sm:text-[15px] [&_svg]:size-6')}
       iconOnly={!label}
       aria-label={`Abrir WhatsApp de ${view.lead.name}`}
       title={isMobile ? 'Abrir WhatsApp' : 'Telefone fixo: pode não ter WhatsApp'}
     >
-      <img src={whatsappLogo} alt="" className={cn('size-4 shrink-0', isProminent && 'size-7', !isMobile && 'opacity-50 grayscale')} />
+      {isProminent ? (
+        <WhatsAppIcon />
+      ) : (
+        <img src={whatsappLogo} alt="" className={cn('size-4 shrink-0', !isMobile && 'opacity-50 grayscale')} />
+      )}
       {label}
     </ExternalButtonLink>
   )

@@ -21,7 +21,7 @@ export function LeadDetailDialog({ view, onClose, onUpdate }: LeadDetailDialogPr
     <Dialog open={view !== null} onOpenChange={(open) => !open && onClose()}>
       <DialogContent
         initialFocus={headerRef}
-        className="block max-h-[90dvh] gap-0 overflow-y-auto rounded-lg bg-surface p-0 ring-line sm:max-w-4xl"
+        className="block max-h-[90dvh] gap-0 overflow-y-auto rounded-lg bg-surface p-0 ring-line sm:max-w-5xl"
       >
         <div ref={headerRef} tabIndex={-1} className="outline-none">
           {view && <LeadDetailBody key={view.lead.id} view={view} onUpdate={onUpdate} />}

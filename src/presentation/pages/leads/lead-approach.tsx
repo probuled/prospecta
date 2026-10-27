@@ -35,9 +35,9 @@ export function LeadApproach({ view, onContact }: LeadApproachProps) {
         />
       )}
       <p className="rounded-md border border-line bg-surface-sunken p-3 leading-relaxed whitespace-pre-wrap">{message}</p>
-      <div className="flex flex-wrap justify-center gap-3 pt-1">
-        <WhatsAppButton view={view} message={message} size="lg" label="Enviar no WhatsApp" onOpen={onContact} isProminent />
-        <InstagramButton view={view} size="lg" label="Abrir Instagram" isProminent />
+      <div className="flex flex-wrap justify-center gap-4 pt-2 pb-1">
+        <WhatsAppButton view={view} message={message} size="lg" label="Chamar no WhatsApp" onOpen={onContact} isProminent />
+        <InstagramButton view={view} size="lg" label="Ver no Instagram" isProminent />
       </div>
     </Section>
   )

@@ -1,4 +1,5 @@
 import instagramLogo from '@/assets/brand/instagram.webp'
+import { InstagramIcon } from '@/components/prospecta/brand-icons'
 import { ExternalButtonLink, type ButtonSize } from '@/components/prospecta/button'
 import { cn } from '@/lib/utils'
 import type { LeadView } from './lead-view'
@@ -23,12 +24,12 @@ export function InstagramButton({ view, label, size = 'sm', isProminent = false 
       onClick={(event) => event.stopPropagation()}
       variant={isProminent ? 'instagram' : 'secondary'}
       size={size}
-      className={cn(isProminent && 'h-14 px-6 text-lg')}
+      className={cn(isProminent && 'h-auto min-h-11 gap-3 px-[22px] py-4 text-sm sm:px-7 sm:py-[18px] sm:text-[15px] [&_svg]:size-6')}
       iconOnly={!label}
       aria-label={`Abrir Instagram de ${view.lead.name}`}
       title={handle ? `Abrir @${handle} no Instagram` : 'Abrir no Instagram'}
     >
-      <img src={instagramLogo} alt="" className={cn('size-4 shrink-0', isProminent && 'size-7 rounded-lg bg-on-instagram p-0.5')} />
+      {isProminent ? <InstagramIcon /> : <img src={instagramLogo} alt="" className="size-4 shrink-0" />}
       {label}
     </ExternalButtonLink>
   )
