@@ -7,6 +7,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+## [0.1.0] - 2026-10-26
+
 ### Adicionado
 
 - Página 404 ("Essa página saiu do funil") para endereços que não existem, com atalhos para a busca e para os
@@ -43,3 +45,6 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 ### Corrigido
 
 - Emojis como 👉 chegavam no WhatsApp como "�": o link de contato passa a usar `api.whatsapp.com`.
+
+[Não lançado]: https://github.com/probuled/prospecta/compare/v0.1.0...develop
+[0.1.0]: https://github.com/probuled/prospecta/releases/tag/v0.1.0
