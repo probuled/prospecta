@@ -34,15 +34,12 @@ export function WhatsAppButton({ view, onOpen, message, label, size = 'sm', isPr
       }}
       variant={isProminent ? 'whatsapp' : 'secondary'}
       size={size}
+      className={cn(isProminent && 'h-12 px-6 text-base')}
       iconOnly={!label}
       aria-label={`Abrir WhatsApp de ${view.lead.name}`}
       title={isMobile ? 'Abrir WhatsApp' : 'Telefone fixo: pode não ter WhatsApp'}
     >
-      <img
-        src={whatsappLogo}
-        alt=""
-        className={cn('size-4 shrink-0', isProminent && 'size-5 brightness-0 invert dark:invert-0', !isMobile && 'opacity-50 grayscale')}
-      />
+      <img src={whatsappLogo} alt="" className={cn('size-4 shrink-0', isProminent && 'size-7', !isMobile && 'opacity-50 grayscale')} />
       {label}
     </ExternalButtonLink>
   )

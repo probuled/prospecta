@@ -21,8 +21,8 @@ export function Section({
   readonly isCentered?: boolean
 }) {
   return (
-    <section className={cn('space-y-4 px-5 py-5', isCentered && 'text-center', className)}>
-      <h3 className="text-lg leading-6 font-bold tracking-tight">{title}</h3>
+    <section className={cn('space-y-4 px-5 py-5', className)}>
+      <h3 className={cn('text-lg leading-6 font-bold tracking-tight', isCentered && 'text-center')}>{title}</h3>
       {children}
     </section>
   )
@@ -30,9 +30,9 @@ export function Section({
 
 function InfoRow({ icon: Icon, children }: { readonly icon: LucideIcon; readonly children: ReactNode }) {
   return (
-    <div className="flex items-start justify-center gap-2">
+    <div className="flex items-start gap-3">
       <Icon className="mt-0.5 size-4 shrink-0 text-ink-muted" />
-      <div className="min-w-0 text-left break-words">{children}</div>
+      <div className="min-w-0 break-words">{children}</div>
     </div>
   )
 }
@@ -53,7 +53,7 @@ export function FollowUpSection({ view, onUpdate }: { readonly view: LeadView; r
 
   return (
     <Section title="Acompanhamento" isCentered>
-      <div className="flex flex-col items-center gap-1.5">
+      <div className="flex items-center justify-between">
         <span className="text-label">Status</span>
         <StatusMenu status={lead.status} onChange={(status) => onUpdate({ status })} className="border-line-strong bg-surface" />
       </div>
@@ -91,7 +91,7 @@ export function FollowUpSection({ view, onUpdate }: { readonly view: LeadView; r
           rows={3}
           defaultValue={lead.notes}
           placeholder="Ex.: falei com a recepcionista, retornar segunda"
-          className={cn(fieldClasses, 'h-auto resize-y py-2 text-left')}
+          className={cn(fieldClasses, 'h-auto resize-y py-2')}
           onBlur={(e) => e.target.value !== lead.notes && onUpdate({ notes: e.target.value })}
         />
       </Field>
@@ -131,7 +131,7 @@ export function InfoSection({ view }: { readonly view: LeadView }) {
         {lead.address && <InfoRow icon={MapPin}>{lead.address}</InfoRow>}
       </div>
       {lead.mapsUrl && (
-        <ExternalButtonLink variant="ghost" size="sm" href={lead.mapsUrl}>
+        <ExternalButtonLink variant="ghost" size="sm" href={lead.mapsUrl} className="-ml-2">
           <ExternalLink /> Abrir no Google Maps
         </ExternalButtonLink>
       )}

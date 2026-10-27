@@ -13,7 +13,8 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   secondary: 'border-line bg-surface text-ink hover:bg-surface-hover',
   primary: 'border-ouro bg-ouro text-on-ouro hover:brightness-95',
   ghost: 'border-transparent bg-transparent text-ink-muted hover:text-ink',
-  whatsapp: 'border-whatsapp bg-whatsapp font-semibold text-on-whatsapp shadow-sm hover:brightness-95',
+  whatsapp:
+    'border-whatsapp-brand bg-whatsapp-brand font-bold text-on-whatsapp-brand shadow-md transition-all hover:-translate-y-px hover:shadow-lg hover:brightness-105',
 }
 
 const SIZE_CLASSES: Record<ButtonSize, { readonly base: string; readonly icon: string }> = {
