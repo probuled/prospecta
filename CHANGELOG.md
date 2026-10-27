@@ -23,6 +23,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - O seletor Lista/Pipeline vai para a linha dos filtros, com o título "Modo de visualização" e a opção ativa em
   destaque.
 - A oportunidade do lead passa de Quente / Morno / Frio para Alta / Média / Baixa.
+- As colunas da lista de leads ficaram centralizadas.
 - O detalhe do lead abre num modal, com a mensagem de um lado e o acompanhamento do outro.
 - No modal do lead, os botões "Chamar no WhatsApp" e "Ver no Instagram" viraram pílulas centralizadas, com o degradê
   e o ícone de cada marca, e o nome do negócio e os títulos ficaram maiores.

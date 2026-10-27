@@ -18,8 +18,8 @@ interface LeadsTableProps {
   readonly onStatusChange: (leadId: string, status: LeadStatus) => void
 }
 
-const headClass = 'bg-surface-sunken px-4 py-2.5 text-left text-xs leading-4 font-medium whitespace-nowrap text-ink-muted'
-const cellClass = 'h-[var(--row-height)] px-4 align-middle'
+const headClass = 'bg-surface-sunken px-4 py-2.5 text-center text-xs leading-4 font-medium whitespace-nowrap text-ink-muted'
+const cellClass = 'h-[var(--row-height)] px-4 text-center align-middle'
 
 function NoRating() {
   return <span className="text-xs text-ink-muted">sem nota</span>
@@ -81,7 +81,7 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
               <th className={cn(headClass, 'hidden lg:table-cell')}>Avaliação</th>
               <th className={headClass}>Contato</th>
               <th className={cn(headClass, 'hidden md:table-cell')}>Instagram</th>
-              <th className={cn(headClass, 'text-right')}>Status</th>
+              <th className={headClass}>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -113,7 +113,7 @@ export function LeadsTable({ views, selectedId, onSelect, onStatusChange }: Lead
                 <td className={cn(cellClass, 'hidden md:table-cell')}>
                   <InstagramCell view={view} />
                 </td>
-                <td className={cn(cellClass, 'text-right')} onClick={(e) => e.stopPropagation()}>
+                <td className={cellClass} onClick={(e) => e.stopPropagation()}>
                   <StatusMenu status={view.lead.status} onChange={(status) => onStatusChange(view.lead.id, status)} />
                 </td>
               </tr>
