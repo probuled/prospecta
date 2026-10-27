@@ -168,9 +168,21 @@ Antes de abrir um PR: `npm run lint && npm run typecheck && npm test && npm run 
 O fluxo de trabalho (Git Flow, Conventional Commits, PRs, versão e travas automáticas) está no [`CLAUDE.md`](CLAUDE.md).
 As mudanças de cada versão ficam no [`CHANGELOG.md`](CHANGELOG.md).
 
+## Aviso
+
+O Prospecta é um projeto de estudo e de uso pessoal. Ele não tem vínculo com o Google, e o código vem
+"como está", sem garantia (veja a [licença](LICENSE)). Quem roda o projeto é o único responsável pelo uso
+que faz dele: respeitar os termos de uso do Google, a LGPD e as regras do WhatsApp cabe a quem usa, não
+aos autores.
+
 ## Cuidados
 
 - Raspar o Google Maps vai contra os termos de uso do Google. Use com moderação: uma busca por vez e
   profundidade baixa. Se exagerar, o Google bloqueia seu IP temporariamente (sua conta Google não é afetada).
 - Telefones e emails são dados pessoais (LGPD). Faça abordagens individuais e respeite quem pedir para
   não ser contatado. Disparo em massa pode banir seu número no WhatsApp.
+
+## Licença
+
+[MIT](LICENSE) © 2026 Luan Costa. O motor [gosom/google-maps-scraper](https://github.com/gosom/google-maps-scraper) é um
+projeto à parte, com licença própria (também MIT).
