@@ -7,6 +7,12 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+## [0.1.2] - 2026-10-28
+
+### Alterado
+
+- README abre com um print da tela de Leads, nos temas claro e escuro.
+
 ## [0.1.1] - 2026-10-27
 
 ### Adicionado
@@ -57,6 +63,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 - Emojis como 👉 chegavam no WhatsApp como "�": o link de contato passa a usar `api.whatsapp.com`.
 
-[Não lançado]: https://github.com/probuled/prospecta/compare/v0.1.1...develop
+[Não lançado]: https://github.com/probuled/prospecta/compare/v0.1.2...develop
+[0.1.2]: https://github.com/probuled/prospecta/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/probuled/prospecta/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/probuled/prospecta/releases/tag/v0.1.0
