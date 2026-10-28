@@ -3,6 +3,13 @@
 **Ferramenta open source para encontrar clientes no Google Maps.** Você diz o nicho e a cidade ("barbearias em Campinas"), e o
 Prospecta traz os negócios da região já ordenados por chance de virar cliente, com o botão de WhatsApp pronto para a abordagem.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/leads-dark.png">
+  <img src="docs/images/leads-light.png" alt="Tela de Leads do Prospecta: barbearias de Campinas ordenadas pela pontuação de oportunidade, com avaliação, botão de WhatsApp e status no funil">
+</picture>
+
+<sub>Tela de Leads com dados de exemplo. O print acompanha o tema do GitHub (claro ou escuro).</sub>
+
 Foi feito para quem vende **landing pages e sites** para negócios locais: quem **não tem site** (ou só tem Instagram/Linktree),
 é bem avaliado e tem celular para WhatsApp aparece primeiro. Serve também para qualquer serviço vendido a pequenos negócios
 (tráfego pago, social media, sistemas, fotografia…).
