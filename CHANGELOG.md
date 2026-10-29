@@ -11,6 +11,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 - Ao clicar num lead no mapa, o cartão dele abre em cima do próprio ponto, em vez de na coluna ao lado. No celular, o
   mapa se desloca para o cartão caber inteiro.
+- Mapa maior: os filtros de busca e status saem de cima do mapa e vão para a coluna ao lado, abaixo da legenda, que
+  ficou mais estreita.
 
 ## [0.2.2] - 2026-10-29
 

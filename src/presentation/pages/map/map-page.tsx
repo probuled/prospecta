@@ -10,7 +10,7 @@ import { useSharedEngineStatus } from '@/presentation/layout/engine-status-conte
 import { LeadMap } from './lead-map'
 import { isLocated } from './lead-map-layers'
 import { LocateLeadsButton } from './locate-leads-button'
-import { MapFiltersBar } from './map-filters-bar'
+import { MapFiltersPanel } from './map-filters-panel'
 import { MapLegend } from './map-legend'
 import { SelectedLeadCard } from './selected-lead-card'
 import { ALL, useMapFilters } from './use-map-filters'
@@ -79,50 +79,48 @@ export function MapPage() {
         }
         actions={unlocatedCount > 0 && <LocateLeadsButton unlocatedCount={unlocatedCount} />}
       />
-      <div className="space-y-4">
-        <MapFiltersBar
-          filters={filters}
-          searches={searches}
-          shown={visible.length}
-          total={located.length}
-          onStatusChange={setStatus}
-          onSearchChange={setSearchId}
-        />
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
-          <div className="h-[60svh] lg:h-[calc(100svh-17rem)]">
-            <LeadMap
-              key={mapAttempt}
-              leads={visible}
-              selectedId={selected?.id ?? null}
-              fitKey={`${filters.status}|${filters.searchId}`}
-              onSelect={select}
-              popup={
-                selected && {
-                  location: selected.location,
-                  content: (
-                    <SelectedLeadCard
-                      lead={selected}
-                      onStatusChange={(status) => leadRepository.update(selected.id, { status })}
-                      onClose={() => select(null)}
-                    />
-                  ),
-                }
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_17rem]">
+        <div className="h-[60svh] lg:h-[calc(100svh-12rem)]">
+          <LeadMap
+            key={mapAttempt}
+            leads={visible}
+            selectedId={selected?.id ?? null}
+            fitKey={`${filters.status}|${filters.searchId}`}
+            onSelect={select}
+            popup={
+              selected && {
+                location: selected.location,
+                content: (
+                  <SelectedLeadCard
+                    lead={selected}
+                    onStatusChange={(status) => leadRepository.update(selected.id, { status })}
+                    onClose={() => select(null)}
+                  />
+                ),
               }
-              onRetry={() => setMapAttempt((attempt) => attempt + 1)}
-            />
-          </div>
-          <aside className="space-y-4">
-            {visible.length === 0 && (
-              <div role="status" className="space-y-3 rounded-lg border border-dashed border-line-strong p-5">
-                <p className="font-medium">Nenhum lead com esses filtros.</p>
-                <Button size="sm" onClick={reset}>
-                  Limpar filtros
-                </Button>
-              </div>
-            )}
-            <MapLegend />
-          </aside>
+            }
+            onRetry={() => setMapAttempt((attempt) => attempt + 1)}
+          />
         </div>
+        <aside className="space-y-4">
+          <MapLegend />
+          <MapFiltersPanel
+            filters={filters}
+            searches={searches}
+            shown={visible.length}
+            total={located.length}
+            onStatusChange={setStatus}
+            onSearchChange={setSearchId}
+          />
+          {visible.length === 0 && (
+            <div role="status" className="space-y-3 rounded-lg border border-dashed border-line-strong p-5">
+              <p className="font-medium">Nenhum lead com esses filtros.</p>
+              <Button size="sm" onClick={reset}>
+                Limpar filtros
+              </Button>
+            </div>
+          )}
+        </aside>
       </div>
     </>
   )
