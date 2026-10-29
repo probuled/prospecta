@@ -12,8 +12,11 @@ import {
   type LocatedLead,
 } from './lead-map-layers'
 import { fitToLeads, MAP_LOCALE, supportsWebGL } from './map-setup'
+import { readMapPalette, recolorStyle } from './base-map-style'
 
 export type LeadMapStatus = 'loading' | 'ready' | 'error'
+
+const LOAD_TIMEOUT_MS = 20_000
 
 interface UseLeadMapOptions {
   readonly container: RefObject<HTMLDivElement | null>
@@ -46,7 +49,6 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
     try {
       map = new MapLibreMap({
         container: container.current,
-        style: baseMap.styleUrl(appliedTheme.current),
         center: [-47.9, -15.8],
         zoom: 1.6,
         attributionControl: { compact: true },
@@ -58,7 +60,11 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
       return
     }
     mapRef.current = map
+    applyBaseStyle(map, baseMap.styleUrl)
     let hasStyle = false
+    // Falhas depois do estilo (worker que não sobe, tiles que não chegam) não emitem erro que dê para separar de um tile
+    // perdido: sem o `load` a tempo, o mapa desiste em vez de ficar carregando para sempre.
+    const loadTimeout = setTimeout(() => setStatus('error'), LOAD_TIMEOUT_MS)
 
     map.on('style.load', () => {
       hasStyle = true
@@ -66,12 +72,15 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
       addLeadLayers(map, toFeatureCollection(latest.current.leads), latest.current.selectedId, baseMap.labelFont)
     })
     map.once('load', () => {
+      clearTimeout(loadTimeout)
       setStatus('ready')
       // Começa no globo e desce até os leads.
       fitToLeads(map, latest.current.leads, 2500)
     })
     map.on('error', () => {
-      if (!hasStyle) setStatus('error')
+      if (hasStyle) return
+      clearTimeout(loadTimeout)
+      setStatus('error')
     })
 
     map.on('click', CLUSTER_LAYER, async (event) => {
@@ -92,6 +101,7 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
     }
 
     return () => {
+      clearTimeout(loadTimeout)
       map.remove()
       mapRef.current = null
     }
@@ -101,7 +111,7 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
   useEffect(() => {
     if (theme === appliedTheme.current) return
     appliedTheme.current = theme
-    mapRef.current?.setStyle(baseMap.styleUrl(theme), { diff: false })
+    if (mapRef.current) applyBaseStyle(mapRef.current, baseMap.styleUrl)
   }, [theme, baseMap])
 
   useEffect(() => {
@@ -133,4 +143,9 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
     zoomOut: () => mapRef.current?.zoomOut(),
     toggleGlobe,
   }
+}
+
+/** Carrega o estilo de fundo já com as cores do tema atual. */
+function applyBaseStyle(map: MapLibreMap, styleUrl: string) {
+  map.setStyle(styleUrl, { diff: false, transformStyle: (_previous, next) => recolorStyle(next, readMapPalette()) })
 }

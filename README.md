@@ -289,7 +289,7 @@ Navegador (React)
 4. O CSV é limpo (incluindo a latitude e a longitude de cada negócio), cada lead recebe a pontuação
    (`src/domain/opportunity.ts`) e tudo é salvo no navegador.
 5. A tela Mapa desenha os leads com o [MapLibre GL JS](https://maplibre.org/) sobre os tiles do
-   [OpenFreeMap](https://openfreemap.org/).
+   [OpenFreeMap](https://openfreemap.org/), recoloridos com os tokens do tema.
 
 O proxy `/engine` existe porque o motor não envia cabeçalhos CORS.
 
