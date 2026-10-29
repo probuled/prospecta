@@ -7,6 +7,11 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+### Alterado
+
+- Mapa de fundo com as cores do Prospecta: chão, água, parques, ruas e nomes seguem a paleta do app, nos temas claro e
+  escuro.
+
 ### Corrigido
 
 - Mapa que ficava em "Carregando mapa..." na versão em Docker: o worker do MapLibre saía como `.mjs`, que o nginx
