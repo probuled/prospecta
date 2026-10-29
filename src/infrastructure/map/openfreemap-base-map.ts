@@ -1,15 +1,10 @@
-import type { BaseMap, MapTheme } from '@/application/ports/base-map'
+import type { BaseMap } from '@/application/ports/base-map'
 
-const STYLES: Record<MapTheme, string> = {
-  light: 'positron',
-  dark: 'dark',
-}
-
-/** Tiles do OpenFreeMap (dados do OpenStreetMap): gratuitos, sem chave e sem limite de uso. */
+/**
+ * Tiles do OpenFreeMap (dados do OpenStreetMap): gratuitos, sem chave e sem limite de uso.
+ * O Positron serve aos dois temas: é o estilo mais neutro, e o app o recolore com os tokens do tema.
+ */
 export class OpenFreeMapBaseMap implements BaseMap {
+  readonly styleUrl = 'https://tiles.openfreemap.org/styles/positron'
   readonly labelFont = 'Noto Sans Regular'
-
-  styleUrl(theme: MapTheme): string {
-    return `https://tiles.openfreemap.org/styles/${STYLES[theme]}`
-  }
 }

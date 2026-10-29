@@ -67,6 +67,19 @@
   --focus: #8a5507;
   --shadow-overlay: 0 1px 2px #1c1b180f, 0 8px 24px -4px #1c1b1824;
   --focus-ring: 0 0 0 2px #f6f5f1, 0 0 0 4px #8a5507;
+
+  /* Mapa de fundo: o estilo do OpenFreeMap é recolorido com estes tokens (pages/map/base-map-style.ts). */
+  --map-land: var(--bg);
+  --map-water: var(--frio-soft);
+  --map-park: var(--sucesso-soft);
+  --map-building: var(--surface-sunken);
+  --map-road: var(--surface);
+  --map-road-casing: var(--line);
+  --map-boundary: var(--line-strong);
+  --map-label: var(--ink-muted);
+  --map-label-strong: var(--ink);
+  --map-label-water: var(--frio);
+  --map-label-halo: var(--bg);
   color-scheme: light;
 }
 
@@ -108,6 +121,18 @@
   --focus: #e8b45c;
   --shadow-overlay: 0 1px 2px #00000066, 0 12px 28px -4px #000000a6;
   --focus-ring: 0 0 0 2px #1f1e1b, 0 0 0 4px #e8b45c;
+
+  --map-land: var(--bg);
+  --map-water: var(--frio-soft);
+  --map-park: var(--sucesso-soft);
+  --map-building: var(--surface);
+  --map-road: var(--line);
+  --map-road-casing: var(--surface);
+  --map-boundary: var(--line-strong);
+  --map-label: var(--ink-muted);
+  --map-label-strong: var(--ink);
+  --map-label-water: var(--frio);
+  --map-label-halo: var(--bg);
   color-scheme: dark;
 }
 
