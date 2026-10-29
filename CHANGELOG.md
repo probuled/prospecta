@@ -15,6 +15,11 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - A posição de cada negócio passa a ser salva junto com o lead.
 - Link direto para o detalhe de um lead na tela de Leads (`/leads?lead=<id>`).
 
+### Alterado
+
+- README com prints de cada etapa do uso: mensagens, detalhe do lead, pipeline e mapa (globo e ruas), nos temas claro e
+  escuro.
+
 ## [0.1.2] - 2026-10-28
 
 ### Alterado
