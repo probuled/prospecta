@@ -1,27 +1,27 @@
 <!-- Título: tipo(escopo): descrição em minúscula -->
 
-## 📌 Contexto
+## Contexto
 
 <!-- Por que essa mudança? Tarefa: APP-XXX / #XX -->
 
-## 🛠️ O que mudou
+## O que mudou
 
 -
 
-## 🧪 Como validar
+## Como validar
 
 1.
 
-## 📸 Prints (claro e escuro)
+## Prints (claro e escuro)
 
-## ⚠️ Impacto
+## Impacto
 
 - [ ] Breaking change
 - [ ] Nova variável de ambiente (`.env.example` + README)
 - [ ] Muda o formato dos dados salvos no `localStorage` (precisa de migração)
 - Versão: `PATCH` / `MINOR` / `MAJOR`
 
-## ✅ Checklist
+## Checklist
 
 - [ ] Commits em Conventional Commits
 - [ ] Formulários novos com React Hook Form + Zod
