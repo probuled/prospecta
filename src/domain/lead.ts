@@ -1,3 +1,5 @@
+import type { Coordinates } from './geo'
+
 export const LEAD_STATUSES = ['novo', 'contatado', 'respondeu', 'negociando', 'fechado', 'perdido'] as const
 
 export type LeadStatus = (typeof LEAD_STATUSES)[number]
@@ -30,11 +32,13 @@ export interface Lead {
   readonly dealValue?: number | null
   /** Data/hora ISO do próximo contato combinado. */
   readonly followUpAt?: string | null
+  /** Posição do negócio. Opcional: leads salvos antes do mapa não têm; `null` quando não foi possível localizar. */
+  readonly location?: Coordinates | null
   readonly createdAt: string
   readonly updatedAt: string
 }
 
-export type LeadPatch = Partial<Pick<Lead, 'status' | 'notes' | 'dealValue' | 'followUpAt'>>
+export type LeadPatch = Partial<Pick<Lead, 'status' | 'notes' | 'dealValue' | 'followUpAt' | 'location'>>
 
 /**
  * Junta um lead recém-raspado com o que já existe salvo, preservando o trabalho
@@ -48,6 +52,8 @@ export function mergeLead(existing: Lead, incoming: Lead): Lead {
     notes: existing.notes,
     dealValue: existing.dealValue,
     followUpAt: existing.followUpAt,
+    // Uma raspagem sem coordenadas não apaga a posição já encontrada.
+    location: incoming.location ?? existing.location,
     createdAt: existing.createdAt,
   }
 }

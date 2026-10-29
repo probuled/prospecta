@@ -7,6 +7,14 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+### Adicionado
+
+- Tela **Mapa**: mostra onde fica cada lead, num globo que vira mapa de ruas ao aproximar. Os pontos têm a cor da etapa
+  do funil, ficam agrupados quando estão perto e podem ser filtrados por busca e status.
+- Botão **Localizar leads** para dar posição aos leads salvos antes do mapa, primeiro pelo motor e depois pelo endereço.
+- A posição de cada negócio passa a ser salva junto com o lead.
+- Link direto para o detalhe de um lead na tela de Leads (`/leads?lead=<id>`).
+
 ## [0.1.2] - 2026-10-28
 
 ### Alterado

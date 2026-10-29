@@ -2,7 +2,7 @@ import type { Coordinates } from '@/domain/geo'
 
 export interface Geocoder {
   /** Lança `LocationNotFoundError` quando o lugar não existe. */
-  geocode(place: string): Promise<Coordinates>
+  geocode(place: string, signal?: AbortSignal): Promise<Coordinates>
 }
 
 export class LocationNotFoundError extends Error {
