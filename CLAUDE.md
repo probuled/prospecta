@@ -86,6 +86,8 @@ seção 6.
 12. Código e identificadores em **inglês**. Textos de interface, comentários, commits, PRs e documentação em **português**.
 13. Mudou o formato de algo salvo no `localStorage`? Escrever a migração do formato antigo (veja `migrateSettings` em
     `src/domain/settings.ts`), com teste. Não há servidor para corrigir os dados depois.
+14. **Nunca usar emoji** em commits, títulos e descrições de PR, releases, tags, `CHANGELOG.md`, documentação e comentários
+    de review. Só texto. Isso vale também para a linha de assinatura do PR: escrever `Gerado com Claude Code`, sem o ícone.
 
 ## 3. Comandos
 
@@ -269,6 +271,7 @@ ou `develop`.
 ## 12. Pull Requests
 
 - O título segue Conventional Commits, porque vira a mensagem do commit no squash.
+- Título, descrição e notas de release só com texto, sem emoji (regra 14).
 - Template preenchido (`.github/pull_request_template.md`), CI verde, PR de até ~400 linhas alteradas.
 - `feature/*` e `fix/*` entram em `develop` por **Squash and merge**. `release/*` e `hotfix/*` entram em `main` por
   **Merge commit**. Depois disso, a `main` volta para a `develop` por um PR `main → develop`, também por **Merge commit**
@@ -336,5 +339,5 @@ Hotfix é sempre PATCH: `hotfix/APP-60-...` a partir de `main`, com PR para `mai
 - Clean Code.
 - Documentação.
 
-Formato do feedback: 🔴 **bloqueante** · 🟡 **sugestão** · 🟢 **nit** · ❓ **pergunta** · 👏 **elogio**. A resposta termina com o
-veredito e o impacto na versão.
+Formato do feedback, só com texto (sem emoji): **[bloqueante]** · **[sugestão]** · **[nit]** · **[pergunta]** · **[elogio]**. A
+resposta termina com o veredito e o impacto na versão.
