@@ -35,6 +35,7 @@ Foi feito para quem vende **landing pages e sites** para negócios locais: quem 
 | ------------- | ---------------------------------------------------------------------------------------- |
 | **Buscar**    | Escolhe nicho e cidade, dispara a busca e acompanha o andamento                          |
 | **Leads**     | Vê os negócios encontrados em tabela ou no funil, filtra, abre os detalhes e exporta CSV |
+| **Mapa**      | Vê onde fica cada negócio, num globo que vira mapa de ruas ao aproximar                  |
 | **Histórico** | Revê as buscas feitas, abre os leads de cada uma ou apaga a busca                        |
 | **Mensagens** | Escreve até 10 modelos de mensagem de abordagem, usados no botão de WhatsApp             |
 
@@ -44,6 +45,7 @@ Recursos principais:
 - **Funil de vendas** com as etapas Novo → Contatado → Respondeu → Negociando → Fechado / Perdido. É só arrastar o card.
 - **Acompanhamento por lead:** valor da proposta, data do próximo contato (com aviso de atrasado ou hoje) e anotações.
 - **WhatsApp em um clique:** abre a conversa com a mensagem já preenchida com o nome, a nota e a cidade do negócio.
+- **Mapa dos leads** com os pontos coloridos pela etapa do funil e agrupados quando estão perto.
 - **Exportação em CSV** para planilha, que também serve de backup.
 - **Tema claro e escuro**, e funciona no celular.
 
@@ -182,6 +184,13 @@ Abra um lead e clique no botão de **WhatsApp**: a conversa abre com a mensagem 
 mova o lead pelo funil e registre o **valor da proposta**, o **próximo contato** e suas **anotações**. O funil mostra o valor
 total de cada etapa.
 
+### Veja os leads no mapa
+
+A tela **Mapa** mostra cada negócio onde ele fica, colorido pela etapa do funil. De longe é um globo; ao aproximar, vira mapa
+de ruas. Clique num ponto para ver o lead e abrir os detalhes. Os leads salvos antes do mapa não guardaram a posição: use o
+botão **Localizar leads**, que relê a busca no motor e, se ela não estiver mais lá, procura pelo endereço (mais lento e menos
+preciso).
+
 ### Onde ficam os dados
 
 Leads, buscas e mensagens ficam **só no navegador** em que você usou o app (`localStorage`). Por isso:
@@ -201,7 +210,9 @@ Navegador (React)
   ├─ /engine ──► proxy (nginx no Docker, Vite em dev)
   │                └─► gmaps-scraper :8080 — gosom/google-maps-scraper
   │
-  └─ nominatim.openstreetmap.org — transforma a cidade em coordenadas
+  ├─ nominatim.openstreetmap.org — transforma a cidade em coordenadas
+  │
+  └─ tiles.openfreemap.org — mapa de fundo da tela Mapa (OpenStreetMap, sem chave)
 ```
 
 1. A cidade vira coordenadas pelo OpenStreetMap (Nominatim).
@@ -210,7 +221,10 @@ Navegador (React)
    roda no container `gmaps-scraper`. Ele abre o Google Maps num navegador invisível, percorre os resultados e devolve um CSV.
    Não é uma IA e não é código deste projeto: é uma imagem Docker pronta, configurada como no
    [google-maps-scraper-kit](https://github.com/Mahanaicoach/google-maps-scraper-kit).
-4. O CSV é limpo, cada lead recebe a pontuação (`src/domain/opportunity.ts`) e tudo é salvo no navegador.
+4. O CSV é limpo (incluindo a latitude e a longitude de cada negócio), cada lead recebe a pontuação
+   (`src/domain/opportunity.ts`) e tudo é salvo no navegador.
+5. A tela Mapa desenha os leads com o [MapLibre GL JS](https://maplibre.org/) sobre os tiles do
+   [OpenFreeMap](https://openfreemap.org/).
 
 O proxy `/engine` existe porque o motor não envia cabeçalhos CORS.
 
@@ -256,8 +270,8 @@ Antes de abrir um PR: `npm run lint && npm run typecheck && npm test && npm run 
 ```
 src/
   domain/                regras de negócio puras (lead, funil, pontuação, telefone, presença online)
-  application/           portas (interfaces) e casos de uso: StartSearch, SyncSearch, DeleteSearch
-  infrastructure/        adaptadores: API do motor, Nominatim, localStorage, exportação CSV
+  application/           portas (interfaces) e casos de uso: StartSearch, SyncSearch, DeleteSearch, LocateLeads
+  infrastructure/        adaptadores: API do motor, Nominatim, OpenFreeMap, localStorage, exportação CSV
   app/                   composition root (container.ts), providers e rotas
   presentation/          páginas, layout e hooks React
   components/prospecta/  componentes do design system (Button, Select, Score, Status, …)
