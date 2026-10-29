@@ -1,10 +1,12 @@
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { Earth, LoaderCircle, Map as MapIcon, Minus, Plus, TriangleAlert } from 'lucide-react'
-import { useRef } from 'react'
+import { useRef, type ReactNode } from 'react'
 import { useDependencies } from '@/app/dependencies-context'
 import { Button } from '@/components/prospecta/button'
 import { useTheme } from '@/presentation/theme/theme-context'
+import type { Coordinates } from '@/domain/geo'
 import type { LocatedLead } from './lead-map-layers'
+import { LeadMapPopup } from './lead-map-popup'
 import { useLeadMap } from './use-lead-map'
 
 interface LeadMapProps {
@@ -12,15 +14,17 @@ interface LeadMapProps {
   readonly selectedId: string | null
   readonly fitKey: string
   readonly onSelect: (leadId: string | null) => void
+  /** Conteúdo aberto em cima de um ponto do mapa (o lead selecionado). */
+  readonly popup: { readonly location: Coordinates; readonly content: ReactNode } | null
   /** Remonta o mapa do zero (depois de um erro). */
   readonly onRetry: () => void
 }
 
-export function LeadMap({ leads, selectedId, fitKey, onSelect, onRetry }: LeadMapProps) {
+export function LeadMap({ leads, selectedId, fitKey, onSelect, popup, onRetry }: LeadMapProps) {
   const { baseMap } = useDependencies()
   const { resolvedTheme } = useTheme()
   const container = useRef<HTMLDivElement>(null)
-  const { status, isGlobe, zoomIn, zoomOut, toggleGlobe } = useLeadMap({
+  const { status, map, isGlobe, zoomIn, zoomOut, toggleGlobe } = useLeadMap({
     container,
     baseMap,
     theme: resolvedTheme,
@@ -34,6 +38,11 @@ export function LeadMap({ leads, selectedId, fitKey, onSelect, onRetry }: LeadMa
     <div className="relative h-full min-h-80 overflow-hidden rounded-lg border border-line bg-surface-sunken">
       {/* O CSS do MapLibre fixa `position: relative` no contêiner; por isso `size-full` e não `absolute`. */}
       <div ref={container} className="size-full" />
+      {map && popup && (
+        <LeadMapPopup map={map} location={popup.location}>
+          {popup.content}
+        </LeadMapPopup>
+      )}
       {status === 'ready' && (
         <div className="absolute top-3 right-3 flex flex-col gap-2">
           <div className="flex flex-col overflow-hidden rounded-md shadow-[var(--shadow-overlay)]">
