@@ -7,6 +7,11 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+### Alterado
+
+- README abre com a seção "Veja como é": prints do mapa (globo e ruas), do pipeline, do detalhe do lead e das mensagens,
+  logo depois da apresentação.
+
 ## [0.2.0] - 2026-10-29
 
 ### Adicionado
