@@ -21,6 +21,15 @@ export default defineConfig(({ mode }) => {
     // Versão do package.json, a mesma da tag vX.Y.Z e da imagem Docker.
     define: { __APP_VERSION__: JSON.stringify(pkg.version) },
     resolve: { alias: { '@': path.resolve(import.meta.dirname, './src') } },
+    build: {
+      rolldownOptions: {
+        output: {
+          // O worker do MapLibre é .mjs, extensão que o mime.types do nginx não conhece: sem tipo JavaScript, o
+          // navegador recusa o worker. Sair como .js resolve, e o nome novo também descarta a cópia ruim já em cache.
+          assetFileNames: ({ names }) => (names[0]?.endsWith('.mjs') ? 'assets/[name]-[hash].js' : 'assets/[name]-[hash][extname]'),
+        },
+      },
+    },
     server: { proxy: engineProxy },
     preview: { proxy: engineProxy },
   }
