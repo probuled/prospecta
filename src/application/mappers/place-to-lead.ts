@@ -19,6 +19,7 @@ export function placeToLead(place: ScrapedPlace, search: Search, now: string): L
     rating: place.rating,
     reviewCount: place.reviewCount,
     mapsUrl: place.mapsUrl,
+    location: place.location,
     searchIds: [search.id],
     status: 'novo',
     notes: '',
