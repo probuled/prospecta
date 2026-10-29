@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { parsePlacesCsv } from '../place-csv-parser'
 
-const CSV = `input_id,link,title,category,address,website,phone,review_count,review_rating,place_id,emails
-1,https://maps.google.com/?cid=1,"Clínica Sorriso, Centro",Dentista,"Rua A, 1",,(19) 99876-5432,212,4.8,ChIJ1,"contato@sorriso.com, contato@sorriso.com"
-2,https://maps.google.com/?cid=2,Pizzaria Bella,Pizzaria,Rua B,https://instagram.com/bella,,0,,ChIJ2,
-3,,,,,,,,,,
+const CSV = `input_id,link,title,category,address,website,phone,review_count,review_rating,latitude,longitude,place_id,emails
+1,https://maps.google.com/?cid=1,"Clínica Sorriso, Centro",Dentista,"Rua A, 1",,(19) 99876-5432,212,4.8,-22.9056951,-47.0583412,ChIJ1,"contato@sorriso.com, contato@sorriso.com"
+2,https://maps.google.com/?cid=2,Pizzaria Bella,Pizzaria,Rua B,https://instagram.com/bella,,0,,0,0,ChIJ2,
+3,,,,,,,,,,,,
 `
 
 describe('parsePlacesCsv', () => {
@@ -23,7 +23,8 @@ describe('parsePlacesCsv', () => {
       rating: 4.8,
       reviewCount: 212,
       mapsUrl: 'https://maps.google.com/?cid=1',
+      location: { lat: -22.9056951, lon: -47.0583412 },
     })
-    expect(places[1]).toMatchObject({ rating: null, reviewCount: 0, emails: [] })
+    expect(places[1]).toMatchObject({ rating: null, reviewCount: 0, emails: [], location: null })
   })
 })

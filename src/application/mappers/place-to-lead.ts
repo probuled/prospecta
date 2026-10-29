@@ -2,7 +2,7 @@ import type { ScrapedPlace } from '@/application/ports/scraper-gateway'
 import type { Lead } from '@/domain/lead'
 import type { Search } from '@/domain/search'
 
-function leadIdOf(place: ScrapedPlace): string {
+export function leadIdOf(place: ScrapedPlace): string {
   return place.placeId || place.mapsUrl || `${place.title}|${place.address}`.toLowerCase()
 }
 
@@ -19,6 +19,7 @@ export function placeToLead(place: ScrapedPlace, search: Search, now: string): L
     rating: place.rating,
     reviewCount: place.reviewCount,
     mapsUrl: place.mapsUrl,
+    location: place.location,
     searchIds: [search.id],
     status: 'novo',
     notes: '',

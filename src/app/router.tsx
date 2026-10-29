@@ -14,6 +14,10 @@ export const router = createBrowserRouter([
     children: [
       { path: ROUTES.search, element: <SearchPage /> },
       { path: ROUTES.leads, element: <LeadsPage /> },
+      {
+        path: ROUTES.map,
+        lazy: async () => ({ Component: (await import('@/presentation/pages/map/map-page')).MapPage }),
+      },
       { path: ROUTES.history, element: <HistoryPage /> },
       { path: ROUTES.settings, element: <SettingsPage /> },
       // Endereço desconhecido: 404 dentro do layout, com o menu.

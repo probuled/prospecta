@@ -35,15 +35,19 @@ Foi feito para quem vende **landing pages e sites** para negócios locais: quem 
 | ------------- | ---------------------------------------------------------------------------------------- |
 | **Buscar**    | Escolhe nicho e cidade, dispara a busca e acompanha o andamento                          |
 | **Leads**     | Vê os negócios encontrados em tabela ou no funil, filtra, abre os detalhes e exporta CSV |
+| **Mapa**      | Vê onde fica cada negócio, num globo que vira mapa de ruas ao aproximar                  |
 | **Histórico** | Revê as buscas feitas, abre os leads de cada uma ou apaga a busca                        |
 | **Mensagens** | Escreve até 10 modelos de mensagem de abordagem, usados no botão de WhatsApp             |
 
 Recursos principais:
 
 - **Pontuação de oportunidade** de 0 a 100 para cada negócio, com o motivo de cada ponto (veja [a tabela](#a-pontuação)).
-- **Funil de vendas** com as etapas Novo → Contatado → Respondeu → Negociando → Fechado / Perdido. É só arrastar o card.
+- **Funil de vendas (pipeline)** com as etapas Novo → Contatado → Respondeu → Negociando → Fechado / Perdido. É só arrastar o
+  card; cada coluna soma o valor das propostas. Veja [o funil](#4-aborde-e-acompanhe).
 - **Acompanhamento por lead:** valor da proposta, data do próximo contato (com aviso de atrasado ou hoje) e anotações.
 - **WhatsApp em um clique:** abre a conversa com a mensagem já preenchida com o nome, a nota e a cidade do negócio.
+- **Mapa dos leads** num globo que vira mapa de ruas ao aproximar, com os pontos coloridos pela etapa do funil e agrupados
+  por região. Veja [o mapa](#5-veja-os-leads-no-mapa).
 - **Exportação em CSV** para planilha, que também serve de backup.
 - **Tema claro e escuro**, e funciona no celular.
 
@@ -176,11 +180,58 @@ cada negócio:
 | `{cidade}`    | cidade                           |
 | `{nota}`      | nota no Google Maps (ex.: `4.8`) |
 
+As variáveis precisam estar **com chaves**, como na tabela. Os botões abaixo do texto inserem a variável onde está o cursor, e a
+prévia ao lado mostra como a mensagem chega para um dos seus leads.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/mensagens-dark.png">
+  <img src="docs/images/mensagens-light.png" alt="Tela Mensagens do Prospecta: lista de modelos, editor do modelo Barbearia com as variáveis {nome} e {nota} e a prévia da mensagem já preenchida com o nome e a nota de uma barbearia">
+</picture>
+
 ### 4. Aborde e acompanhe
 
-Abra um lead e clique no botão de **WhatsApp**: a conversa abre com a mensagem pronta, e você só revisa e envia. Depois,
-mova o lead pelo funil e registre o **valor da proposta**, o **próximo contato** e suas **anotações**. O funil mostra o valor
-total de cada etapa.
+Abra um lead e clique no botão de **WhatsApp**: a conversa abre com a mensagem pronta, e você só revisa e envia. Se o negócio
+tem Instagram, o botão ao lado abre o perfil. Na coluna da direita, registre a etapa, o **valor da proposta**, o **próximo
+contato** e suas **anotações**.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/lead-detalhe-dark.png">
+  <img src="docs/images/lead-detalhe-light.png" alt="Detalhe de um lead no Prospecta: mensagem de abordagem já preenchida, botões de WhatsApp e Instagram, acompanhamento com etapa, valor e próximo contato, e as informações do Google Maps">
+</picture>
+
+Na tela **Leads**, troque para **Pipeline** para ver o funil. Arraste os cards entre as etapas; cada coluna mostra quantos leads
+tem e quanto somam as propostas. O card avisa quando o próximo contato é **hoje** ou está **atrasado**, e os números do topo
+resumem quantos leads ainda não foram abordados e quanto já foi fechado.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/pipeline-dark.png">
+  <img src="docs/images/pipeline-light.png" alt="Visão Pipeline do Prospecta: colunas Novo, Contatado, Respondeu, Negociando, Fechado e Perdido com cards de barbearias, pontuação, nota, valor da proposta e aviso de contato atrasado ou para hoje">
+</picture>
+
+### 5. Veja os leads no mapa
+
+A tela **Mapa** mostra onde fica cada negócio. De longe é um **globo** com as regiões em que você buscou: cada círculo dourado
+agrupa os leads de uma região e mostra quantos são. Clique num círculo, ou aproxime, e ele se abre em pontos com a cor da etapa
+do funil.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/mapa-dark.png">
+  <img src="docs/images/mapa-light.png" alt="Tela Mapa do Prospecta: globo com a América do Sul e círculos dourados agrupando os leads encontrados em várias cidades do Brasil, com a legenda das etapas do funil ao lado">
+</picture>
+
+<sub>Tela Mapa com dados de exemplo: buscas de barbearias em cinco cidades. Cada círculo dourado agrupa os leads de uma região e
+mostra quantos são; ao aproximar, eles se separam em pontos com a cor da etapa do funil.</sub>
+
+De perto, é um mapa de ruas. Clique num ponto para ver o lead, mudar a etapa ali mesmo ou abrir os detalhes. Dá para filtrar por
+busca e por etapa, e o botão ao lado do zoom alterna entre globo e mapa plano.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/mapa-rua-dark.png">
+  <img src="docs/images/mapa-rua-light.png" alt="Tela Mapa do Prospecta aproximada em Campinas: pontos coloridos pela etapa do funil sobre o mapa de ruas e o card da Barbearia do Zé selecionada, com etapa, nota, endereço, telefone e o botão Ver detalhes">
+</picture>
+
+Os leads salvos antes do mapa não guardaram a posição: use o botão **Localizar leads**, que relê a busca no motor e, se ela não
+estiver mais lá, procura pelo endereço (mais lento e menos preciso).
 
 ### Onde ficam os dados
 
@@ -201,7 +252,9 @@ Navegador (React)
   ├─ /engine ──► proxy (nginx no Docker, Vite em dev)
   │                └─► gmaps-scraper :8080 — gosom/google-maps-scraper
   │
-  └─ nominatim.openstreetmap.org — transforma a cidade em coordenadas
+  ├─ nominatim.openstreetmap.org — transforma a cidade em coordenadas
+  │
+  └─ tiles.openfreemap.org — mapa de fundo da tela Mapa (OpenStreetMap, sem chave)
 ```
 
 1. A cidade vira coordenadas pelo OpenStreetMap (Nominatim).
@@ -210,7 +263,10 @@ Navegador (React)
    roda no container `gmaps-scraper`. Ele abre o Google Maps num navegador invisível, percorre os resultados e devolve um CSV.
    Não é uma IA e não é código deste projeto: é uma imagem Docker pronta, configurada como no
    [google-maps-scraper-kit](https://github.com/Mahanaicoach/google-maps-scraper-kit).
-4. O CSV é limpo, cada lead recebe a pontuação (`src/domain/opportunity.ts`) e tudo é salvo no navegador.
+4. O CSV é limpo (incluindo a latitude e a longitude de cada negócio), cada lead recebe a pontuação
+   (`src/domain/opportunity.ts`) e tudo é salvo no navegador.
+5. A tela Mapa desenha os leads com o [MapLibre GL JS](https://maplibre.org/) sobre os tiles do
+   [OpenFreeMap](https://openfreemap.org/).
 
 O proxy `/engine` existe porque o motor não envia cabeçalhos CORS.
 
@@ -256,8 +312,8 @@ Antes de abrir um PR: `npm run lint && npm run typecheck && npm test && npm run 
 ```
 src/
   domain/                regras de negócio puras (lead, funil, pontuação, telefone, presença online)
-  application/           portas (interfaces) e casos de uso: StartSearch, SyncSearch, DeleteSearch
-  infrastructure/        adaptadores: API do motor, Nominatim, localStorage, exportação CSV
+  application/           portas (interfaces) e casos de uso: StartSearch, SyncSearch, DeleteSearch, LocateLeads
+  infrastructure/        adaptadores: API do motor, Nominatim, OpenFreeMap, localStorage, exportação CSV
   app/                   composition root (container.ts), providers e rotas
   presentation/          páginas, layout e hooks React
   components/prospecta/  componentes do design system (Button, Select, Score, Status, …)

@@ -1,5 +1,5 @@
 import { Columns3, Download, List, Search as SearchIcon, Users } from 'lucide-react'
-import { useState } from 'react'
+import { useSearchParams } from 'react-router'
 import { useDependencies } from '@/app/dependencies-context'
 import { ROUTES } from '@/app/routes'
 import { Button, ButtonLink } from '@/components/prospecta/button'
@@ -18,6 +18,8 @@ import { PipelineBoard } from './pipeline/pipeline-board'
 import { useLeadFilters } from './use-lead-filters'
 import { useLeadsViewMode, type LeadsViewMode } from './use-leads-view-mode'
 
+const LEAD_PARAM = 'lead'
+
 const VIEW_OPTIONS: readonly SegmentOption<LeadsViewMode>[] = [
   { value: 'lista', label: 'Lista', icon: List },
   { value: 'pipeline', label: 'Pipeline', icon: Columns3 },
@@ -30,7 +32,16 @@ export function LeadsPage() {
   const [viewMode, setViewMode] = useLeadsViewMode()
   const isPipeline = viewMode === 'pipeline'
   const { filters, setFilter, resetFilters, activeCount, views, filtered } = useLeadFilters(leads, { ignoreStatus: isPipeline })
-  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [params, setParams] = useSearchParams()
+  // O lead aberto fica na URL para o mapa (e outras telas) poderem linkar direto para ele.
+  const selectedId = params.get(LEAD_PARAM)
+  const setSelectedId = (leadId: string | null) =>
+    setParams((current) => {
+      const next = new URLSearchParams(current)
+      if (leadId) next.set(LEAD_PARAM, leadId)
+      else next.delete(LEAD_PARAM)
+      return next
+    })
 
   const selected = views.find((view) => view.lead.id === selectedId) ?? null
   const updateLead = (leadId: string, patch: LeadPatch) => leadRepository.update(leadId, patch)

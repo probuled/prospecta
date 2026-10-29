@@ -22,6 +22,7 @@ export interface ScrapedPlace {
   readonly rating: number | null
   readonly reviewCount: number
   readonly mapsUrl: string
+  readonly location: Coordinates | null
 }
 
 export interface ScraperGateway {

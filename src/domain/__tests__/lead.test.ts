@@ -27,3 +27,19 @@ describe('mergeLead', () => {
     expect(merged.createdAt).toBe(existing.createdAt)
   })
 })
+
+describe('mergeLead com localização', () => {
+  it('lê lead salvo antes do mapa (sem location) e passa a ter a posição da nova raspagem', () => {
+    const legacy = makeLead()
+    const incoming = makeLead({ location: { lat: -22.9, lon: -47.06 } })
+
+    expect(legacy.location).toBeUndefined()
+    expect(mergeLead(legacy, incoming).location).toEqual({ lat: -22.9, lon: -47.06 })
+  })
+
+  it('mantém a posição já encontrada quando a nova raspagem vem sem coordenadas', () => {
+    const existing = makeLead({ location: { lat: -22.9, lon: -47.06 } })
+
+    expect(mergeLead(existing, makeLead({ location: null })).location).toEqual({ lat: -22.9, lon: -47.06 })
+  })
+})

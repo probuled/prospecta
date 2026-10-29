@@ -7,6 +7,21 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+## [0.2.0] - 2026-10-29
+
+### Adicionado
+
+- Tela **Mapa**: mostra onde fica cada lead, num globo que vira mapa de ruas ao aproximar. Os pontos têm a cor da etapa
+  do funil, ficam agrupados quando estão perto e podem ser filtrados por busca e status.
+- Botão **Localizar leads** para dar posição aos leads salvos antes do mapa, primeiro pelo motor e depois pelo endereço.
+- A posição de cada negócio passa a ser salva junto com o lead.
+- Link direto para o detalhe de um lead na tela de Leads (`/leads?lead=<id>`).
+
+### Alterado
+
+- README com prints de cada etapa do uso: mensagens, detalhe do lead, pipeline e mapa (globo e ruas), nos temas claro e
+  escuro.
+
 ## [0.1.2] - 2026-10-28
 
 ### Alterado
@@ -63,7 +78,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 - Emojis como 👉 chegavam no WhatsApp como "�": o link de contato passa a usar `api.whatsapp.com`.
 
-[Não lançado]: https://github.com/probuled/prospecta/compare/v0.1.2...develop
+[Não lançado]: https://github.com/probuled/prospecta/compare/v0.2.0...develop
+[0.2.0]: https://github.com/probuled/prospecta/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/probuled/prospecta/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/probuled/prospecta/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/probuled/prospecta/releases/tag/v0.1.0
