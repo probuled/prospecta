@@ -32,6 +32,8 @@ interface UseLeadMapOptions {
 /** Cria o mapa uma vez e mantém fonte, destaque, tema e enquadramento em dia com as props. */
 export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKey, onSelect }: UseLeadMapOptions) {
   const mapRef = useRef<MapLibreMap | null>(null)
+  // O mesmo mapa, só que em estado: quem desenha por cima dele (o popup) precisa renderizar de novo quando ele fica pronto.
+  const [readyMap, setReadyMap] = useState<MapLibreMap | null>(null)
   const [status, setStatus] = useState<LeadMapStatus>(() => (supportsWebGL() ? 'loading' : 'error'))
   // O mapa vive fora do React: os eventos leem sempre o valor mais recente por aqui.
   const latest = useRef({ leads, selectedId, onSelect })
@@ -74,6 +76,7 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
     map.once('load', () => {
       clearTimeout(loadTimeout)
       setStatus('ready')
+      setReadyMap(map)
       // Começa no globo e desce até os leads.
       fitToLeads(map, latest.current.leads, 2500)
     })
@@ -102,6 +105,7 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
 
     return () => {
       clearTimeout(loadTimeout)
+      setReadyMap(null)
       map.remove()
       mapRef.current = null
     }
@@ -138,6 +142,7 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
 
   return {
     status,
+    map: readyMap,
     isGlobe,
     zoomIn: () => mapRef.current?.zoomIn(),
     zoomOut: () => mapRef.current?.zoomOut(),

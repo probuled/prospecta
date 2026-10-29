@@ -96,6 +96,18 @@ export function MapPage() {
               selectedId={selected?.id ?? null}
               fitKey={`${filters.status}|${filters.searchId}`}
               onSelect={select}
+              popup={
+                selected && {
+                  location: selected.location,
+                  content: (
+                    <SelectedLeadCard
+                      lead={selected}
+                      onStatusChange={(status) => leadRepository.update(selected.id, { status })}
+                      onClose={() => select(null)}
+                    />
+                  ),
+                }
+              }
               onRetry={() => setMapAttempt((attempt) => attempt + 1)}
             />
           </div>
@@ -108,15 +120,7 @@ export function MapPage() {
                 </Button>
               </div>
             )}
-            {selected ? (
-              <SelectedLeadCard
-                lead={selected}
-                onStatusChange={(status) => leadRepository.update(selected.id, { status })}
-                onClose={() => select(null)}
-              />
-            ) : (
-              <MapLegend />
-            )}
+            <MapLegend />
           </aside>
         </div>
       </div>
