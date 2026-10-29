@@ -7,6 +7,13 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+### Corrigido
+
+- Mapa que ficava em "Carregando mapa..." na versão em Docker: o worker do MapLibre saía como `.mjs`, que o nginx
+  entrega sem tipo JavaScript, e o navegador se recusava a rodá-lo.
+- O mapa mostra o erro com "Tentar de novo" quando não termina de carregar em 20 segundos, em vez de ficar carregando
+  para sempre.
+
 ## [0.2.1] - 2026-10-29
 
 ### Alterado

@@ -15,6 +15,8 @@ import { fitToLeads, MAP_LOCALE, supportsWebGL } from './map-setup'
 
 export type LeadMapStatus = 'loading' | 'ready' | 'error'
 
+const LOAD_TIMEOUT_MS = 20_000
+
 interface UseLeadMapOptions {
   readonly container: RefObject<HTMLDivElement | null>
   readonly baseMap: BaseMap
@@ -59,6 +61,9 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
     }
     mapRef.current = map
     let hasStyle = false
+    // Falhas depois do estilo (worker que não sobe, tiles que não chegam) não emitem erro que dê para separar de um tile
+    // perdido: sem o `load` a tempo, o mapa desiste em vez de ficar carregando para sempre.
+    const loadTimeout = setTimeout(() => setStatus('error'), LOAD_TIMEOUT_MS)
 
     map.on('style.load', () => {
       hasStyle = true
@@ -66,12 +71,15 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
       addLeadLayers(map, toFeatureCollection(latest.current.leads), latest.current.selectedId, baseMap.labelFont)
     })
     map.once('load', () => {
+      clearTimeout(loadTimeout)
       setStatus('ready')
       // Começa no globo e desce até os leads.
       fitToLeads(map, latest.current.leads, 2500)
     })
     map.on('error', () => {
-      if (!hasStyle) setStatus('error')
+      if (hasStyle) return
+      clearTimeout(loadTimeout)
+      setStatus('error')
     })
 
     map.on('click', CLUSTER_LAYER, async (event) => {
@@ -92,6 +100,7 @@ export function useLeadMap({ container, baseMap, theme, leads, selectedId, fitKe
     }
 
     return () => {
+      clearTimeout(loadTimeout)
       map.remove()
       mapRef.current = null
     }
