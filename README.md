@@ -191,6 +191,14 @@ de ruas. Clique num ponto para ver o lead e abrir os detalhes. Os leads salvos a
 botão **Localizar leads**, que relê a busca no motor e, se ela não estiver mais lá, procura pelo endereço (mais lento e menos
 preciso).
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/mapa-dark.png">
+  <img src="docs/images/mapa-light.png" alt="Tela Mapa do Prospecta: globo com a América do Sul e círculos dourados agrupando os leads encontrados em várias cidades do Brasil, com a legenda das etapas do funil ao lado">
+</picture>
+
+<sub>Tela Mapa com dados de exemplo: buscas de barbearias em cinco cidades. Cada círculo dourado agrupa os leads de uma região e
+mostra quantos são; ao aproximar, eles se separam em pontos com a cor da etapa do funil.</sub>
+
 ### Onde ficam os dados
 
 Leads, buscas e mensagens ficam **só no navegador** em que você usou o app (`localStorage`). Por isso:
