@@ -7,6 +7,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+## [0.3.0] - 2026-10-29
+
 ### Alterado
 
 - Ao clicar num lead no mapa, o cartão dele abre em cima do próprio ponto, em vez de na coluna ao lado. No celular, o
@@ -106,7 +108,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 - Emojis como 👉 chegavam no WhatsApp como "�": o link de contato passa a usar `api.whatsapp.com`.
 
-[Não lançado]: https://github.com/probuled/prospecta/compare/v0.2.2...develop
+[Não lançado]: https://github.com/probuled/prospecta/compare/v0.3.0...develop
+[0.3.0]: https://github.com/probuled/prospecta/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/probuled/prospecta/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/probuled/prospecta/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/probuled/prospecta/compare/v0.1.2...v0.2.0
