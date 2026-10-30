@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import type { EngineStatus as Status } from '@/presentation/hooks/use-engine-status'
 import { EngineStatusMark } from './engine-status'
 import { NAV_ITEMS } from './nav-items'
+import { ResponsibleUse } from './responsible-use'
 import { ThemeControl } from './theme-control'
 
 export function MobileTopBar({ engineStatus }: { readonly engineStatus: Status }) {
@@ -12,6 +13,7 @@ export function MobileTopBar({ engineStatus }: { readonly engineStatus: Status }
       <Logo height={26} />
       <div className="flex items-center gap-3">
         <EngineStatusMark status={engineStatus} />
+        <ResponsibleUse variant="icon" />
         <ThemeControl />
       </div>
     </header>
