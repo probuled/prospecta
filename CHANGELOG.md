@@ -7,6 +7,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+## [0.4.0] - 2026-10-30
+
 ### Adicionado
 
 - Ao repetir uma busca, o Prospecta mostra o que mudou na região desde a anterior: quantos negócios são novos e quantos
@@ -134,7 +136,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 - Emojis como 👉 chegavam no WhatsApp como "�": o link de contato passa a usar `api.whatsapp.com`.
 
-[Não lançado]: https://github.com/probuled/prospecta/compare/v0.3.0...develop
+[Não lançado]: https://github.com/probuled/prospecta/compare/v0.4.0...develop
+[0.4.0]: https://github.com/probuled/prospecta/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/probuled/prospecta/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/probuled/prospecta/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/probuled/prospecta/compare/v0.2.0...v0.2.1
