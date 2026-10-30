@@ -5,6 +5,7 @@ import type { LeadPatch } from '@/domain/lead'
 import { LeadApproach } from './lead-approach'
 import { FollowUpSection, InfoSection } from './lead-detail-sections'
 import type { LeadView } from './lead-view'
+import { LeadReviewsSection } from './lead-reviews-section'
 import { LeadXRaySection } from './lead-xray-section'
 
 interface LeadDetailDialogProps {
@@ -51,6 +52,7 @@ function LeadDetailBody({ view, onUpdate }: { view: LeadView; onUpdate: LeadDeta
         <div>
           <LeadApproach view={view} onContact={() => lead.status === 'novo' && update({ status: 'contatado' })} />
           <LeadXRaySection view={view} />
+          <LeadReviewsSection view={view} />
         </div>
         <div className="border-t border-line md:border-t-0 md:border-l">
           <FollowUpSection view={view} onUpdate={update} />

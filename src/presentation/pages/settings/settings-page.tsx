@@ -46,7 +46,10 @@ const SAMPLE_LEAD: Lead = {
     images: [],
     openingHours: {},
     reviewsPerRating: [2, 1, 4, 25, 180],
-    reviews: [],
+    reviews: [
+      { author: 'Cliente', rating: 5, text: 'Melhor corte da região, atendimento nota 10. Voltarei sempre!', when: '' },
+      { author: 'Cliente', rating: 2, text: 'Liguei três vezes para agendar e ninguém atendeu.', when: '' },
+    ],
     hasOwner: true,
     menuUrl: '',
     orderOnlineUrls: [],
