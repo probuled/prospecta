@@ -7,6 +7,14 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+## [0.5.0] - 2026-10-30
+
+### Adicionado
+
+- Aviso "Uso responsável", na barra lateral (e no topo, no celular): explica por que o Prospecta deve rodar só no seu
+  computador, que raspar o Google Maps vai contra os termos do Google (e o risco de bloqueio do IP), como evitar o
+  banimento do número no WhatsApp, os cuidados com a LGPD e de quem é a responsabilidade.
+
 ## [0.4.2] - 2026-10-30
 
 ### Alterado
@@ -150,7 +158,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 - Emojis como 👉 chegavam no WhatsApp como "�": o link de contato passa a usar `api.whatsapp.com`.
 
-[Não lançado]: https://github.com/probuled/prospecta/compare/v0.4.2...develop
+[Não lançado]: https://github.com/probuled/prospecta/compare/v0.5.0...develop
+[0.5.0]: https://github.com/probuled/prospecta/compare/v0.4.2...v0.5.0
 [0.4.2]: https://github.com/probuled/prospecta/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/probuled/prospecta/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/probuled/prospecta/compare/v0.3.0...v0.4.0

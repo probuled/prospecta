@@ -437,6 +437,9 @@ Google, a LGPD e as regras do WhatsApp cabe a quem usa, não aos autores.
 
 ## Cuidados
 
+O app mostra estes cuidados no botão **Uso responsável**, na barra lateral.
+
+- Rode o Prospecta só no seu computador: o motor não tem senha, e publicado na internet qualquer pessoa poderia usá-lo.
 - Raspar o Google Maps vai contra os termos de uso do Google. Use com moderação: uma busca por vez e poucos negócios. Se
   exagerar, o Google bloqueia seu IP temporariamente (sua conta Google não é afetada).
 - Telefones e e-mails são dados pessoais (LGPD). Faça abordagens individuais e respeite quem pedir para não ser contatado.

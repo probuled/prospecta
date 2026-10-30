@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils'
 import type { EngineStatus as Status } from '@/presentation/hooks/use-engine-status'
 import { EngineStatus } from './engine-status'
 import { NAV_ITEMS } from './nav-items'
+import { ResponsibleUse } from './responsible-use'
 import { ThemeControl } from './theme-control'
 
 interface SidebarProps {
@@ -43,6 +44,7 @@ export function Sidebar({ engineStatus, counts }: SidebarProps) {
       </nav>
 
       <div className="mt-auto flex flex-col gap-3 border-t border-line pt-3">
+        <ResponsibleUse variant="sidebar" />
         <EngineStatus status={engineStatus} />
         <ThemeControl block />
       </div>
