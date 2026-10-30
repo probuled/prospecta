@@ -73,7 +73,7 @@ da proposta, o próximo contato e as anotações.
 
 ### Mensagens: seus modelos de abordagem
 
-Escreva até 10 modelos com as variáveis `{nome}`, `{categoria}`, `{cidade}`, `{nota}` e `{diagnostico}`, e veja na prévia como a
+Escreva até 10 modelos com as variáveis `{nome}`, `{categoria}`, `{cidade}`, `{nota}`, `{diagnostico}`, `{elogio}` e `{dor}`, e veja na prévia como a
 mensagem chega.
 
 <picture>
@@ -228,13 +228,15 @@ O total vai até 100 e define a faixa de oportunidade: **alta** com 80 ou mais, 
 Na tela **Mensagens**, escreva seus modelos de abordagem (até 10). Use as variáveis abaixo, que são trocadas pelos dados de
 cada negócio:
 
-| Variável        | Vira                                                                             |
-| --------------- | -------------------------------------------------------------------------------- |
-| `{nome}`        | nome do negócio                                                                  |
-| `{categoria}`   | categoria no Google Maps                                                         |
-| `{cidade}`      | cidade                                                                           |
-| `{nota}`        | nota no Google Maps (ex.: `4.8`)                                                 |
-| `{diagnostico}` | o argumento do raio-x (ex.: `8 de 12 concorrentes num raio de 2 km já têm site`) |
+| Variável        | Vira                                                                                                                   |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `{nome}`        | nome do negócio                                                                                                        |
+| `{categoria}`   | categoria no Google Maps                                                                                               |
+| `{cidade}`      | cidade                                                                                                                 |
+| `{nota}`        | nota no Google Maps (ex.: `4.8`)                                                                                       |
+| `{diagnostico}` | o argumento do raio-x (ex.: `8 de 12 concorrentes num raio de 2 km já têm site`)                                       |
+| `{elogio}`      | trecho da melhor avaliação (ex.: `um cliente escreveu no Google: "Melhor corte da região"`)                            |
+| `{dor}`         | reclamação mais comum que um site resolve (ex.: `alguns clientes comentam que é difícil falar com vocês por telefone`) |
 
 As variáveis precisam estar **com chaves**, como na tabela. Os botões abaixo do texto inserem a variável onde está o cursor, e a
 prévia ao lado mostra como a mensagem chega para um dos seus leads ([veja o print](#mensagens-seus-modelos-de-abordagem)).

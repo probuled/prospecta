@@ -12,6 +12,9 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - Raio-x do perfil no detalhe do lead: o que falta no perfil do Google (site, dono identificado, horário, foto, descrição,
   pedido ou agendamento online) e quantos concorrentes da mesma categoria, num raio de 2 km, já têm site.
 - Variável `{diagnostico}` nas mensagens, com o argumento do raio-x pronto para a abordagem.
+- Variáveis `{elogio}` e `{dor}` nas mensagens: um trecho da melhor avaliação do negócio e a reclamação mais comum que um
+  site resolve (telefone que ninguém atende, espera, falta de preço ou horário, endereço difícil). O detalhe do lead mostra
+  os dois em "O que os clientes dizem".
 - Painel "Bairros sem site" no mapa, com os bairros onde a maioria dos negócios encontrados não tem site próprio.
 - As buscas passam a guardar o perfil completo do negócio no Google (horários, avaliações escritas, fotos, bairro). Leads
   antigos ganham o perfil quando aparecem numa busca nova.
