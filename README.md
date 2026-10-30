@@ -104,7 +104,8 @@ Recursos principais:
 - **WhatsApp em um clique:** abre a conversa com a mensagem já preenchida com o nome, a nota e a cidade do negócio.
 - **Mapa dos leads** num globo que vira mapa de ruas ao aproximar, com os pontos coloridos pela etapa do funil e agrupados
   por região. Veja [o mapa](#mapa-onde-estão-os-seus-leads).
-- **Exportação em CSV** para planilha, que também serve de backup.
+- **Exportação em CSV** para planilha e **backup completo** em JSON (leads com etapa, notas e valor, buscas e mensagens),
+  que dá para restaurar em outro navegador ou computador.
 - **Tema claro e escuro**, e funciona no celular.
 
 ## Como rodar
@@ -271,7 +272,9 @@ Leads, buscas e mensagens ficam **só no navegador** em que você usou o app (`l
 
 - outro navegador ou computador começa vazio;
 - limpar os dados do site, ou usar janela anônima, apaga tudo;
-- **o único backup é exportar CSV** na tela Leads. Faça isso de vez em quando.
+- **faça backup de vez em quando:** na tela Leads, "Baixar backup" gera um arquivo JSON com tudo, e "Restaurar backup"
+  traz de volta em qualquer navegador. A restauração junta com o que já existe, sem apagar nada: no mesmo lead, vale a
+  versão alterada por último. O CSV é para planilha e não volta para o app.
 
 ## Como funciona por dentro
 
