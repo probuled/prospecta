@@ -1,4 +1,7 @@
+import { Sparkles } from 'lucide-react'
 import { useState } from 'react'
+import { sitePrompt } from '@/app/routes'
+import { ButtonLink } from '@/components/prospecta/button'
 import { Select, type SelectOption } from '@/components/prospecta/select'
 import { renderMessage } from '@/domain/message-template'
 import { activeTemplate } from '@/domain/settings'
@@ -24,16 +27,21 @@ export function LeadApproach({ view, onContact }: LeadApproachProps) {
 
   return (
     <Section title="Mensagem de abordagem">
-      {options.length > 1 && (
-        <Select
-          label="Modelo:"
-          value={template.id}
-          options={options}
-          onChange={setChosenId}
-          aria-label="Modelo de mensagem"
-          className="max-w-full"
-        />
-      )}
+      <div className="flex flex-wrap items-center gap-2">
+        {options.length > 1 && (
+          <Select
+            label="Modelo:"
+            value={template.id}
+            options={options}
+            onChange={setChosenId}
+            aria-label="Modelo de mensagem"
+            className="max-w-full"
+          />
+        )}
+        <ButtonLink to={sitePrompt(view.lead.id)} variant="primary" className="font-semibold">
+          <Sparkles /> Gerar prompt do site
+        </ButtonLink>
+      </div>
       <p className="rounded-md border border-line bg-surface-sunken p-3 leading-relaxed whitespace-pre-wrap">{message}</p>
       <div className="flex flex-wrap justify-center gap-4 pt-2 pb-1">
         <WhatsAppButton view={view} message={message} size="lg" label="Chamar no WhatsApp" onOpen={onContact} isProminent />

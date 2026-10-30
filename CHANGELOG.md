@@ -9,6 +9,11 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ### Adicionado
 
+- Prompt do site: no detalhe do lead, "Gerar prompt do site" monta um prompt com tudo o que se sabe do negócio
+  (endereço, telefone, WhatsApp, fotos, horários, avaliações, reclamações, concorrência, localização para o mapa) e
+  diretrizes de design por nicho (clima, paleta, tipografia, estrutura da página, SEO local, acessibilidade e o que
+  evitar). É só copiar e colar numa IA (Claude, ChatGPT, Lovable, v0) para ela criar o site do lead. Dá para escolher
+  entre HTML + CSS ou React + TailwindCSS, trocar a direção de design e somar observações.
 - Raio-x do perfil no detalhe do lead: o que falta no perfil do Google (site, dono identificado, horário, foto, descrição,
   pedido ou agendamento online) e quantos concorrentes da mesma categoria, num raio de 2 km, já têm site.
 - Variável `{diagnostico}` nas mensagens, com o argumento do raio-x pronto para a abordagem.

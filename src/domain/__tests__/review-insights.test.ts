@@ -19,6 +19,7 @@ describe('excerpt', () => {
 describe('firstName', () => {
   it('fica só com o primeiro nome', () => {
     expect(firstName('  Ana Carla Souza ')).toBe('Ana')
+    expect(firstName('O.')).toBe('')
   })
 })
 
