@@ -3,7 +3,7 @@ import { LocationNotFoundError, type Geocoder } from '@/application/ports/geocod
 import type { LeadRepository, SearchRepository } from '@/application/ports/repositories'
 import type { ScrapedPlace, ScraperGateway } from '@/application/ports/scraper-gateway'
 import { LocateLeads } from '@/application/use-cases/locate-leads'
-import { makeLead } from '@/domain/__tests__/fixtures'
+import { makeLead, makeProfile } from '@/domain/__tests__/fixtures'
 import type { Lead, LeadPatch } from '@/domain/lead'
 import type { Search } from '@/domain/search'
 
@@ -55,6 +55,7 @@ const place = (placeId: string, location: ScrapedPlace['location']): ScrapedPlac
   reviewCount: 0,
   mapsUrl: '',
   location,
+  profile: makeProfile(),
 })
 
 function scraper(places: ScrapedPlace[] | Error): ScraperGateway {

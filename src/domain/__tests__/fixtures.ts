@@ -1,3 +1,4 @@
+import type { BusinessProfile } from '../business-profile'
 import type { Lead } from '../lead'
 
 export function makeLead(overrides: Partial<Lead> = {}): Lead {
@@ -18,6 +19,25 @@ export function makeLead(overrides: Partial<Lead> = {}): Lead {
     notes: '',
     createdAt: '2026-01-01T00:00:00.000Z',
     updatedAt: '2026-01-01T00:00:00.000Z',
+    ...overrides,
+  }
+}
+
+export function makeProfile(overrides: Partial<BusinessProfile> = {}): BusinessProfile {
+  return {
+    description: '',
+    neighborhood: '',
+    businessStatus: '',
+    priceRange: '',
+    thumbnailUrl: '',
+    images: [],
+    openingHours: {},
+    reviewsPerRating: [0, 0, 0, 0, 0],
+    reviews: [],
+    hasOwner: false,
+    menuUrl: '',
+    orderOnlineUrls: [],
+    reservationUrls: [],
     ...overrides,
   }
 }
