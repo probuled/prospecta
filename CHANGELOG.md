@@ -7,6 +7,11 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+### Alterado
+
+- README com todos os prints refeitos na versão atual, nos temas claro e escuro: a página inicial no topo, depois Leads,
+  Pipeline, Detalhe do lead, Prompt do site, Mapa, Histórico (novo) e Mensagens.
+
 ## [0.4.1] - 2026-10-30
 
 ### Alterado
