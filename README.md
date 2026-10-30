@@ -5,11 +5,11 @@ Prospecta traz os negócios da região já ordenados por chance de virar cliente
 e um [prompt para uma IA criar a prévia do site](#prompt-do-site-a-prévia-que-ajuda-a-fechar) de cada negócio.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/leads-dark.png">
-  <img src="docs/images/leads-light.png" alt="Tela de Leads do Prospecta: barbearias de Campinas ordenadas pela pontuação de oportunidade, com avaliação, botão de WhatsApp e status no funil">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/busca-dark.png">
+  <img src="docs/images/busca-light.png" alt="Página inicial do Prospecta: campo de nicho e cidade com o botão Buscar leads, sugestões de nicho, opções avançadas de quantidade de negócios e coleta de e-mails, buscas recentes e o resumo dos seus leads">
 </picture>
 
-<sub>Tela de Leads com dados de exemplo. O print acompanha o tema do GitHub (claro ou escuro).</sub>
+<sub>Página inicial com dados de exemplo. O print acompanha o tema do GitHub (claro ou escuro).</sub>
 
 Foi feito para quem vende **landing pages e sites** para negócios locais: quem **não tem site** (ou só tem Instagram/Linktree),
 é bem avaliado e tem celular para WhatsApp aparece primeiro. Serve também para qualquer serviço vendido a pequenos negócios
@@ -33,23 +33,17 @@ Foi feito para quem vende **landing pages e sites** para negócios locais: quem 
 
 ## Veja como é
 
-Prints com dados de exemplo (barbearias). Eles acompanham o tema do GitHub, claro ou escuro.
+Prints com dados de exemplo (barbearias de Campinas e outros nichos). Eles acompanham o tema do GitHub, claro ou escuro.
 
-### Mapa: onde estão os seus leads
+### Leads: quem abordar primeiro
 
-De longe é um globo com as regiões em que você buscou. Cada círculo dourado agrupa os leads de uma região e mostra quantos são.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/mapa-dark.png">
-  <img src="docs/images/mapa-light.png" alt="Tela Mapa do Prospecta: globo com a América do Sul e círculos dourados agrupando os leads encontrados em várias cidades do Brasil, com a legenda das etapas do funil ao lado">
-</picture>
-
-Ao aproximar, vira mapa de ruas, com cada negócio colorido pela etapa do funil. Clique num ponto para ver o lead, mudar a etapa
-ou abrir os detalhes.
+Os negócios encontrados aparecem ordenados pela pontuação de oportunidade: quem não tem site, é bem avaliado e tem celular vem
+primeiro. Os números do topo resumem quantos ainda não foram abordados e quanto já foi fechado. Daqui também sai o CSV e o
+backup completo.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/mapa-rua-dark.png">
-  <img src="docs/images/mapa-rua-light.png" alt="Tela Mapa do Prospecta aproximada em Campinas: pontos coloridos pela etapa do funil sobre o mapa de ruas e o card da Barbearia do Zé selecionada, com etapa, nota, endereço, telefone e o botão Ver detalhes">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/leads-dark.png">
+  <img src="docs/images/leads-light.png" alt="Tela de Leads do Prospecta: negócios ordenados pela pontuação de oportunidade, com avaliação, botão de WhatsApp, Instagram e status no funil, os números do topo e os botões Exportar CSV, Baixar backup e Restaurar backup">
 </picture>
 
 ### Pipeline: o funil de vendas
@@ -59,7 +53,7 @@ card avisa quando o próximo contato é hoje ou está atrasado.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/pipeline-dark.png">
-  <img src="docs/images/pipeline-light.png" alt="Visão Pipeline do Prospecta: colunas Novo, Contatado, Respondeu, Negociando, Fechado e Perdido com cards de barbearias, pontuação, nota, valor da proposta e aviso de contato atrasado ou para hoje">
+  <img src="docs/images/pipeline-light.png" alt="Visão Pipeline do Prospecta: colunas Novo, Contatado, Respondeu, Negociando, Fechado e Perdido com cards de negócios, pontuação, nota, valor da proposta e aviso de contato atrasado ou para hoje">
 </picture>
 
 ### Detalhe do lead: a abordagem pronta
@@ -84,14 +78,42 @@ de design para o nicho. Você copia, cola numa IA como Claude, ChatGPT, Lovable 
   <img src="docs/images/prompt-do-site-light.png" alt="Tela Prompt do site do Prospecta para a Barbearia do Zé: nota explicando como fazer a prévia, ajustes de formato, direção de design e observações, e o prompt com os dados do negócio, com os botões Baixar .md e Copiar prompt">
 </picture>
 
+### Mapa: onde estão os seus leads
+
+De longe aparecem as regiões em que você buscou: cada círculo dourado agrupa os leads de uma região e mostra quantos são. Ao
+lado, os bairros com mais negócios sem site mostram onde vale buscar de novo.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/mapa-dark.png">
+  <img src="docs/images/mapa-light.png" alt="Tela Mapa do Prospecta: mapa do Brasil com círculos dourados agrupando os leads de Manaus, Recife, Campinas e Porto Alegre, a legenda das etapas do funil, os filtros e o painel Bairros sem site">
+</picture>
+
+Ao aproximar, vira mapa de ruas, com cada negócio colorido pela etapa do funil. Clique num ponto para ver o lead, mudar a etapa
+ou abrir os detalhes.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/mapa-rua-dark.png">
+  <img src="docs/images/mapa-rua-light.png" alt="Tela Mapa do Prospecta aproximada em Campinas: pontos coloridos pela etapa do funil sobre o mapa de ruas e o cartão da Barbearia do Zé aberto sobre o ponto, com etapa, nota, endereço, telefone e o botão Ver detalhes">
+</picture>
+
+### Histórico: todas as buscas
+
+Cada busca fica guardada, com quantos leads trouxe. Ao repetir uma busca, o Prospecta mostra o que mudou na região: quantos
+negócios são novos e quantos ganharam site.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/historico-dark.png">
+  <img src="docs/images/historico-light.png" alt="Tela Histórico do Prospecta: lista de buscas de barbearias, academias, pet shops e hamburguerias, com data, quantidade de leads e status, e a busca repetida de Campinas mostrando 6 novos na região e 1 que ganhou site">
+</picture>
+
 ### Mensagens: seus modelos de abordagem
 
-Escreva até 10 modelos com as variáveis `{nome}`, `{categoria}`, `{cidade}`, `{nota}`, `{diagnostico}`, `{elogio}` e `{dor}`, e veja na prévia como a
-mensagem chega.
+Escreva até 10 modelos com as variáveis `{nome}`, `{categoria}`, `{cidade}`, `{nota}`, `{diagnostico}`, `{elogio}` e `{dor}`, e
+veja na prévia como a mensagem chega.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/mensagens-dark.png">
-  <img src="docs/images/mensagens-light.png" alt="Tela Mensagens do Prospecta: lista de modelos, editor do modelo Barbearia com as variáveis {nome} e {nota} e a prévia da mensagem já preenchida com o nome e a nota de uma barbearia">
+  <img src="docs/images/mensagens-light.png" alt="Tela Mensagens do Prospecta: lista com três modelos, editor do modelo Barbearia com os botões das variáveis e a prévia da mensagem no balão do WhatsApp, já preenchida com o nome e a nota de uma barbearia">
 </picture>
 
 ## O que ele faz
