@@ -73,7 +73,8 @@ da proposta, o próximo contato e as anotações.
 
 ### Mensagens: seus modelos de abordagem
 
-Escreva até 10 modelos com as variáveis `{nome}`, `{categoria}`, `{cidade}` e `{nota}`, e veja na prévia como a mensagem chega.
+Escreva até 10 modelos com as variáveis `{nome}`, `{categoria}`, `{cidade}`, `{nota}` e `{diagnostico}`, e veja na prévia como a
+mensagem chega.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/mensagens-dark.png">
@@ -95,6 +96,8 @@ Recursos principais:
 - **Pontuação de oportunidade** de 0 a 100 para cada negócio, com o motivo de cada ponto (veja [a tabela](#a-pontuação)).
 - **Funil de vendas (pipeline)** com as etapas Novo → Contatado → Respondeu → Negociando → Fechado / Perdido. É só arrastar o
   card; cada coluna soma o valor das propostas. Veja [o funil](#pipeline-o-funil-de-vendas).
+- **Raio-x do perfil:** o que falta no perfil do negócio no Google (horário, foto, descrição, pedido online) e quantos
+  concorrentes da mesma categoria, num raio de 2 km, já têm site. No mapa, os bairros com mais negócios sem site.
 - **Acompanhamento por lead:** valor da proposta, data do próximo contato (com aviso de atrasado ou hoje) e anotações.
 - **WhatsApp em um clique:** abre a conversa com a mensagem já preenchida com o nome, a nota e a cidade do negócio.
 - **Mapa dos leads** num globo que vira mapa de ruas ao aproximar, com os pontos coloridos pela etapa do funil e agrupados
@@ -214,6 +217,7 @@ Se o mesmo negócio aparecer em duas buscas, ele não duplica: os dados público
 | De 10 a 49 avaliações                 |      5 |
 | Telefone celular (provável WhatsApp)  |     15 |
 | Tem e-mail                            |      5 |
+| Perfil do Google sem horário ou foto  |      5 |
 
 O total vai até 100 e define a faixa de oportunidade: **alta** com 80 ou mais, **média** de 50 a 79 e **baixa** abaixo de 50.
 
@@ -224,12 +228,13 @@ O total vai até 100 e define a faixa de oportunidade: **alta** com 80 ou mais, 
 Na tela **Mensagens**, escreva seus modelos de abordagem (até 10). Use as variáveis abaixo, que são trocadas pelos dados de
 cada negócio:
 
-| Variável      | Vira                             |
-| ------------- | -------------------------------- |
-| `{nome}`      | nome do negócio                  |
-| `{categoria}` | categoria no Google Maps         |
-| `{cidade}`    | cidade                           |
-| `{nota}`      | nota no Google Maps (ex.: `4.8`) |
+| Variável        | Vira                                                                             |
+| --------------- | -------------------------------------------------------------------------------- |
+| `{nome}`        | nome do negócio                                                                  |
+| `{categoria}`   | categoria no Google Maps                                                         |
+| `{cidade}`      | cidade                                                                           |
+| `{nota}`        | nota no Google Maps (ex.: `4.8`)                                                 |
+| `{diagnostico}` | o argumento do raio-x (ex.: `8 de 12 concorrentes num raio de 2 km já têm site`) |
 
 As variáveis precisam estar **com chaves**, como na tabela. Os botões abaixo do texto inserem a variável onde está o cursor, e a
 prévia ao lado mostra como a mensagem chega para um dos seus leads ([veja o print](#mensagens-seus-modelos-de-abordagem)).

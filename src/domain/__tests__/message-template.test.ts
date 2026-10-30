@@ -10,3 +10,12 @@ describe('renderMessage', () => {
     )
   })
 })
+
+describe('renderMessage com {diagnostico}', () => {
+  it('usa a comparação com os concorrentes do contexto', () => {
+    const comparison = { radiusKm: 2, peers: 5, peersWithSite: 3, peersAverageReviews: 40 }
+    expect(renderMessage('Vi que {diagnostico}.', makeLead(), { comparison })).toBe(
+      'Vi que 3 de 5 concorrentes num raio de 2 km já têm site.',
+    )
+  })
+})

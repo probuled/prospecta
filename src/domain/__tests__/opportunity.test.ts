@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { evaluateOpportunity, temperatureOf } from '../opportunity'
-import { makeLead } from './fixtures'
+import { makeLead, makeProfile } from './fixtures'
 
 describe('temperatureOf', () => {
   it.each([
@@ -34,5 +34,13 @@ describe('evaluateOpportunity', () => {
     expect(evaluateOpportunity(lead).score).toBe(95)
     const rules = [{ reason: 'x', points: 200, applies: () => true }]
     expect(evaluateOpportunity(lead, rules).score).toBe(100)
+  })
+})
+
+describe('evaluateOpportunity com perfil do Google', () => {
+  it('soma pontos quando falta horário ou foto no perfil', () => {
+    const incomplete = makeLead({ website: 'https://x.com.br', profile: makeProfile() })
+    expect(evaluateOpportunity(incomplete).reasons).toEqual(['Perfil do Google incompleto'])
+    expect(evaluateOpportunity(makeLead({ website: 'https://x.com.br' })).reasons).toEqual([])
   })
 })

@@ -1,5 +1,6 @@
 import type { Lead } from './lead'
 import { parsePhone } from './phone'
+import { profileChecklist } from './profile-checklist'
 import { classifyWebsite } from './website-presence'
 
 export type OpportunityLevel = 'quente' | 'morno' | 'frio'
@@ -28,6 +29,11 @@ export const DEFAULT_OPPORTUNITY_RULES: readonly OpportunityRule[] = [
   { reason: 'Algumas avaliações', points: 5, applies: (lead) => lead.reviewCount >= 10 && lead.reviewCount < 50 },
   { reason: 'Celular (provável WhatsApp)', points: 15, applies: (lead) => parsePhone(lead.phone)?.isMobile ?? false },
   { reason: 'Tem email', points: 5, applies: (lead) => lead.emails.length > 0 },
+  {
+    reason: 'Perfil do Google incompleto',
+    points: 5,
+    applies: (lead) => (profileChecklist(lead) ?? []).some((item) => (item.id === 'hours' || item.id === 'photo') && !item.isDone),
+  },
 ]
 
 const MAX_SCORE = 100

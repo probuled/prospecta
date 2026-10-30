@@ -19,7 +19,7 @@ export function LeadApproach({ view, onContact }: LeadApproachProps) {
   const settings = useSettings()
   const [chosenId, setChosenId] = useState(() => activeTemplate(settings).id)
   const template = settings.messageTemplates.find(({ id }) => id === chosenId) ?? activeTemplate(settings)
-  const message = renderMessage(template.body, view.lead)
+  const message = renderMessage(template.body, view.lead, { comparison: view.comparison })
   const options: SelectOption<string>[] = settings.messageTemplates.map(({ id, name }) => ({ value: id, label: name }))
 
   return (

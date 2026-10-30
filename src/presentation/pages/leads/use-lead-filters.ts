@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router'
 import type { Lead } from '@/domain/lead'
+import { createNeighborComparer } from '@/domain/neighbor-comparison'
 import { ALL, applyLeadFilters, countActiveFilters, DEFAULT_FILTERS, type LeadFilters } from './lead-filters'
 import { toLeadView } from './lead-view'
 
@@ -34,7 +35,10 @@ export function useLeadFilters(leads: readonly Lead[], { ignoreStatus = false }:
     [setParams],
   )
 
-  const views = useMemo(() => leads.map(toLeadView), [leads])
+  const views = useMemo(() => {
+    const compare = createNeighborComparer(leads)
+    return leads.map((lead) => toLeadView(lead, compare))
+  }, [leads])
   const filtered = useMemo(
     () => applyLeadFilters(views, ignoreStatus ? { ...filters, status: ALL } : filters),
     [views, filters, ignoreStatus],
