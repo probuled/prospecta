@@ -1,5 +1,6 @@
 import type { BaseMap } from '@/application/ports/base-map'
 import type { FileDownloader } from '@/application/ports/file-downloader'
+import { BackupData } from '@/application/use-cases/backup'
 import type { LeadExporter } from '@/application/ports/lead-exporter'
 import type { LeadRepository, SearchRepository, SettingsRepository } from '@/application/ports/repositories'
 import type { ScraperGateway } from '@/application/ports/scraper-gateway'
@@ -7,6 +8,7 @@ import { DeleteSearch } from '@/application/use-cases/delete-search'
 import { LocateLeads } from '@/application/use-cases/locate-leads'
 import { StartSearch } from '@/application/use-cases/start-search'
 import { SyncSearch } from '@/application/use-cases/sync-search'
+import { JsonBackupFile } from '@/infrastructure/backup/json-backup-file'
 import { GoogleMapsEngineGateway } from '@/infrastructure/engine/google-maps-engine-gateway'
 import { BrowserFileDownloader } from '@/infrastructure/export/browser-file-downloader'
 import { CsvLeadExporter } from '@/infrastructure/export/csv-lead-exporter'
@@ -28,6 +30,7 @@ export interface Dependencies {
   readonly syncSearch: SyncSearch
   readonly deleteSearch: DeleteSearch
   readonly locateLeads: LocateLeads
+  readonly backup: BackupData
 }
 
 /** Composition root: o único lugar que conhece as implementações concretas. */
@@ -36,12 +39,13 @@ export function createDependencies(): Dependencies {
   const leads = new LocalStorageLeadRepository()
   const searches = new LocalStorageSearchRepository()
   const geocoder = new NominatimGeocoder()
+  const settings = new LocalStorageSettingsRepository()
 
   return {
     scraper,
     leads,
     searches,
-    settings: new LocalStorageSettingsRepository(),
+    settings,
     exporter: new CsvLeadExporter(),
     files: new BrowserFileDownloader(),
     baseMap: new OpenFreeMapBaseMap(),
@@ -49,5 +53,6 @@ export function createDependencies(): Dependencies {
     syncSearch: new SyncSearch(scraper, searches, leads),
     deleteSearch: new DeleteSearch(scraper, searches, leads),
     locateLeads: new LocateLeads(scraper, geocoder, searches, leads),
+    backup: new BackupData(new JsonBackupFile(), leads, searches, settings),
   }
 }

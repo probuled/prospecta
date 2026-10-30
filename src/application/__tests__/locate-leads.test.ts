@@ -14,6 +14,7 @@ function leadRepository(initial: Lead[]): LeadRepository {
     subscribe: () => () => undefined,
     upsertMany: () => undefined,
     removeFromSearch: () => undefined,
+    replaceAll: () => undefined,
     update: (id: string, patch: LeadPatch) => {
       leads = leads.map((lead) => (lead.id === id ? { ...lead, ...patch } : lead))
     },
@@ -27,6 +28,7 @@ function searchRepository(searches: Search[]): SearchRepository {
     findById: (id) => searches.find((search) => search.id === id),
     save: () => undefined,
     remove: () => undefined,
+    replaceAll: () => undefined,
   }
 }
 

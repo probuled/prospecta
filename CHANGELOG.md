@@ -9,6 +9,9 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ### Adicionado
 
+- Backup completo: "Baixar backup" na tela de Leads gera um arquivo JSON com os leads (etapa, notas, valor, próximo
+  contato), as buscas e os modelos de mensagem. "Restaurar backup" traz tudo de volta em outro navegador ou
+  computador, juntando com o que já existe sem apagar nada.
 - Prompt do site: no detalhe do lead, "Gerar prompt do site" monta um prompt com tudo o que se sabe do negócio
   (endereço, telefone, WhatsApp, fotos, horários, avaliações, reclamações, concorrência, localização para o mapa) e
   diretrizes de design por nicho (clima, paleta, tipografia, estrutura da página, SEO local, acessibilidade e o que

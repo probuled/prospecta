@@ -5,6 +5,7 @@ import { ROUTES } from '@/app/routes'
 import { Button, ButtonLink } from '@/components/prospecta/button'
 import { EmptyState } from '@/components/prospecta/empty-state'
 import { PageHeader } from '@/components/prospecta/page-header'
+import { BackupActions } from '@/presentation/components/backup-actions'
 import { SegmentedControl, type SegmentOption } from '@/components/prospecta/segmented-control'
 import type { LeadPatch, LeadStatus } from '@/domain/lead'
 import { formatCount } from '@/presentation/format'
@@ -60,11 +61,14 @@ export function LeadsPage() {
         <EmptyState
           icon={Users}
           title="Nenhum lead ainda. Faça uma busca."
-          description="Os negócios encontrados aparecem aqui, ordenados por oportunidade."
+          description="Os negócios encontrados aparecem aqui, ordenados por oportunidade. Trocou de navegador? Restaure seu backup."
           action={
-            <ButtonLink to={ROUTES.search} variant="primary">
-              <SearchIcon /> Buscar leads
-            </ButtonLink>
+            <div className="flex flex-wrap justify-center gap-2">
+              <ButtonLink to={ROUTES.search} variant="primary">
+                <SearchIcon /> Buscar leads
+              </ButtonLink>
+              <BackupActions canDownload={false} />
+            </div>
           }
         />
       </>
@@ -77,9 +81,12 @@ export function LeadsPage() {
         title="Leads"
         description={isPipeline ? 'Arraste os cards entre as etapas do funil.' : 'Quem não tem site e é bem avaliado aparece primeiro.'}
         actions={
-          <Button icon={Download} onClick={exportFiltered} disabled={filtered.length === 0}>
-            Exportar
-          </Button>
+          <>
+            <Button icon={Download} onClick={exportFiltered} disabled={filtered.length === 0}>
+              Exportar CSV
+            </Button>
+            <BackupActions />
+          </>
         }
       />
       <LeadStats views={views} />
