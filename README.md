@@ -1,7 +1,8 @@
 # Prospecta
 
 **Ferramenta open source para encontrar clientes no Google Maps.** Você diz o nicho e a cidade ("barbearias em Campinas"), e o
-Prospecta traz os negócios da região já ordenados por chance de virar cliente, com o botão de WhatsApp pronto para a abordagem.
+Prospecta traz os negócios da região já ordenados por chance de virar cliente, com o botão de WhatsApp pronto para a abordagem
+e um [prompt para uma IA criar a prévia do site](#prompt-do-site-a-prévia-que-ajuda-a-fechar) de cada negócio.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/leads-dark.png">
@@ -64,11 +65,23 @@ card avisa quando o próximo contato é hoje ou está atrasado.
 ### Detalhe do lead: a abordagem pronta
 
 A mensagem já vem preenchida com o nome e a nota do negócio. Um clique abre o WhatsApp; ao lado, você registra a etapa, o valor
-da proposta, o próximo contato e as anotações.
+da proposta, o próximo contato e as anotações. Logo abaixo, o raio-x mostra o que falta no perfil do Google e quantos
+concorrentes por perto já têm site, e o botão **Gerar prompt do site** leva para a prévia do site.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/lead-detalhe-dark.png">
-  <img src="docs/images/lead-detalhe-light.png" alt="Detalhe de um lead no Prospecta: mensagem de abordagem já preenchida, botões de WhatsApp e Instagram, acompanhamento com etapa, valor e próximo contato, e as informações do Google Maps">
+  <img src="docs/images/lead-detalhe-light.png" alt="Detalhe de um lead no Prospecta: mensagem de abordagem já preenchida, botão Gerar prompt do site, botões de WhatsApp e Instagram, raio-x do perfil com a comparação com os concorrentes, acompanhamento com etapa, valor e próximo contato, e as informações do Google Maps">
+</picture>
+
+### Prompt do site: a prévia que ajuda a fechar
+
+Quem vende site convence mais mostrando o site pronto. O Prospecta junta tudo o que sabe do negócio (endereço, WhatsApp,
+fotos, horários, as melhores avaliações, as reclamações dos clientes e os concorrentes por perto) num prompt com diretrizes
+de design para o nicho. Você copia, cola numa IA como Claude, ChatGPT, Lovable ou v0, e manda a prévia para o dono.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/prompt-do-site-dark.png">
+  <img src="docs/images/prompt-do-site-light.png" alt="Tela Prompt do site do Prospecta para a Barbearia do Zé: nota explicando como fazer a prévia, ajustes de formato, direção de design e observações, e o prompt com os dados do negócio, com os botões Baixar .md e Copiar prompt">
 </picture>
 
 ### Mensagens: seus modelos de abordagem
@@ -83,13 +96,14 @@ mensagem chega.
 
 ## O que ele faz
 
-| Tela          | O que você faz nela                                                                      |
-| ------------- | ---------------------------------------------------------------------------------------- |
-| **Buscar**    | Escolhe nicho e cidade, dispara a busca e acompanha o andamento                          |
-| **Leads**     | Vê os negócios encontrados em tabela ou no funil, filtra, abre os detalhes e exporta CSV |
-| **Mapa**      | Vê onde fica cada negócio, num globo que vira mapa de ruas ao aproximar                  |
-| **Histórico** | Revê as buscas feitas, abre os leads de cada uma ou apaga a busca                        |
-| **Mensagens** | Escreve até 10 modelos de mensagem de abordagem, usados no botão de WhatsApp             |
+| Tela               | O que você faz nela                                                                            |
+| ------------------ | ---------------------------------------------------------------------------------------------- |
+| **Buscar**         | Escolhe nicho e cidade, dispara a busca e acompanha o andamento                                |
+| **Leads**          | Vê os negócios encontrados em tabela ou no funil, filtra, abre os detalhes e exporta CSV       |
+| **Mapa**           | Vê onde fica cada negócio, num globo que vira mapa de ruas ao aproximar                        |
+| **Histórico**      | Revê as buscas feitas, abre os leads de cada uma ou apaga a busca                              |
+| **Mensagens**      | Escreve até 10 modelos de mensagem de abordagem, usados no botão de WhatsApp                   |
+| **Prompt do site** | Abre pelo detalhe do lead: junta tudo do negócio num prompt para uma IA criar a prévia do site |
 
 Recursos principais:
 
@@ -97,7 +111,8 @@ Recursos principais:
 - **Funil de vendas (pipeline)** com as etapas Novo → Contatado → Respondeu → Negociando → Fechado / Perdido. É só arrastar o
   card; cada coluna soma o valor das propostas. Veja [o funil](#pipeline-o-funil-de-vendas).
 - **Prompt do site:** gera, para cada lead, um prompt completo (dados, fotos, horários, avaliações, concorrência e
-  diretrizes de design do nicho) para colar numa IA como Claude, ChatGPT, Lovable ou v0 e receber o site pronto.
+  diretrizes de design do nicho) para colar numa IA como Claude, ChatGPT, Lovable ou v0 e receber o site pronto. Veja
+  [o prompt do site](#prompt-do-site-a-prévia-que-ajuda-a-fechar).
 - **Raio-x do perfil:** o que falta no perfil do negócio no Google (horário, foto, descrição, pedido online) e quantos
   concorrentes da mesma categoria, num raio de 2 km, já têm site. No mapa, os bairros com mais negócios sem site.
 - **Acompanhamento por lead:** valor da proposta, data do próximo contato (com aviso de atrasado ou hoje) e anotações.
@@ -257,7 +272,23 @@ Na tela **Leads**, troque para **Pipeline** para ver o funil. Arraste os cards e
 tem e quanto somam as propostas. O card avisa quando o próximo contato é **hoje** ou está **atrasado**, e os números do topo
 resumem quantos leads ainda não foram abordados e quanto já foi fechado ([veja o print](#pipeline-o-funil-de-vendas)).
 
-### 5. Veja os leads no mapa
+### 5. Faça a prévia do site
+
+No detalhe do lead, clique em **Gerar prompt do site**. A tela mostra o prompt montado com os dados do negócio e o que entrou
+nele (fotos, depoimentos, horários, localização, WhatsApp). Ajuste se quiser:
+
+- **Onde vai colar:** HTML + CSS (um arquivo pronto para abrir e publicar) ou React + TailwindCSS (para ferramentas que montam
+  projetos React).
+- **Direção de design:** o Prospecta sugere uma pela categoria do negócio, entre 15 nichos (beleza, comida, saúde, pet,
+  academia, oficina, construção, moda, escola, advocacia e contabilidade, imobiliária, eventos, hotel, assistência técnica
+  e negócio local). Cada uma traz clima, paleta, fontes, fotos e as seções certas para o nicho.
+- **Observações:** o que você sabe e o Google não ("o dono quer agendamento online", "prefere azul").
+
+Clique em **Copiar prompt** (ou **Baixar .md**), cole numa IA e mande o resultado para o dono pelo WhatsApp. O prompt pede para
+a IA não inventar preço, prêmio ou serviço: o que faltar aparece no site como [confirmar com o cliente]
+([veja o print](#prompt-do-site-a-prévia-que-ajuda-a-fechar)).
+
+### 6. Veja os leads no mapa
 
 A tela **Mapa** mostra onde fica cada negócio. De longe é um **globo** com as regiões em que você buscou: cada círculo dourado
 agrupa os leads de uma região e mostra quantos são. Clique num círculo, ou aproxime, e ele se abre em pontos com a cor da etapa
