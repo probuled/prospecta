@@ -62,9 +62,10 @@ export function excerpt(text: string, maxLength = MAX_QUOTE_LENGTH): string {
   return `${sentence.slice(0, maxLength).replace(/\s+\S*$/, '')}…`
 }
 
-/** Só o primeiro nome de quem avaliou: o suficiente para citar sem expor a pessoa. */
+/** Só o primeiro nome de quem avaliou, o suficiente para citar sem expor a pessoa. Vazio se for só uma inicial. */
 export function firstName(author: string): string {
-  return author.trim().split(/\s+/)[0] ?? ''
+  const name = author.trim().split(/\s+/)[0] ?? ''
+  return name.replace(/[^\p{L}]/gu, '').length >= 2 ? name : ''
 }
 
 /** Avaliações 5 estrelas com texto, das mais longas (mais detalhadas) para as mais curtas. */

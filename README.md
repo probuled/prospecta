@@ -96,6 +96,8 @@ Recursos principais:
 - **Pontuação de oportunidade** de 0 a 100 para cada negócio, com o motivo de cada ponto (veja [a tabela](#a-pontuação)).
 - **Funil de vendas (pipeline)** com as etapas Novo → Contatado → Respondeu → Negociando → Fechado / Perdido. É só arrastar o
   card; cada coluna soma o valor das propostas. Veja [o funil](#pipeline-o-funil-de-vendas).
+- **Prompt do site:** gera, para cada lead, um prompt completo (dados, fotos, horários, avaliações, concorrência e
+  diretrizes de design do nicho) para colar numa IA como Claude, ChatGPT, Lovable ou v0 e receber o site pronto.
 - **Raio-x do perfil:** o que falta no perfil do negócio no Google (horário, foto, descrição, pedido online) e quantos
   concorrentes da mesma categoria, num raio de 2 km, já têm site. No mapa, os bairros com mais negócios sem site.
 - **Acompanhamento por lead:** valor da proposta, data do próximo contato (com aviso de atrasado ou hoje) e anotações.

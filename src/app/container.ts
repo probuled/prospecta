@@ -1,4 +1,5 @@
 import type { BaseMap } from '@/application/ports/base-map'
+import type { FileDownloader } from '@/application/ports/file-downloader'
 import type { LeadExporter } from '@/application/ports/lead-exporter'
 import type { LeadRepository, SearchRepository, SettingsRepository } from '@/application/ports/repositories'
 import type { ScraperGateway } from '@/application/ports/scraper-gateway'
@@ -7,6 +8,7 @@ import { LocateLeads } from '@/application/use-cases/locate-leads'
 import { StartSearch } from '@/application/use-cases/start-search'
 import { SyncSearch } from '@/application/use-cases/sync-search'
 import { GoogleMapsEngineGateway } from '@/infrastructure/engine/google-maps-engine-gateway'
+import { BrowserFileDownloader } from '@/infrastructure/export/browser-file-downloader'
 import { CsvLeadExporter } from '@/infrastructure/export/csv-lead-exporter'
 import { NominatimGeocoder } from '@/infrastructure/geocoding/nominatim-geocoder'
 import { OpenFreeMapBaseMap } from '@/infrastructure/map/openfreemap-base-map'
@@ -20,6 +22,7 @@ export interface Dependencies {
   readonly searches: SearchRepository
   readonly settings: SettingsRepository
   readonly exporter: LeadExporter
+  readonly files: FileDownloader
   readonly baseMap: BaseMap
   readonly startSearch: StartSearch
   readonly syncSearch: SyncSearch
@@ -40,6 +43,7 @@ export function createDependencies(): Dependencies {
     searches,
     settings: new LocalStorageSettingsRepository(),
     exporter: new CsvLeadExporter(),
+    files: new BrowserFileDownloader(),
     baseMap: new OpenFreeMapBaseMap(),
     startSearch: new StartSearch(geocoder, scraper, searches),
     syncSearch: new SyncSearch(scraper, searches, leads),

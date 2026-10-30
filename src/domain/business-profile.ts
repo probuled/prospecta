@@ -15,7 +15,7 @@ export interface ProfileImage {
 
 /**
  * O perfil do negócio no Google Maps além do básico (nome, telefone, nota).
- * É a matéria-prima do diagnóstico de presença digital e da prévia do site.
+ * É a matéria-prima do diagnóstico de presença digital e do prompt do site.
  */
 export interface BusinessProfile {
   readonly description: string
