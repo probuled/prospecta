@@ -1,9 +1,10 @@
 import Papa from 'papaparse'
 import type { ScrapedPlace } from '@/application/ports/scraper-gateway'
 import { isValidCoordinates, type Coordinates } from '@/domain/geo'
+import { parseBusinessProfile, type ProfileCsvColumns } from './business-profile-parser'
 
 /** Colunas do CSV do gosom/google-maps-scraper que interessam para prospecção. */
-interface EngineCsvRow {
+interface EngineCsvRow extends ProfileCsvColumns {
   readonly title?: string
   readonly category?: string
   readonly address?: string
@@ -46,6 +47,7 @@ function toPlace(row: EngineCsvRow): ScrapedPlace {
     reviewCount: Math.trunc(parseNumber(row.review_count) ?? 0),
     mapsUrl: row.link?.trim() ?? '',
     location: parseLocation(row.latitude, row.longitude),
+    profile: parseBusinessProfile(row),
   }
 }
 

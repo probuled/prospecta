@@ -28,7 +28,7 @@ export function WhatsAppButton({ view, onOpen, message, label, size = 'sm', isPr
   const { isMobile } = view.phone
   return (
     <ExternalButtonLink
-      href={buildWhatsAppUrl(view.phone, message ?? renderMessage(messageTemplate, view.lead))}
+      href={buildWhatsAppUrl(view.phone, message ?? renderMessage(messageTemplate, view.lead, { comparison: view.comparison }))}
       onClick={(event) => {
         event.stopPropagation()
         onOpen?.()

@@ -7,6 +7,34 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+## [0.4.0] - 2026-10-30
+
+### Adicionado
+
+- Ao repetir uma busca, o Prospecta mostra o que mudou na região desde a anterior: quantos negócios são novos e quantos
+  ganharam site. Aparece no aviso de busca concluída e no Histórico.
+- Backup completo: "Baixar backup" na tela de Leads gera um arquivo JSON com os leads (etapa, notas, valor, próximo
+  contato), as buscas e os modelos de mensagem. "Restaurar backup" traz tudo de volta em outro navegador ou
+  computador, juntando com o que já existe sem apagar nada.
+- Prompt do site: no detalhe do lead, "Gerar prompt do site" monta um prompt com tudo o que se sabe do negócio
+  (endereço, telefone, WhatsApp, fotos, horários, avaliações, reclamações, concorrência, localização para o mapa) e
+  diretrizes de design por nicho (clima, paleta, tipografia, estrutura da página, SEO local, acessibilidade e o que
+  evitar). É só copiar e colar numa IA (Claude, ChatGPT, Lovable, v0) para ela criar o site do lead. Dá para escolher
+  entre HTML + CSS ou React + TailwindCSS, trocar a direção de design e somar observações.
+- Raio-x do perfil no detalhe do lead: o que falta no perfil do Google (site, dono identificado, horário, foto, descrição,
+  pedido ou agendamento online) e quantos concorrentes da mesma categoria, num raio de 2 km, já têm site.
+- Variável `{diagnostico}` nas mensagens, com o argumento do raio-x pronto para a abordagem.
+- Variáveis `{elogio}` e `{dor}` nas mensagens: um trecho da melhor avaliação do negócio e a reclamação mais comum que um
+  site resolve (telefone que ninguém atende, espera, falta de preço ou horário, endereço difícil). O detalhe do lead mostra
+  os dois em "O que os clientes dizem".
+- Painel "Bairros sem site" no mapa, com os bairros onde a maioria dos negócios encontrados não tem site próprio.
+- As buscas passam a guardar o perfil completo do negócio no Google (horários, avaliações escritas, fotos, bairro). Leads
+  antigos ganham o perfil quando aparecem numa busca nova.
+
+### Alterado
+
+- Pontuação de oportunidade: perfil do Google sem horário ou sem foto soma 5 pontos.
+
 ## [0.3.0] - 2026-10-29
 
 ### Alterado
@@ -108,7 +136,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 - Emojis como 👉 chegavam no WhatsApp como "�": o link de contato passa a usar `api.whatsapp.com`.
 
-[Não lançado]: https://github.com/probuled/prospecta/compare/v0.3.0...develop
+[Não lançado]: https://github.com/probuled/prospecta/compare/v0.4.0...develop
+[0.4.0]: https://github.com/probuled/prospecta/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/probuled/prospecta/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/probuled/prospecta/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/probuled/prospecta/compare/v0.2.0...v0.2.1

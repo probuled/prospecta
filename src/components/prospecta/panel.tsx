@@ -15,7 +15,7 @@ export function Panel({ title, action, children, className, bodyClassName }: Pan
   return (
     <section className={cn('rounded-lg border border-line bg-surface', className)}>
       {(title || action) && (
-        <header className="flex items-center justify-between gap-3 border-b border-line px-5 py-4">
+        <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4">
           {title && <h2 className="text-title">{title}</h2>}
           {action}
         </header>

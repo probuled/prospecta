@@ -7,7 +7,7 @@ import { Input } from '@/components/prospecta/input'
 import { PageHeader } from '@/components/prospecta/page-header'
 import { Panel } from '@/components/prospecta/panel'
 import type { Lead } from '@/domain/lead'
-import { DEFAULT_MESSAGE_TEMPLATE, renderMessage, TEMPLATE_PLACEHOLDERS } from '@/domain/message-template'
+import { DEFAULT_MESSAGE_TEMPLATE, renderMessage, TEMPLATE_PLACEHOLDERS, type MessageContext } from '@/domain/message-template'
 import {
   activeTemplate,
   addTemplate,
@@ -37,9 +37,29 @@ const SAMPLE_LEAD: Lead = {
   searchIds: [],
   status: 'novo',
   notes: '',
+  profile: {
+    description: '',
+    neighborhood: 'Boa Viagem',
+    businessStatus: '',
+    priceRange: '',
+    thumbnailUrl: '',
+    images: [],
+    openingHours: {},
+    reviewsPerRating: [2, 1, 4, 25, 180],
+    reviews: [
+      { author: 'Cliente', rating: 5, text: 'Melhor corte da região, atendimento nota 10. Voltarei sempre!', when: '' },
+      { author: 'Cliente', rating: 2, text: 'Liguei três vezes para agendar e ninguém atendeu.', when: '' },
+    ],
+    hasOwner: true,
+    menuUrl: '',
+    orderOnlineUrls: [],
+    reservationUrls: [],
+  },
   createdAt: '',
   updatedAt: '',
 }
+
+const SAMPLE_CONTEXT: MessageContext = { comparison: { radiusKm: 2, peers: 12, peersWithSite: 8, peersAverageReviews: 140 } }
 
 type Draft = Pick<MessageTemplate, 'name' | 'body'>
 
@@ -218,7 +238,7 @@ export function SettingsPage() {
           <p className="text-caption mb-3 text-ink-muted">Como chega para {SAMPLE_LEAD.name}</p>
           {/* Balão de mensagem enviada nas cores do WhatsApp, para a prévia parecer o que o lead vai ver. */}
           <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-sm bg-whatsapp-bubble px-3.5 py-2.5 leading-relaxed whitespace-pre-wrap text-on-whatsapp-bubble">
-            {renderMessage(draft.body, SAMPLE_LEAD) || <span className="opacity-60">Sem texto</span>}
+            {renderMessage(draft.body, SAMPLE_LEAD, SAMPLE_CONTEXT) || <span className="opacity-60">Sem texto</span>}
           </div>
         </Panel>
       </div>

@@ -15,6 +15,10 @@ export const router = createBrowserRouter([
       { path: ROUTES.search, element: <SearchPage /> },
       { path: ROUTES.leads, element: <LeadsPage /> },
       {
+        path: ROUTES.sitePrompt,
+        lazy: async () => ({ Component: (await import('@/presentation/pages/site-prompt/site-prompt-page')).SitePromptPage }),
+      },
+      {
         path: ROUTES.map,
         lazy: async () => ({ Component: (await import('@/presentation/pages/map/map-page')).MapPage }),
       },

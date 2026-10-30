@@ -1,3 +1,4 @@
+import type { BusinessProfile } from '@/domain/business-profile'
 import type { Coordinates } from '@/domain/geo'
 
 export interface ScrapeJobRequest {
@@ -23,6 +24,7 @@ export interface ScrapedPlace {
   readonly reviewCount: number
   readonly mapsUrl: string
   readonly location: Coordinates | null
+  readonly profile: BusinessProfile
 }
 
 export interface ScraperGateway {

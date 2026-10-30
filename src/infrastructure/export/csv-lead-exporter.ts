@@ -4,6 +4,7 @@ import { LEAD_STATUS_LABELS, type Lead } from '@/domain/lead'
 import { evaluateOpportunity } from '@/domain/opportunity'
 import { parsePhone } from '@/domain/phone'
 import { classifyWebsite, WEBSITE_PRESENCE_LABELS } from '@/domain/website-presence'
+import { downloadFile } from './download-file'
 
 function toRow(lead: Lead) {
   const opportunity = evaluateOpportunity(lead)
@@ -32,9 +33,6 @@ export class CsvLeadExporter implements LeadExporter {
   export(leads: readonly Lead[], fileName: string): void {
     // BOM para o Excel abrir acentos corretamente.
     const csv = '﻿' + Papa.unparse(leads.map(toRow))
-    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }))
-    const link = Object.assign(document.createElement('a'), { href: url, download: fileName })
-    link.click()
-    URL.revokeObjectURL(url)
+    downloadFile(new Blob([csv], { type: 'text/csv;charset=utf-8' }), fileName)
   }
 }

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mergeLead } from '../lead'
-import { makeLead } from './fixtures'
+import { makeLead, makeProfile } from './fixtures'
 
 describe('mergeLead', () => {
   it('preserva o trabalho de prospecção e atualiza os dados públicos', () => {
@@ -41,5 +41,18 @@ describe('mergeLead com localização', () => {
     const existing = makeLead({ location: { lat: -22.9, lon: -47.06 } })
 
     expect(mergeLead(existing, makeLead({ location: null })).location).toEqual({ lat: -22.9, lon: -47.06 })
+  })
+})
+
+describe('mergeLead com perfil do negócio', () => {
+  it('lê lead salvo antes do perfil (sem profile) e passa a ter o perfil da nova raspagem', () => {
+    const legacy = makeLead({ status: 'contatado' })
+    const profile = makeProfile({ description: 'Barbearia clássica', hasOwner: true })
+
+    const merged = mergeLead(legacy, makeLead({ profile }))
+
+    expect(legacy.profile).toBeUndefined()
+    expect(merged.profile).toEqual(profile)
+    expect(merged.status).toBe('contatado')
   })
 })

@@ -18,6 +18,10 @@ export class LocalStorageSearchRepository implements SearchRepository {
     this.store.set(sorted)
   }
 
+  replaceAll(searches: readonly Search[]): void {
+    this.store.set([...searches].sort((a, b) => b.createdAt.localeCompare(a.createdAt)))
+  }
+
   remove(id: string): void {
     this.store.set(this.store.getSnapshot().filter((search) => search.id !== id))
   }

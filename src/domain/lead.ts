@@ -1,3 +1,4 @@
+import type { BusinessProfile } from './business-profile'
 import type { Coordinates } from './geo'
 
 export const LEAD_STATUSES = ['novo', 'contatado', 'respondeu', 'negociando', 'fechado', 'perdido'] as const
@@ -34,6 +35,8 @@ export interface Lead {
   readonly followUpAt?: string | null
   /** Posição do negócio. Opcional: leads salvos antes do mapa não têm; `null` quando não foi possível localizar. */
   readonly location?: Coordinates | null
+  /** Perfil completo do Google Maps. Opcional: leads salvos antes dele só ganham o perfil quando aparecem numa busca nova. */
+  readonly profile?: BusinessProfile
   readonly createdAt: string
   readonly updatedAt: string
 }
@@ -54,6 +57,7 @@ export function mergeLead(existing: Lead, incoming: Lead): Lead {
     followUpAt: existing.followUpAt,
     // Uma raspagem sem coordenadas não apaga a posição já encontrada.
     location: incoming.location ?? existing.location,
+    profile: incoming.profile ?? existing.profile,
     createdAt: existing.createdAt,
   }
 }

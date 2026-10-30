@@ -12,12 +12,16 @@ export interface LeadRepository extends Observable<readonly Lead[]> {
   upsertMany(leads: readonly Lead[]): void
   update(id: string, patch: LeadPatch): void
   removeFromSearch(searchId: string): void
+  /** Troca a lista inteira (restauração de backup). */
+  replaceAll(leads: readonly Lead[]): void
 }
 
 export interface SearchRepository extends Observable<readonly Search[]> {
   findById(id: string): Search | undefined
   save(search: Search): void
   remove(id: string): void
+  /** Troca a lista inteira (restauração de backup). */
+  replaceAll(searches: readonly Search[]): void
 }
 
 export interface SettingsRepository extends Observable<Settings> {

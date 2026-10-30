@@ -2,12 +2,15 @@ import { useEffect, useRef } from 'react'
 import { toast } from 'sonner'
 import { useDependencies } from '@/app/dependencies-context'
 import type { Search } from '@/domain/search'
+import { describeChanges } from '@/domain/search-changes'
 
 const SYNC_INTERVAL_MS = 5_000
 
 function notifyFinished(search: Search) {
   if (search.status === 'ok') {
-    toast.success(`Busca concluída: ${search.keyword}`, { description: `${search.leadCount} leads encontrados.` })
+    toast.success(`Busca concluída: ${search.keyword}`, {
+      description: `${search.leadCount} leads encontrados${search.changes ? `: ${describeChanges(search.changes)}` : ''}.`,
+    })
   } else if (search.status === 'failed') {
     toast.error(`A busca falhou: ${search.keyword}`, { description: 'Tente de novo com menos profundidade.' })
   }

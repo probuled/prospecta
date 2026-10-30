@@ -28,7 +28,8 @@ Navegador (React, este repositório)
   `google-maps-scraper` (container `gmaps-scraper`). Ele faz o papel de "API" para o front.
 - O proxy `/engine` existe porque o motor não envia cabeçalhos CORS.
 - Os dados ficam **só no navegador** em que o app foi usado. Limpar os dados do site, trocar de navegador ou de computador
-  começa do zero. O único backup é exportar CSV na tela de Leads.
+  começa do zero. O backup é o arquivo JSON de "Baixar backup" na tela de Leads (`src/domain/backup.ts`); mudou o formato
+  de algo salvo, o schema em `src/infrastructure/backup/backup-schema.ts` também precisa aceitar o formato antigo.
 
 ### Quando passaria a precisar de um backend
 

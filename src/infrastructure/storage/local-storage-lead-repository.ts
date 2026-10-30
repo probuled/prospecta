@@ -35,6 +35,10 @@ export class LocalStorageLeadRepository implements LeadRepository {
     this.store.set(this.store.getSnapshot().map((lead) => (lead.id === id ? { ...lead, ...patch, updatedAt } : lead)))
   }
 
+  replaceAll(leads: readonly Lead[]): void {
+    this.store.set(leads)
+  }
+
   /** Tira a busca dos leads; quem não pertence a mais nenhuma busca é removido. */
   removeFromSearch(searchId: string): void {
     this.store.set(

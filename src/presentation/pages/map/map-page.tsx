@@ -5,6 +5,7 @@ import { ROUTES } from '@/app/routes'
 import { Button, ButtonLink } from '@/components/prospecta/button'
 import { EmptyState } from '@/components/prospecta/empty-state'
 import { PageHeader } from '@/components/prospecta/page-header'
+import { rankNeighborhoodsWithoutSite } from '@/domain/neighborhood-ranking'
 import { useLeads, useSearches } from '@/presentation/hooks/use-store'
 import { useSharedEngineStatus } from '@/presentation/layout/engine-status-context'
 import { LeadMap } from './lead-map'
@@ -12,6 +13,7 @@ import { isLocated } from './lead-map-layers'
 import { LocateLeadsButton } from './locate-leads-button'
 import { MapFiltersPanel } from './map-filters-panel'
 import { MapLegend } from './map-legend'
+import { NeighborhoodsPanel } from './neighborhoods-panel'
 import { SelectedLeadCard } from './selected-lead-card'
 import { ALL, useMapFilters } from './use-map-filters'
 
@@ -33,6 +35,7 @@ export function MapPage() {
       ),
     [located, filters.status, filters.searchId],
   )
+  const neighborhoods = useMemo(() => rankNeighborhoodsWithoutSite(visible), [visible])
   const selected = visible.find((lead) => lead.id === selectedId) ?? null
   const unlocatedCount = leads.length - located.length
 
@@ -120,6 +123,7 @@ export function MapPage() {
               </Button>
             </div>
           )}
+          <NeighborhoodsPanel ranking={neighborhoods} />
         </aside>
       </div>
     </>
