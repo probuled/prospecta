@@ -7,6 +7,12 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+### Adicionado
+
+- Aviso "Uso responsável", na barra lateral (e no topo, no celular): explica por que o Prospecta deve rodar só no seu
+  computador, que raspar o Google Maps vai contra os termos do Google (e o risco de bloqueio do IP), como evitar o
+  banimento do número no WhatsApp, os cuidados com a LGPD e de quem é a responsabilidade.
+
 ## [0.4.2] - 2026-10-30
 
 ### Alterado
