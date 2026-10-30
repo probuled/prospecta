@@ -2,6 +2,7 @@ import { placeToLead } from '@/application/mappers/place-to-lead'
 import type { LeadRepository, SearchRepository } from '@/application/ports/repositories'
 import type { ScraperGateway } from '@/application/ports/scraper-gateway'
 import type { Search } from '@/domain/search'
+import { diffResults, isRepeatSearch } from '@/domain/search-changes'
 
 /** Consulta o job no motor e, quando termina, importa os resultados como leads. */
 export class SyncSearch {
@@ -25,8 +26,10 @@ export class SyncSearch {
     }
 
     const places = await this.scraper.fetchResults(search.id)
-    this.leads.upsertMany(places.map((place) => placeToLead(place, search, finishedAt)))
-    return this.persist({ ...search, status: 'ok', leadCount: places.length, finishedAt })
+    const incoming = places.map((place) => placeToLead(place, search, finishedAt))
+    const changes = isRepeatSearch(search, this.searches.getSnapshot()) ? diffResults(this.leads.getSnapshot(), incoming) : undefined
+    this.leads.upsertMany(incoming)
+    return this.persist({ ...search, status: 'ok', leadCount: places.length, finishedAt, ...(changes && { changes }) })
   }
 
   private persist(search: Search): Search {

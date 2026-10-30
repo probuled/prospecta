@@ -8,6 +8,7 @@ import { Button, ButtonLink } from '@/components/prospecta/button'
 import { EmptyState } from '@/components/prospecta/empty-state'
 import { PageHeader } from '@/components/prospecta/page-header'
 import type { Search } from '@/domain/search'
+import { describeChanges } from '@/domain/search-changes'
 import { SearchStatus } from '@/presentation/components/search-status'
 import { formatCount } from '@/presentation/format'
 import { useSearches } from '@/presentation/hooks/use-store'
@@ -28,12 +29,13 @@ function SearchRow({ search, onDelete }: { readonly search: Search; readonly onD
       <p className="text-caption text-ink-muted">
         <span className="font-mono">{dateFormatter.format(new Date(search.createdAt))}</span> · profundidade {search.depth}
         {search.withEmails ? ' · com e-mails' : ''}
+        {search.changes && <span className="font-medium text-ink"> · {describeChanges(search.changes)}</span>}
       </p>
     </div>
   )
 
   return (
-    <li className="group flex h-[var(--row-height)] items-center gap-4 border-b border-line px-4 transition-colors last:border-b-0 hover:bg-surface-hover">
+    <li className="group flex min-h-[var(--row-height)] items-center gap-4 border-b border-line px-4 py-2 transition-colors last:border-b-0 hover:bg-surface-hover">
       {search.status === 'ok' ? (
         <Link to={leadsOfSearch(search.id)} className="flex min-w-0 flex-1 items-center gap-2 rounded-sm">
           {title}

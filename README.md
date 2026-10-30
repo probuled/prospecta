@@ -209,6 +209,9 @@ Na tela **Leads**, os negócios aparecem ordenados pela pontuação, e por padr�
 Se o mesmo negócio aparecer em duas buscas, ele não duplica: os dados públicos são atualizados e o seu acompanhamento
 (etapa, notas, valor, próximo contato) é mantido.
 
+Repetir a mesma busca depois de um tempo mostra o que mudou na região: quantos negócios são **novos** (abriram há pouco ou
+entraram no Google agora, ótimos para abordar) e quantos **ganharam site** desde a busca anterior.
+
 #### A pontuação
 
 | Critério                              | Pontos |
