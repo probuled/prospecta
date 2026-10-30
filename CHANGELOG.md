@@ -7,6 +7,11 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ## [Não lançado]
 
+### Alterado
+
+- README mostra o prompt do site: seção com print nos temas claro e escuro, passo a passo em "Como usar" e o print do
+  detalhe do lead atualizado com o botão "Gerar prompt do site" e o raio-x do perfil.
+
 ## [0.4.0] - 2026-10-30
 
 ### Adicionado
