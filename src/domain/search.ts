@@ -1,3 +1,5 @@
+import type { SearchChanges } from './search-changes'
+
 export type SearchStatus = 'working' | 'ok' | 'failed'
 
 export interface SearchRequest {
@@ -15,6 +17,8 @@ export interface Search extends SearchRequest {
   readonly maxTimeSeconds: number
   readonly createdAt: string
   readonly finishedAt?: string
+  /** Só em busca repetida: o que mudou desde a anterior. Buscas antigas não têm. */
+  readonly changes?: SearchChanges
 }
 
 export const DEPTH_LIMITS = { min: 1, max: 20, default: 5 } as const

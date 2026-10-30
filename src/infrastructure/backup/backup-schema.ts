@@ -59,6 +59,7 @@ const search = z.object({
   maxTimeSeconds: z.number(),
   createdAt: z.string(),
   finishedAt: z.string().optional(),
+  changes: z.object({ newLeads: z.number(), gainedSite: z.number() }).optional(),
 })
 
 const settings = z.preprocess(
